@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package gui_lapangan;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import koneksi.koneksiLury;
 /**
  *
@@ -16,7 +18,15 @@ public class transaksi_makanan extends javax.swing.JFrame {
      */
     public transaksi_makanan() {
         initComponents();
-        kon.autoNumber(txt_nota);
+        kon.autoNumber(txt_nota,"SELECT `nonota` FROM `transaksimakanan` WHERE nonota LIKE '%"+ dateNow() +"%' ORDER BY nonota DESC","nonota","TSC");
+    }
+    
+    private String dateNow(){
+         LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+        String formattedDate = currentDate.format(formatter);
+        System.out.println("Current date in ddMMyyyy format: " + formattedDate);
+        return formattedDate;
     }
 
     /**

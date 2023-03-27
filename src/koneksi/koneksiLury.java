@@ -125,17 +125,18 @@ public class koneksiLury {
         return formattedDate;
     }
     
-    public void autoNumber(javax.swing.JTextField textField){
+    public void autoNumber(javax.swing.JTextField textField,String query,String field,String kode){
         
         try{
            getCon();
             Statement s = connection.createStatement();
-            String sql = "SELECT `nonota` FROM `transaksimakanan` WHERE nonota LIKE '%"+ dateNow() +"%' ORDER BY nonota DESC";
-            System.out.println(sql);
-            ResultSet r = s.executeQuery(sql);
+            
+           
+            System.out.println(query);
+            ResultSet r = s.executeQuery(query);
             if (r.next()){
-                String prefix = "TSC" + dateNow() ;
-                String NoFaktur = r.getString("nonota").substring(13);
+                String prefix = kode + dateNow() ;
+                String NoFaktur = r.getString(field).substring(13);
                 String TR = "" + (Integer.parseInt(NoFaktur)+1);
                 String No1 = "";
                 
@@ -155,7 +156,7 @@ public class koneksiLury {
                
                 textField.setText(prefix + No1 + TR);
             }else {
-                textField.setText("TSC" + dateNow() + "001");
+                textField.setText(kode + dateNow() + "001");
             }
             r.close();
             s.close();  
