@@ -27,18 +27,16 @@ public class laporan extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        tanggalAkhir = new com.toedter.calendar.JDateChooser();
+        tanggalAwal = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
         btn_proses = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 230, 120, -1));
-        getContentPane().add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, -1, -1));
-        getContentPane().add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 120, -1));
+        getContentPane().add(tanggalAkhir, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 230, 190, 30));
+        getContentPane().add(tanggalAwal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 190, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/laporan.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -101,9 +99,8 @@ public class laporan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_proses;
-    private com.toedter.calendar.JCalendar jCalendar1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
+    private com.toedter.calendar.JDateChooser tanggalAkhir;
+    private com.toedter.calendar.JDateChooser tanggalAwal;
     // End of variables declaration//GEN-END:variables
 }

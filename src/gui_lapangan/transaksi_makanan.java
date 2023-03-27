@@ -4,18 +4,19 @@
  * and open the template in the editor.
  */
 package gui_lapangan;
-
+import koneksi.koneksiLury;
 /**
  *
  * @author ASUS
  */
 public class transaksi_makanan extends javax.swing.JFrame {
-
+    koneksiLury kon = new koneksiLury();
     /**
      * Creates new form transaksi_makanan
      */
     public transaksi_makanan() {
         initComponents();
+        kon.autoNumber(txt_nota);
     }
 
     /**
@@ -54,7 +55,7 @@ public class transaksi_makanan extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 127, 740, 170));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 130, 732, 170));
 
         txt_subTotal.setBackground(new java.awt.Color(60, 128, 128));
         txt_subTotal.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -87,7 +88,7 @@ public class transaksi_makanan extends javax.swing.JFrame {
         getContentPane().add(txt_nota, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 190, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/transaksi_makanan.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 846, -1));
 
         btn_back.setText("jButton1");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
