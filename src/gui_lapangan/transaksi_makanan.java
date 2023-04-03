@@ -83,7 +83,7 @@ public class transaksi_makanan extends javax.swing.JFrame {
         txt_harga.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txt_harga.setForeground(new java.awt.Color(255, 255, 255));
         txt_harga.setBorder(null);
-        getContentPane().add(txt_harga, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 190, 20));
+        getContentPane().add(txt_harga, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 190, 26));
 
         txt_total_harga.setBackground(new java.awt.Color(60, 128, 128));
         txt_total_harga.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -95,7 +95,7 @@ public class transaksi_makanan extends javax.swing.JFrame {
         txt_nota.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txt_nota.setForeground(new java.awt.Color(255, 255, 255));
         txt_nota.setBorder(null);
-        getContentPane().add(txt_nota, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 190, 20));
+        getContentPane().add(txt_nota, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 190, 26));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/transaksi_makanan.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 846, -1));
