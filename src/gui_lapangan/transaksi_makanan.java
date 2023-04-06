@@ -41,13 +41,14 @@ public class transaksi_makanan extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         txt_subTotal = new javax.swing.JTextField();
-        txt_quantity = new javax.swing.JTextField();
-        txt_harga = new javax.swing.JTextField();
         txt_total_harga = new javax.swing.JTextField();
         txt_nota = new javax.swing.JTextField();
+        txtQty = new javax.swing.JTextField();
+        txtHarga = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
         btn_proses = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -65,40 +66,46 @@ public class transaksi_makanan extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 130, 732, 170));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 128, 722, 167));
 
         txt_subTotal.setBackground(new java.awt.Color(60, 128, 128));
         txt_subTotal.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txt_subTotal.setForeground(new java.awt.Color(255, 255, 255));
         txt_subTotal.setBorder(null);
-        getContentPane().add(txt_subTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 190, 20));
-
-        txt_quantity.setBackground(new java.awt.Color(60, 128, 128));
-        txt_quantity.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        txt_quantity.setForeground(new java.awt.Color(255, 255, 255));
-        txt_quantity.setBorder(null);
-        getContentPane().add(txt_quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, 190, 20));
-
-        txt_harga.setBackground(new java.awt.Color(60, 128, 128));
-        txt_harga.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        txt_harga.setForeground(new java.awt.Color(255, 255, 255));
-        txt_harga.setBorder(null);
-        getContentPane().add(txt_harga, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 190, 26));
+        getContentPane().add(txt_subTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 190, 20));
 
         txt_total_harga.setBackground(new java.awt.Color(60, 128, 128));
         txt_total_harga.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txt_total_harga.setForeground(new java.awt.Color(255, 255, 255));
         txt_total_harga.setBorder(null);
-        getContentPane().add(txt_total_harga, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 450, 190, 20));
+        getContentPane().add(txt_total_harga, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 446, 190, 20));
 
         txt_nota.setBackground(new java.awt.Color(60, 128, 128));
         txt_nota.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txt_nota.setForeground(new java.awt.Color(255, 255, 255));
         txt_nota.setBorder(null);
-        getContentPane().add(txt_nota, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 190, 26));
+        getContentPane().add(txt_nota, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 325, 190, 26));
 
+        txtQty.setBackground(new java.awt.Color(60, 128, 128));
+        txtQty.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtQty.setForeground(new java.awt.Color(255, 255, 255));
+        txtQty.setBorder(null);
+        txtQty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtQtyActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtQty, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 190, 20));
+
+        txtHarga.setBackground(new java.awt.Color(60, 128, 128));
+        txtHarga.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtHarga.setForeground(new java.awt.Color(255, 255, 255));
+        txtHarga.setBorder(null);
+        getContentPane().add(txtHarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 482, 190, 20));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/transaksi_makanan.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 846, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 540));
 
         btn_back.setText("jButton1");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
@@ -111,6 +118,9 @@ public class transaksi_makanan extends javax.swing.JFrame {
         btn_proses.setText("proses");
         getContentPane().add(btn_proses, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, 90, 50));
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 415, 190, -1));
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -120,6 +130,10 @@ public class transaksi_makanan extends javax.swing.JFrame {
         this.setVisible(false);
         new admin().setVisible(true);
     }//GEN-LAST:event_btn_backActionPerformed
+
+    private void txtQtyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQtyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQtyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,12 +173,13 @@ public class transaksi_makanan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_proses;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txt_harga;
+    private javax.swing.JTextField txtHarga;
+    private javax.swing.JTextField txtQty;
     private javax.swing.JTextField txt_nota;
-    private javax.swing.JTextField txt_quantity;
     private javax.swing.JTextField txt_subTotal;
     private javax.swing.JTextField txt_total_harga;
     // End of variables declaration//GEN-END:variables
