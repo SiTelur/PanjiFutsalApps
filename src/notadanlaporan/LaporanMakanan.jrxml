@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="57ff1175-ac39-458c-9237-75920001d429">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="tanggalAwal" class="java.lang.String">
+		<defaultValueExpression><![CDATA["2019-01-01"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tanggalAkhir" class="java.lang.String">
+		<defaultValueExpression><![CDATA["2019-01-01"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     transaksilapangan.`kode_booking` AS transaksilapangan_kode_booking,
+     transaksilapangan.`nama` AS transaksilapangan_nama,
+     transaksilapangan.`nomerTelpon` AS transaksilapangan_nomerTelpon,
+     transaksilapangan.`tanggalBooking` AS transaksilapangan_tanggalBooking,
+     transaksilapangan.`tanggalMain` AS transaksilapangan_tanggalMain,
+     transaksilapangan.`jamMulai` AS transaksilapangan_jamMulai,
+     transaksilapangan.`jamSelesai` AS transaksilapangan_jamSelesai,
+     transaksilapangan.`tarif` AS transaksilapangan_tarif,
+     transaksilapangan.`dp` AS transaksilapangan_dp,
+     transaksilapangan.`status` AS transaksilapangan_status,
+     lapangan.`nama_lapangan` AS lapangan_nama_lapangan
+FROM
+     `lapangan` lapangan INNER JOIN `transaksilapangan` transaksilapangan ON lapangan.`id_lapangan` = transaksilapangan.`id_lapangan`]]>
+	</queryString>
+	<field name="transaksilapangan_kode_booking" class="java.lang.String"/>
+	<field name="transaksilapangan_nama" class="java.lang.String"/>
+	<field name="transaksilapangan_nomerTelpon" class="java.lang.String"/>
+	<field name="transaksilapangan_tanggalBooking" class="java.sql.Timestamp"/>
+	<field name="transaksilapangan_tanggalMain" class="java.sql.Date"/>
+	<field name="transaksilapangan_jamMulai" class="java.sql.Time"/>
+	<field name="transaksilapangan_jamSelesai" class="java.sql.Time"/>
+	<field name="transaksilapangan_tarif" class="java.lang.Integer"/>
+	<field name="transaksilapangan_dp" class="java.lang.Integer"/>
+	<field name="transaksilapangan_status" class="java.lang.String"/>
+	<field name="lapangan_nama_lapangan" class="java.lang.String"/>
+	<variable name="transaksilapangan_tarif_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{transaksilapangan_tarif}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle" onErrorType="Icon">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="13" width="61" height="56" uuid="17e0ed09-9444-4959-96a1-c34689cfb9a9"/>
+				<imageExpression><![CDATA["D:\\Development\\PanjiFutsalApps\\src\\img\\Logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" uuid="87b08b8d-4ed0-47a4-8e7f-c800148b29a3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Laporan Penyewaan Lapangan]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="117" height="35" uuid="8a842ee3-88cd-4d19-884a-9d9761e9db34"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Kurun Waktu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="0" width="126" height="35" uuid="4085dc76-7ada-4c51-a6ac-95d5fc60ea63"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Sampai]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="4f861f57-1d15-4898-ab0a-dc5c3edfafb3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Kode Booking]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="57" height="20" uuid="ca55de39-9749-4429-a80b-32dd2d0a0747"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="239" y="0" width="100" height="20" uuid="595d43be-14d8-4595-892b-8aaa7af7350b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Tanggal Booking]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="339" y="0" width="100" height="20" uuid="1cfacada-badd-4793-81b7-0223b58e3d03"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Tanggal Main]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="0" width="82" height="20" uuid="c75856d6-4d74-4489-aa91-0990e784cc4e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nama Lapangan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="439" y="0" width="100" height="20" uuid="e332b4c6-6c44-455c-8cb8-71ee2aef714b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="c8314842-2f3b-4524-a493-79d0f472e4d8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transaksilapangan_kode_booking}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="239" y="1" width="100" height="20" uuid="808a96dd-112f-4bf5-87c9-47ba86aa54cb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transaksilapangan_tanggalBooking}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="339" y="1" width="100" height="20" uuid="2407a543-4599-461d-869a-22e29a8061c6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transaksilapangan_tanggalMain}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="1" width="57" height="20" uuid="0d98df91-a8b3-4ca6-8285-a057897dfcfc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transaksilapangan_nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="157" y="1" width="82" height="20" uuid="533ee655-6ccd-412c-a243-aee691b38040"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{lapangan_nama_lapangan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="439" y="1" width="100" height="20" uuid="d9af875b-9ec5-4490-9354-6d03012890db"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transaksilapangan_status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
