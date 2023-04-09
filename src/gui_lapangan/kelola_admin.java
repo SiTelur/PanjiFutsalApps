@@ -35,6 +35,11 @@ public class kelola_admin extends javax.swing.JFrame {
         txt_nama_admin = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
+        btn_create = new javax.swing.JButton();
+        btn_delete = new javax.swing.JButton();
+        update = new javax.swing.JButton();
+        btn_save = new javax.swing.JButton();
+        btn_cancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -89,6 +94,21 @@ public class kelola_admin extends javax.swing.JFrame {
         });
         getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 40, 30));
 
+        btn_create.setText("create");
+        getContentPane().add(btn_create, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, 100, 30));
+
+        btn_delete.setText("delete");
+        getContentPane().add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 240, 100, 30));
+
+        update.setText("update");
+        getContentPane().add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, 90, 30));
+
+        btn_save.setText("save");
+        getContentPane().add(btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 340, 100, 30));
+
+        btn_cancel.setText("cancel");
+        getContentPane().add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 390, 90, 30));
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -136,6 +156,10 @@ public class kelola_admin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
+    private javax.swing.JButton btn_cancel;
+    private javax.swing.JButton btn_create;
+    private javax.swing.JButton btn_delete;
+    private javax.swing.JButton btn_save;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
@@ -143,5 +167,6 @@ public class kelola_admin extends javax.swing.JFrame {
     private javax.swing.JTextField txt_nama_admin;
     private javax.swing.JTextField txt_password;
     private javax.swing.JTextField txt_username;
+    private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }

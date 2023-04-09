@@ -36,9 +36,9 @@ public class booking extends javax.swing.JFrame {
         txt_nama = new javax.swing.JTextField();
         txt_telpon = new javax.swing.JTextField();
         txt_total_bayar = new javax.swing.JTextField();
-        txt_tgl = new javax.swing.JTextField();
+        tgl_main = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        booking = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
         btn_proses = new javax.swing.JButton();
 
@@ -104,17 +104,14 @@ public class booking extends javax.swing.JFrame {
         txt_total_bayar.setBorder(null);
         getContentPane().add(txt_total_bayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 500, 150, 20));
 
-        txt_tgl.setBackground(new java.awt.Color(60, 128, 128));
-        txt_tgl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        txt_tgl.setForeground(new java.awt.Color(255, 255, 255));
-        txt_tgl.setBorder(null);
-        getContentPane().add(txt_tgl, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 150, 20));
+        tgl_main.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        getContentPane().add(tgl_main, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 150, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Vector.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 0));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/booking.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        booking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/booking.jpg"))); // NOI18N
+        getContentPane().add(booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         btn_back.setText("jButton1");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
@@ -173,19 +170,19 @@ public class booking extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel booking;
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_proses;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private com.toedter.calendar.JDateChooser tgl_main;
     private javax.swing.JTextField txt_dp;
     private javax.swing.JTextField txt_harga_lapangan;
     private javax.swing.JTextField txt_jam_mulai;
     private javax.swing.JTextField txt_jam_selesai;
     private javax.swing.JTextField txt_nama;
     private javax.swing.JTextField txt_telpon;
-    private javax.swing.JTextField txt_tgl;
     private javax.swing.JTextField txt_total_bayar;
     // End of variables declaration//GEN-END:variables
 }
