@@ -29,11 +29,11 @@ public class kelola_admin extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        txt_jenis_pekerjaan = new javax.swing.JTextField();
         txt_password = new javax.swing.JTextField();
         txt_username = new javax.swing.JTextField();
         txt_nama_admin = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        kelola_admin = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
         btn_create = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
@@ -59,12 +59,6 @@ public class kelola_admin extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 137, 330, 380));
 
-        txt_jenis_pekerjaan.setBackground(new java.awt.Color(60, 128, 128));
-        txt_jenis_pekerjaan.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        txt_jenis_pekerjaan.setForeground(new java.awt.Color(255, 255, 255));
-        txt_jenis_pekerjaan.setBorder(null);
-        getContentPane().add(txt_jenis_pekerjaan, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 410, 260, 30));
-
         txt_password.setBackground(new java.awt.Color(60, 128, 128));
         txt_password.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txt_password.setForeground(new java.awt.Color(255, 255, 255));
@@ -75,16 +69,30 @@ public class kelola_admin extends javax.swing.JFrame {
         txt_username.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txt_username.setForeground(new java.awt.Color(255, 255, 255));
         txt_username.setBorder(null);
+        txt_username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_usernameActionPerformed(evt);
+            }
+        });
         getContentPane().add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 260, 30));
 
         txt_nama_admin.setBackground(new java.awt.Color(60, 128, 128));
-        txt_nama_admin.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txt_nama_admin.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         txt_nama_admin.setForeground(new java.awt.Color(255, 255, 255));
         txt_nama_admin.setBorder(null);
+        txt_nama_admin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nama_adminActionPerformed(evt);
+            }
+        });
         getContentPane().add(txt_nama_admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 260, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/kelola_admin.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 900, -1));
+        jComboBox1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Petugas" }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 280, 30));
+
+        kelola_admin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/kelola_admin.jpg"))); // NOI18N
+        getContentPane().add(kelola_admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 840, -1));
 
         btn_back.setText("jButton1");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +126,16 @@ public class kelola_admin extends javax.swing.JFrame {
         this.setVisible(false);
         new owner().setVisible(true);
     }//GEN-LAST:event_btn_backActionPerformed
+
+    private void txt_nama_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nama_adminActionPerformed
+        // TODO add your handling code here:
+        txt_username.requestFocus();
+    }//GEN-LAST:event_txt_nama_adminActionPerformed
+
+    private void txt_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usernameActionPerformed
+        // TODO add your handling code here:
+        txt_password.requestFocus();
+    }//GEN-LAST:event_txt_usernameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,10 +178,10 @@ public class kelola_admin extends javax.swing.JFrame {
     private javax.swing.JButton btn_create;
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_save;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txt_jenis_pekerjaan;
+    private javax.swing.JLabel kelola_admin;
     private javax.swing.JTextField txt_nama_admin;
     private javax.swing.JTextField txt_password;
     private javax.swing.JTextField txt_username;

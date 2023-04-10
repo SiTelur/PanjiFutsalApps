@@ -27,9 +27,9 @@ public class booking extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txt_harga_lapangan = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        txt_harga_lapangan = new javax.swing.JTextField();
         txt_jam_mulai = new javax.swing.JTextField();
         txt_jam_selesai = new javax.swing.JTextField();
         txt_dp = new javax.swing.JTextField();
@@ -37,19 +37,13 @@ public class booking extends javax.swing.JFrame {
         txt_telpon = new javax.swing.JTextField();
         txt_total_bayar = new javax.swing.JTextField();
         tgl_main = new com.toedter.calendar.JDateChooser();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         booking = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
         btn_proses = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txt_harga_lapangan.setBackground(new java.awt.Color(60, 128, 128));
-        txt_harga_lapangan.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        txt_harga_lapangan.setForeground(new java.awt.Color(255, 255, 255));
-        txt_harga_lapangan.setBorder(null);
-        getContentPane().add(txt_harga_lapangan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 150, 20));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -67,6 +61,12 @@ public class booking extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 290, 250));
+
+        txt_harga_lapangan.setBackground(new java.awt.Color(60, 128, 128));
+        txt_harga_lapangan.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txt_harga_lapangan.setForeground(new java.awt.Color(255, 255, 255));
+        txt_harga_lapangan.setBorder(null);
+        getContentPane().add(txt_harga_lapangan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 150, 20));
 
         txt_jam_mulai.setBackground(new java.awt.Color(60, 128, 128));
         txt_jam_mulai.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -105,13 +105,22 @@ public class booking extends javax.swing.JFrame {
         getContentPane().add(txt_total_bayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 500, 150, 20));
 
         tgl_main.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tgl_main.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tgl_mainAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         getContentPane().add(tgl_main, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 150, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Vector.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 0));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Vector.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         booking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/booking.jpg"))); // NOI18N
-        getContentPane().add(booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, -1));
 
         btn_back.setText("jButton1");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +142,10 @@ public class booking extends javax.swing.JFrame {
         this.setVisible(false);
         new admin().setVisible(true);
     }//GEN-LAST:event_btn_backActionPerformed
+
+    private void tgl_mainAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tgl_mainAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tgl_mainAncestorAdded
 
     /**
      * @param args the command line arguments
@@ -173,7 +186,7 @@ public class booking extends javax.swing.JFrame {
     private javax.swing.JLabel booking;
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_proses;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private com.toedter.calendar.JDateChooser tgl_main;

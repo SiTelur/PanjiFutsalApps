@@ -34,10 +34,10 @@ public class admin extends javax.swing.JFrame {
         btn_trans = new javax.swing.JButton();
         btn_kelola_makanan = new javax.swing.JButton();
         btn_jadwal = new javax.swing.JButton();
-        btn_booking = new javax.swing.JButton();
         btn_kelola_lapangan = new javax.swing.JButton();
         btn_logout = new javax.swing.JButton();
         btn_back = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -59,7 +59,7 @@ public class admin extends javax.swing.JFrame {
                 btn_transActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_trans, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 180, -1));
+        getContentPane().add(btn_trans, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 63, 180, 30));
 
         btn_kelola_makanan.setText("kelola_makanan");
         btn_kelola_makanan.addActionListener(new java.awt.event.ActionListener() {
@@ -76,14 +76,6 @@ public class admin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_jadwal, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, -1, -1));
-
-        btn_booking.setText("booking");
-        btn_booking.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_bookingActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
 
         btn_kelola_lapangan.setText("kelola_lapangan");
         btn_kelola_lapangan.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +100,14 @@ public class admin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 13, 40, 30));
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 63, 80, 30));
 
         pack();
         setLocationRelativeTo(null);
@@ -137,12 +137,6 @@ public class admin extends javax.swing.JFrame {
         new jadwal().setVisible(true);
     }//GEN-LAST:event_btn_jadwalActionPerformed
 
-    private void btn_bookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bookingActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        new booking().setVisible(true);
-    }//GEN-LAST:event_btn_bookingActionPerformed
-
     private void btn_kelola_lapanganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kelola_lapanganActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
@@ -162,6 +156,11 @@ public class admin extends javax.swing.JFrame {
         this.setVisible(false);
         new login().setVisible(true);
     }//GEN-LAST:event_btn_backActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setVisible(false);
+        new booking().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,12 +201,12 @@ public class admin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel admin;
     private javax.swing.JButton btn_back;
-    private javax.swing.JButton btn_booking;
     private javax.swing.JButton btn_jadwal;
     private javax.swing.JButton btn_kelola_lapangan;
     private javax.swing.JButton btn_kelola_makanan;
     private javax.swing.JButton btn_konfirmasi;
     private javax.swing.JButton btn_logout;
     private javax.swing.JButton btn_trans;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
