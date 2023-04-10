@@ -39,6 +39,7 @@ public class laporan extends javax.swing.JFrame {
         getContentPane().add(tanggalAwal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 190, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/laporan.jpg"))); // NOI18N
+        jLabel1.setPreferredSize(new java.awt.Dimension(847, 549));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         btn_back.addActionListener(new java.awt.event.ActionListener() {

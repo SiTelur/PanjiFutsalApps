@@ -43,6 +43,7 @@ public class admin extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         admin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dashboard_admin.jpg"))); // NOI18N
+        admin.setPreferredSize(new java.awt.Dimension(846, 549));
         getContentPane().add(admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         btn_konfirmasi.setText("konfirmasi");

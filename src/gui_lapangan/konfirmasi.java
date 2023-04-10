@@ -51,6 +51,7 @@ public class konfirmasi extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 137, 740, 370));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Konfirmasi.png"))); // NOI18N
+        jLabel1.setPreferredSize(new java.awt.Dimension(847, 548));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         btn_back.setText("jButton1");
