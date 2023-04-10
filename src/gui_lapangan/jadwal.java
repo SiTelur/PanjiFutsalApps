@@ -60,7 +60,8 @@ public class jadwal extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 240, 740, 300));
 
         jadwal_booking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Jadwal_Booking.png"))); // NOI18N
-        getContentPane().add(jadwal_booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, -1));
+        jadwal_booking.setPreferredSize(new java.awt.Dimension(846, 549));
+        getContentPane().add(jadwal_booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, -1));
 
         btn_back.setText("jButton1");
         btn_back.addActionListener(new java.awt.event.ActionListener() {

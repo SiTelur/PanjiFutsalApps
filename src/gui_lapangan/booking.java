@@ -120,6 +120,7 @@ public class booking extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         booking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/booking.jpg"))); // NOI18N
+        booking.setPreferredSize(new java.awt.Dimension(847, 549));
         getContentPane().add(booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, -1));
 
         btn_back.setText("jButton1");

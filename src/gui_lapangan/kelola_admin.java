@@ -5,6 +5,8 @@
  */
 package gui_lapangan;
 
+import java.awt.Color;
+
 /**
  *
  * @author ASUS
