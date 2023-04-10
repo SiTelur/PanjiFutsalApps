@@ -92,12 +92,12 @@ public class login extends javax.swing.JFrame {
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){
-                String username = rs.getString("id_pekerjaan");
-                if(username.equals("P01")){
+                String username = rs.getString("jenis_pekerjaan");
+                if(username.equals("Admin")){
                     new admin().setVisible(true);
                     this.dispose();
                     JOptionPane.showMessageDialog(null, "Selamat datang Admin");
-                }else if(username.equals("P02")){
+                }else if(username.equals("Petugas")){
                     new owner().setVisible(true);
                     this.dispose();
                     JOptionPane.showMessageDialog(null, "Selamat datang Owner!");  

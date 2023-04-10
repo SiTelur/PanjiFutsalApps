@@ -164,4 +164,24 @@ public class koneksiLury {
             System.out.println(e.getMessage());
         }
     }
+    
+    public String primaryKey(String query,String kode){
+        String primaryKey;
+        try {
+        getCon();
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        if (rs.next()) {
+            int maxId = rs.getInt("max_id");
+            primaryKey = kode + String.format("%02d", maxId + 1);
+            return primaryKey;
+        }else{
+            return primaryKey = kode + "01";
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return null;
+    }
 }

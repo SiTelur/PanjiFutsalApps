@@ -136,6 +136,11 @@ public class kelola_admin extends javax.swing.JFrame {
         getContentPane().add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, 90, 30));
 
         btn_save.setText("save");
+        btn_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_saveActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 340, 100, 30));
 
         btn_cancel.setText("cancel");
@@ -166,6 +171,7 @@ public class kelola_admin extends javax.swing.JFrame {
            case 0:
                isCreate +=1;
                JOptionPane.showMessageDialog(null, "Anda Memilih Create");
+               
                break;
            case 1:
                JOptionPane.showMessageDialog(null, "Anda Telah Menekan Tombol Create");
@@ -180,6 +186,19 @@ public class kelola_admin extends javax.swing.JFrame {
       txt_password.setText(jTable1.getValueAt(id,3).toString());
       jComboBox1.setSelectedItem(jTable1.getValueAt(id, 4));
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
+       String id;
+        if (isCreate != 0) {
+            if (jComboBox1.getSelectedItem().equals("Admin")) {
+                 id = con.primaryKey("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%A%'", "A");
+            }else{
+                 id =  con.primaryKey("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%P%'", "P");
+            }
+            System.out.println(id);
+         //   con.Eksekusi("INSERT INTO `admin`( `nama_admin`, `username`, `password`, `jenis_pekerjaan`) VALUES ('"+ txt_nama_admin.getText() +"','"+ txt_username.getText() +"','"+ txt_password.getText() +"','"+ jComboBox1.getSelectedItem() +"')", "Berhasil Menyimpan");
+        }
+    }//GEN-LAST:event_btn_saveActionPerformed
 
     /**
      * @param args the command line arguments
