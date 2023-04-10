@@ -5,17 +5,31 @@
  */
 package gui_lapangan;
 
+import javax.swing.JOptionPane;
+import koneksi.koneksiLury;
+
 /**
  *
  * @author ASUS
  */
 public class kelola_admin extends javax.swing.JFrame {
-
+    int isCreate,isUpdate,isDelete = 0;
+    koneksiLury con = new koneksiLury();
+    
+    
+    private void tampil(){
+        con.tampil(jTable1, "SELECT * FROM admin");
+    }
+    
+    private void kondisiAwal(){
+        
+    }
     /**
      * Creates new form kelola_admin
      */
     public kelola_admin() {
         initComponents();
+        tampil();
     }
 
     /**
@@ -55,6 +69,11 @@ public class kelola_admin extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 137, 330, 380));
@@ -103,10 +122,15 @@ public class kelola_admin extends javax.swing.JFrame {
         getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 40, 30));
 
         btn_create.setText("create");
-        getContentPane().add(btn_create, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, 100, 30));
+        btn_create.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_createActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_create, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, 90, 30));
 
         btn_delete.setText("delete");
-        getContentPane().add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 240, 100, 30));
+        getContentPane().add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 240, 90, 30));
 
         update.setText("update");
         getContentPane().add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, 90, 30));
@@ -136,6 +160,26 @@ public class kelola_admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         txt_password.requestFocus();
     }//GEN-LAST:event_txt_usernameActionPerformed
+
+    private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
+       switch (isCreate){
+           case 0:
+               isCreate +=1;
+               JOptionPane.showMessageDialog(null, "Anda Memilih Create");
+               break;
+           case 1:
+               JOptionPane.showMessageDialog(null, "Anda Telah Menekan Tombol Create");
+       }
+    }//GEN-LAST:event_btn_createActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+      int id = jTable1.getSelectedRow();
+      
+      txt_nama_admin.setText(jTable1.getValueAt(id, 1).toString());
+      txt_username.setText(jTable1.getValueAt(id, 2).toString());
+      txt_password.setText(jTable1.getValueAt(id,3).toString());
+      jComboBox1.setSelectedItem(jTable1.getValueAt(id, 4));
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
