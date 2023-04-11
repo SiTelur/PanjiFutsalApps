@@ -5,17 +5,24 @@
  */
 package gui_lapangan;
 
+import koneksi.koneksiLury;
+
 /**
  *
  * @author ASUS
  */
 public class booking extends javax.swing.JFrame {
-
+    koneksiLury con = new koneksiLury();
+    
+    private void tampil(){
+        con.tampil(jTable1, "SELECT * FROM lapangan");
+    }
     /**
      * Creates new form booking
      */
     public booking() {
         initComponents();
+        tampil();
     }
 
     /**
@@ -29,8 +36,10 @@ public class booking extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        txt_harga_lapangan = new javax.swing.JTextField();
+        jamSelesai = new javax.swing.JSpinner();
+        jamMulai = new javax.swing.JSpinner();
         txt_jam_mulai = new javax.swing.JTextField();
+        txt_harga_lapangan = new javax.swing.JTextField();
         txt_jam_selesai = new javax.swing.JTextField();
         txt_dp = new javax.swing.JTextField();
         txt_nama = new javax.swing.JTextField();
@@ -60,19 +69,25 @@ public class booking extends javax.swing.JFrame {
         jTable1.setRowHeight(20);
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 290, 250));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 165, 280, 240));
 
-        txt_harga_lapangan.setBackground(new java.awt.Color(60, 128, 128));
-        txt_harga_lapangan.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        txt_harga_lapangan.setForeground(new java.awt.Color(255, 255, 255));
-        txt_harga_lapangan.setBorder(null);
-        getContentPane().add(txt_harga_lapangan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 150, 20));
+        jamSelesai.setModel(new javax.swing.SpinnerListModel(new String[] {"05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"}));
+        getContentPane().add(jamSelesai, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 345, 150, -1));
+
+        jamMulai.setModel(new javax.swing.SpinnerListModel(new String[] {"05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"}));
+        getContentPane().add(jamMulai, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 150, -1));
 
         txt_jam_mulai.setBackground(new java.awt.Color(60, 128, 128));
         txt_jam_mulai.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txt_jam_mulai.setForeground(new java.awt.Color(255, 255, 255));
         txt_jam_mulai.setBorder(null);
         getContentPane().add(txt_jam_mulai, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 150, 20));
+
+        txt_harga_lapangan.setBackground(new java.awt.Color(60, 128, 128));
+        txt_harga_lapangan.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txt_harga_lapangan.setForeground(new java.awt.Color(255, 255, 255));
+        txt_harga_lapangan.setBorder(null);
+        getContentPane().add(txt_harga_lapangan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 150, 20));
 
         txt_jam_selesai.setBackground(new java.awt.Color(60, 128, 128));
         txt_jam_selesai.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -114,7 +129,7 @@ public class booking extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        getContentPane().add(tgl_main, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 150, -1));
+        getContentPane().add(tgl_main, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 210, 150, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Vector.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
@@ -190,6 +205,8 @@ public class booking extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JSpinner jamMulai;
+    private javax.swing.JSpinner jamSelesai;
     private com.toedter.calendar.JDateChooser tgl_main;
     private javax.swing.JTextField txt_dp;
     private javax.swing.JTextField txt_harga_lapangan;
