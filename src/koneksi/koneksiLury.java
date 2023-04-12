@@ -166,7 +166,7 @@ public class koneksiLury {
     }
     
     public String primaryKey(String query,String kode){
-        String primaryKey;
+        String primaryKey = null;
         try {
         getCon();
         Statement stmt = connection.createStatement();
@@ -182,6 +182,35 @@ public class koneksiLury {
         e.printStackTrace();
     }
 
-    return null;
+    return primaryKey;
     }
+    
+    public String primaryKey2(String query,String defaultPrefix,String defaultNewPrimaryKey){
+    getCon();
+     String newPrimaryKey = null;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            String lastPrimaryKey = null;
+            while (resultSet.next()) {
+                lastPrimaryKey = resultSet.getString(1);
+            }
+
+           
+            if (lastPrimaryKey == null) {
+              return  newPrimaryKey = defaultNewPrimaryKey;
+            } else {
+                String prefix = defaultPrefix;
+                int number = Integer.parseInt(lastPrimaryKey.substring(1));
+                number++;
+              return  newPrimaryKey = prefix + String.format("%02d", number);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+         return newPrimaryKey;
+        
+}
 }

@@ -191,9 +191,9 @@ public class kelola_admin extends javax.swing.JFrame {
        String id;
         if (isCreate != 0) {
             if (jComboBox1.getSelectedItem().equals("Admin")) {
-                 id = con.primaryKey("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%A%'", "A");
+                id = con.primaryKey2("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%A%'", "A", "A01");
             }else{
-                 id =  con.primaryKey("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%P%'", "P");
+                 id = con.primaryKey2("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%P%'", "P", "P01");
             }
             System.out.println(id);
          //   con.Eksekusi("INSERT INTO `admin`( `nama_admin`, `username`, `password`, `jenis_pekerjaan`) VALUES ('"+ txt_nama_admin.getText() +"','"+ txt_username.getText() +"','"+ txt_password.getText() +"','"+ jComboBox1.getSelectedItem() +"')", "Berhasil Menyimpan");
