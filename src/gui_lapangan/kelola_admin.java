@@ -13,7 +13,7 @@ import koneksi.koneksiLury;
  * @author ASUS
  */
 public class kelola_admin extends javax.swing.JFrame {
-    int isCreate,isUpdate,isDelete = 0;
+    int isCreate,isUpdateAndisDelete = 0;
     koneksiLury con = new koneksiLury();
     
     
@@ -21,8 +21,19 @@ public class kelola_admin extends javax.swing.JFrame {
         con.tampil(jTable1, "SELECT * FROM admin");
     }
     
+    private void kondisiTextBox(boolean kondisi){
+        txt_username.setEnabled(kondisi);
+        txt_nama_admin.setEditable(kondisi);
+        txt_password.setEditable(kondisi);
+        jComboBox1.setEnabled(kondisi);
+    }
+    
     private void kondisiAwal(){
-        
+        kondisiTextBox(false);
+        txt_username.setText("");
+        txt_nama_admin.setText("");
+        txt_password.setText("");
+        tampil();
     }
     /**
      * Creates new form kelola_admin
@@ -167,7 +178,8 @@ public class kelola_admin extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_usernameActionPerformed
 
     private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
-       switch (isCreate){
+       if (isUpdateAndisDelete == 0){
+           switch (isCreate){
            case 0:
                isCreate +=1;
                JOptionPane.showMessageDialog(null, "Anda Memilih Create");
@@ -175,6 +187,7 @@ public class kelola_admin extends javax.swing.JFrame {
                break;
            case 1:
                JOptionPane.showMessageDialog(null, "Anda Telah Menekan Tombol Create");
+       }
        }
     }//GEN-LAST:event_btn_createActionPerformed
 
@@ -185,6 +198,13 @@ public class kelola_admin extends javax.swing.JFrame {
       txt_username.setText(jTable1.getValueAt(id, 2).toString());
       txt_password.setText(jTable1.getValueAt(id,3).toString());
       jComboBox1.setSelectedItem(jTable1.getValueAt(id, 4));
+      
+        kondisiTextBox(true);
+        switch (isUpdateAndisDelete){
+            case 0:
+                isUpdateAndisDelete += 1;
+                
+        }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
@@ -196,7 +216,8 @@ public class kelola_admin extends javax.swing.JFrame {
                  id = con.primaryKey2("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%P%'", "P", "P01");
             }
             System.out.println(id);
-         //   con.Eksekusi("INSERT INTO `admin`( `nama_admin`, `username`, `password`, `jenis_pekerjaan`) VALUES ('"+ txt_nama_admin.getText() +"','"+ txt_username.getText() +"','"+ txt_password.getText() +"','"+ jComboBox1.getSelectedItem() +"')", "Berhasil Menyimpan");
+            con.Eksekusi("INSERT INTO `admin`( `id_admin`,`nama_admin`, `username`, `password`, `jenis_pekerjaan`) VALUES ('"+ id +"','"+ txt_nama_admin.getText() +"','"+ txt_username.getText() +"','"+ txt_password.getText() +"','"+ jComboBox1.getSelectedItem() +"')", "Berhasil Menyimpan");
+            kondisiAwal();
         }
     }//GEN-LAST:event_btn_saveActionPerformed
 
