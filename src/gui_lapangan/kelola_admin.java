@@ -15,6 +15,7 @@ import koneksi.koneksiLury;
 public class kelola_admin extends javax.swing.JFrame {
     int isCreate,isUpdateAndisDelete = 0;
     koneksiLury con = new koneksiLury();
+    String id_admin;
     
     
     private void tampil(){
@@ -22,18 +23,26 @@ public class kelola_admin extends javax.swing.JFrame {
     }
     
     private void kondisiTextBox(boolean kondisi){
-        txt_username.setEnabled(kondisi);
         txt_nama_admin.setEditable(kondisi);
+        txt_username.setEditable(kondisi);
         txt_password.setEditable(kondisi);
         jComboBox1.setEnabled(kondisi);
     }
     
+    private void clear(){
+        txt_nama_admin.setText("");
+        txt_username.setText("");
+        txt_password.setText("");
+    }
+    
     private void kondisiAwal(){
         kondisiTextBox(false);
-        txt_username.setText("");
+        id_admin = null;
         txt_nama_admin.setText("");
+        txt_username.setText("");
         txt_password.setText("");
         tampil();
+        clear();
     }
     /**
      * Creates new form kelola_admin
@@ -41,6 +50,7 @@ public class kelola_admin extends javax.swing.JFrame {
     public kelola_admin() {
         initComponents();
         tampil();
+        kondisiAwal();
     }
 
     /**
@@ -54,15 +64,15 @@ public class kelola_admin extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        txt_password = new javax.swing.JTextField();
         txt_username = new javax.swing.JTextField();
         txt_nama_admin = new javax.swing.JTextField();
+        txt_password = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         kelola_admin = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
         btn_create = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
-        update = new javax.swing.JButton();
+        btn_update = new javax.swing.JButton();
         btn_save = new javax.swing.JButton();
         btn_cancel = new javax.swing.JButton();
 
@@ -89,12 +99,6 @@ public class kelola_admin extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 137, 330, 380));
 
-        txt_password.setBackground(new java.awt.Color(60, 128, 128));
-        txt_password.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        txt_password.setForeground(new java.awt.Color(255, 255, 255));
-        txt_password.setBorder(null);
-        getContentPane().add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 260, 30));
-
         txt_username.setBackground(new java.awt.Color(60, 128, 128));
         txt_username.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txt_username.setForeground(new java.awt.Color(255, 255, 255));
@@ -107,7 +111,7 @@ public class kelola_admin extends javax.swing.JFrame {
         getContentPane().add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 260, 30));
 
         txt_nama_admin.setBackground(new java.awt.Color(60, 128, 128));
-        txt_nama_admin.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        txt_nama_admin.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txt_nama_admin.setForeground(new java.awt.Color(255, 255, 255));
         txt_nama_admin.setBorder(null);
         txt_nama_admin.addActionListener(new java.awt.event.ActionListener() {
@@ -116,6 +120,12 @@ public class kelola_admin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_nama_admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 260, 30));
+
+        txt_password.setBackground(new java.awt.Color(60, 128, 128));
+        txt_password.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txt_password.setForeground(new java.awt.Color(255, 255, 255));
+        txt_password.setBorder(null);
+        getContentPane().add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 260, 30));
 
         jComboBox1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Petugas" }));
@@ -141,10 +151,15 @@ public class kelola_admin extends javax.swing.JFrame {
         getContentPane().add(btn_create, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, 90, 30));
 
         btn_delete.setText("delete");
+        btn_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deleteActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 240, 90, 30));
 
-        update.setText("update");
-        getContentPane().add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, 90, 30));
+        btn_update.setText("update");
+        getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, 90, 30));
 
         btn_save.setText("save");
         btn_save.addActionListener(new java.awt.event.ActionListener() {
@@ -155,6 +170,11 @@ public class kelola_admin extends javax.swing.JFrame {
         getContentPane().add(btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 340, 100, 30));
 
         btn_cancel.setText("cancel");
+        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 390, 90, 30));
 
         pack();
@@ -167,14 +187,9 @@ public class kelola_admin extends javax.swing.JFrame {
         new owner().setVisible(true);
     }//GEN-LAST:event_btn_backActionPerformed
 
-    private void txt_nama_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nama_adminActionPerformed
-        // TODO add your handling code here:
-        txt_username.requestFocus();
-    }//GEN-LAST:event_txt_nama_adminActionPerformed
-
     private void txt_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usernameActionPerformed
         // TODO add your handling code here:
-        txt_password.requestFocus();
+        txt_nama_admin.requestFocus();
     }//GEN-LAST:event_txt_usernameActionPerformed
 
     private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
@@ -183,7 +198,9 @@ public class kelola_admin extends javax.swing.JFrame {
            case 0:
                isCreate +=1;
                JOptionPane.showMessageDialog(null, "Anda Memilih Create");
-               
+               kondisiTextBox(true);
+               btn_update.setEnabled(false);
+               btn_delete.setEnabled(false);
                break;
            case 1:
                JOptionPane.showMessageDialog(null, "Anda Telah Menekan Tombol Create");
@@ -194,8 +211,9 @@ public class kelola_admin extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
       int id = jTable1.getSelectedRow();
       
-      txt_nama_admin.setText(jTable1.getValueAt(id, 1).toString());
-      txt_username.setText(jTable1.getValueAt(id, 2).toString());
+      id_admin = jTable1.getValueAt(id,0).toString();
+      txt_username.setText(jTable1.getValueAt(id, 1).toString());
+      txt_nama_admin.setText(jTable1.getValueAt(id, 2).toString());
       txt_password.setText(jTable1.getValueAt(id,3).toString());
       jComboBox1.setSelectedItem(jTable1.getValueAt(id, 4));
       
@@ -208,18 +226,39 @@ public class kelola_admin extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
-       String id;
+       
         if (isCreate != 0) {
             if (jComboBox1.getSelectedItem().equals("Admin")) {
-                id = con.primaryKey2("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%A%'", "A", "A01");
+                id_admin = con.primaryKey2("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%A%'", "A", "A01");
             }else{
-                 id = con.primaryKey2("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%P%'", "P", "P01");
+                 id_admin = con.primaryKey2("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%P%'", "P", "P01");
             }
-            System.out.println(id);
-            con.Eksekusi("INSERT INTO `admin`( `id_admin`,`nama_admin`, `username`, `password`, `jenis_pekerjaan`) VALUES ('"+ id +"','"+ txt_nama_admin.getText() +"','"+ txt_username.getText() +"','"+ txt_password.getText() +"','"+ jComboBox1.getSelectedItem() +"')", "Berhasil Menyimpan");
+            System.out.println(id_admin);
+            con.Eksekusi("INSERT INTO `admin`( `id_admin`,`nama_admin`, `username`, `password`, `jenis_pekerjaan`) VALUES ('"+ id_admin +"','"+ txt_username.getText() +"','"+ txt_nama_admin.getText() +"','"+ txt_password.getText() +"','"+ jComboBox1.getSelectedItem() +"')", "Berhasil Menyimpan");
             kondisiAwal();
         }
     }//GEN-LAST:event_btn_saveActionPerformed
+
+    private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
+        kondisiAwal();
+        isCreate = 0;
+        isUpdateAndisDelete = 0;
+    }//GEN-LAST:event_btn_cancelActionPerformed
+
+    private void txt_nama_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nama_adminActionPerformed
+       txt_username.requestFocus();
+    }//GEN-LAST:event_txt_nama_adminActionPerformed
+
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+     int result = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin ingin melanjutkan?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        if (result == JOptionPane.YES_OPTION) {
+            con.Eksekusi("DELETE FROM `admin` WHERE `id_admin` LIKE '"+ id_admin +"'", "Anda berhasil menghapus data");
+    System.out.println("Anda memilih Yes");
+        } else {
+    // jika user memilih No atau menutup dialog box
+    System.out.println("Anda memilih No");
+        }
+    }//GEN-LAST:event_btn_deleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,6 +301,7 @@ public class kelola_admin extends javax.swing.JFrame {
     private javax.swing.JButton btn_create;
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_save;
+    private javax.swing.JButton btn_update;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
@@ -269,6 +309,5 @@ public class kelola_admin extends javax.swing.JFrame {
     private javax.swing.JTextField txt_nama_admin;
     private javax.swing.JTextField txt_password;
     private javax.swing.JTextField txt_username;
-    private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }
