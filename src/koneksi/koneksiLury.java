@@ -56,13 +56,17 @@ public class koneksiLury {
        
     }
 
-    public void Eksekusi(String Query, String Pesan){
+    public void Eksekusi(String Query, String Pesan,int apakahAdaPesanTidak){
         getCon();
         try {
             statement=connection.createStatement();
             statement.execute(Query);
             statement.close();
-            JOptionPane.showMessageDialog(null, Pesan);
+            if (apakahAdaPesanTidak == 0){
+                JOptionPane.showMessageDialog(null, Pesan);
+            }else{
+                System.out.println("Sukses");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(koneksiLury.class.getName()).log(Level.SEVERE, null, ex);
         }

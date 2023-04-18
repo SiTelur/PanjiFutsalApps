@@ -128,7 +128,7 @@ public class kelola_admin extends javax.swing.JFrame {
         getContentPane().add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 260, 30));
 
         jComboBox1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Petugas" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Pegawai" }));
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 280, 30));
 
         kelola_admin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/kelola_admin.jpg"))); // NOI18N
@@ -159,6 +159,11 @@ public class kelola_admin extends javax.swing.JFrame {
         getContentPane().add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 240, 90, 30));
 
         btn_update.setText("update");
+        btn_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_updateActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, 90, 30));
 
         btn_save.setText("save");
@@ -189,7 +194,7 @@ public class kelola_admin extends javax.swing.JFrame {
 
     private void txt_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usernameActionPerformed
         // TODO add your handling code here:
-        txt_nama_admin.requestFocus();
+        txt_password.requestFocus();
     }//GEN-LAST:event_txt_usernameActionPerformed
 
     private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
@@ -215,8 +220,14 @@ public class kelola_admin extends javax.swing.JFrame {
       txt_username.setText(jTable1.getValueAt(id, 1).toString());
       txt_nama_admin.setText(jTable1.getValueAt(id, 2).toString());
       txt_password.setText(jTable1.getValueAt(id,3).toString());
-      jComboBox1.setSelectedItem(jTable1.getValueAt(id, 4));
-      
+      String jenisPekerjaan = jTable1.getValueAt(id, 4).toString();
+      switch (jenisPekerjaan){
+          case "Admin":
+              jComboBox1.setSelectedIndex(0);
+              break;
+          case "Pegawai":
+              jComboBox1.setSelectedIndex(1);
+      }
         kondisiTextBox(true);
         switch (isUpdateAndisDelete){
             case 0:
@@ -234,7 +245,7 @@ public class kelola_admin extends javax.swing.JFrame {
                  id_admin = con.primaryKey2("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%P%'", "P", "P01");
             }
             System.out.println(id_admin);
-            con.Eksekusi("INSERT INTO `admin`( `id_admin`,`nama_admin`, `username`, `password`, `jenis_pekerjaan`) VALUES ('"+ id_admin +"','"+ txt_username.getText() +"','"+ txt_nama_admin.getText() +"','"+ txt_password.getText() +"','"+ jComboBox1.getSelectedItem() +"')", "Berhasil Menyimpan");
+            con.Eksekusi("INSERT INTO `admin`( `id_admin`,`nama_admin`, `username`, `password`, `jenis_pekerjaan`) VALUES ('"+ id_admin +"','"+ txt_username.getText() +"','"+ txt_nama_admin.getText() +"','"+ txt_password.getText() +"','"+ jComboBox1.getSelectedItem() +"')", "Berhasil Menyimpan",0);
             kondisiAwal();
         }
     }//GEN-LAST:event_btn_saveActionPerformed
@@ -252,13 +263,17 @@ public class kelola_admin extends javax.swing.JFrame {
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
      int result = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin ingin melanjutkan?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
         if (result == JOptionPane.YES_OPTION) {
-            con.Eksekusi("DELETE FROM `admin` WHERE `id_admin` LIKE '"+ id_admin +"'", "Anda berhasil menghapus data");
+            con.Eksekusi("DELETE FROM `admin` WHERE `id_admin` LIKE '"+ id_admin +"'", "Anda berhasil menghapus data",0);
     System.out.println("Anda memilih Yes");
         } else {
     // jika user memilih No atau menutup dialog box
     System.out.println("Anda memilih No");
         }
     }//GEN-LAST:event_btn_deleteActionPerformed
+
+    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
+       // if ()
+    }//GEN-LAST:event_btn_updateActionPerformed
 
     /**
      * @param args the command line arguments
