@@ -16,6 +16,7 @@ public class kelola_admin extends javax.swing.JFrame {
     int isCreate,isUpdateAndisDelete = 0;
     koneksiLury con = new koneksiLury();
     String id_admin;
+    int idInTable;
     
     
     private void tampil(){
@@ -215,6 +216,7 @@ public class kelola_admin extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
       int id = jTable1.getSelectedRow();
+      idInTable = id;
       
       id_admin = jTable1.getValueAt(id,0).toString();
       txt_username.setText(jTable1.getValueAt(id, 1).toString());
@@ -272,7 +274,22 @@ public class kelola_admin extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
-       // if ()
+       String id_admin_baru = null;
+        String jenisPekerjaanLama = jTable1.getValueAt(idInTable,4).toString();
+       String jenisPekerjaanBaru = jComboBox1.getSelectedItem().toString();
+        if (!jenisPekerjaanLama.equals(jenisPekerjaanBaru)){
+            switch (jenisPekerjaanBaru){
+                case "Admin":
+                    id_admin_baru = con.primaryKey2("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%A%'", "A", "A01");
+                    break;
+                case "Pegawai":
+                    id_admin_baru = con.primaryKey2("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%P%'", "P", "P01"); 
+            }
+            con.Eksekusi("DELETE FROM admin WHERE id_admin LIKE '"+ id_admin +"'", "", 1);
+            con.Eksekusi("INSERT INTO `admin`(`id_admin`, `nama_admin`, `username`, `password`, `jenis_pekerjaan`) VALUES ('"+ id_admin_baru +"','"+ txt_nama_admin.getText() +"','"+ txt_username.getText() +"','"+ txt_password.getText() +"','"+ jComboBox1.getSelectedItem() +"')", "Berhasil Mengubah Data", 1);
+        }else{
+            con.Eksekusi("UPDATE `admin` SET `nama_admin`='"+ txt_nama_admin.getText() +"',`username`='"+ txt_username.getText() +"',`password`='"+ txt_password.getText() +"' WHERE `id_admin` LIKE '"+ id_admin +"'", "Berhasil Mengubah Data", 1);
+        }
     }//GEN-LAST:event_btn_updateActionPerformed
 
     /**
