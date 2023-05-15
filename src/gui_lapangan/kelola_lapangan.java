@@ -3,14 +3,14 @@ package gui_lapangan;
 
 
 import javax.swing.JOptionPane;
-import koneksi.Koneksi2;
+import koneksi.koneksiLury;
 /**
  *
  * @author LAPTOP
  */
 public class kelola_lapangan extends javax.swing.JFrame {
     int isCreate,isUpdateAndisDelete = 0;
-    Koneksi2 con = new Koneksi2();
+    koneksiLury con = new koneksiLury();
     String id_lapangan;
      String idInTable;
     
