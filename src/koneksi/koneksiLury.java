@@ -4,14 +4,17 @@
  * and open the template in the editor.
  */
 package koneksi;
+import com.toedter.calendar.JDateChooser;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,12 +25,14 @@ import net.proteanit.sql.DbUtils;
  * @author LURY
  */
 public class koneksiLury {
-     private Connection connection;
+     public Connection connection;
     private Statement statement;
     private ResultSet resultSet;
     public Integer id;
     public Integer cekLogin;
     public boolean cekFormAdmin = false;
+    public String idKodeBooking;
+    public String idCombo;
 
     public Integer getIdAdmin() {
         return id;
@@ -129,7 +134,7 @@ public class koneksiLury {
         return formattedDate;
     }
     
-    public void autoNumber(javax.swing.JTextField textField,String query,String field,String kode){
+    public String autoNumber(javax.swing.JTextField textField,String query,String field,String kode){
         
         try{
            getCon();
@@ -140,33 +145,37 @@ public class koneksiLury {
             ResultSet r = s.executeQuery(query);
             if (r.next()){
                 String prefix = kode + dateNow() ;
-                String NoFaktur = r.getString(field).substring(13);
+                String NoFaktur = r.getString(field).substring(14);
                 String TR = "" + (Integer.parseInt(NoFaktur)+1);
                 String No1 = "";
                 
                switch (TR.length()) {
                    case 1:
-                       No1 = "00";
+                       No1 = "000";
                        break;
                    case 2:
-                       No1 = "0";
+                       No1 = "00";
                        break;
                    case 3:
+                       No1 = "0";
+                       break;
+                   case 4:
                        No1 = "";
                        break;
                    default:
                        break;
                }
                
-                textField.setText(prefix + No1 + TR);
+                idKodeBooking = prefix + No1 + TR;
             }else {
-                textField.setText(kode + dateNow() + "001");
+                idKodeBooking = kode + dateNow() + "0001";
             }
             r.close();
             s.close();  
         }catch (NumberFormatException | SQLException e){
             System.out.println(e.getMessage());
         }
+        return idKodeBooking;
     }
     
     public String primaryKey(String query,String kode){
@@ -217,4 +226,10 @@ public class koneksiLury {
          return newPrimaryKey;
         
 }
+       public String formatTanggal(JDateChooser tanggal){
+        Date date = tanggal.getDate();
+           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = sdf.format(date);
+        return formattedDate;
+    }
 }

@@ -5,6 +5,12 @@
  */
 package gui_lapangan;
 
+import static java.awt.SystemColor.text;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import koneksi.koneksiLury;
 
 /**
@@ -13,9 +19,32 @@ import koneksi.koneksiLury;
  */
 public class booking extends javax.swing.JFrame {
     koneksiLury con = new koneksiLury();
+    private static String id_lapangan;
+    private String idBooking;
+    int x;
+    private String status;
+    
+    private static boolean sudahDipanggil = false;
+    
+    int hargaAwal, hargaAkhir;
+    public int  panggilSekaliSaja() {
+        
+            hargaAwal = Integer.valueOf(txt_harga_lapangan.getText());
+        if (!sudahDipanggil) {
+            System.out.println("Fungsi ini hanya dapat dipanggil sekali.");
+            sudahDipanggil = true;
+            int hargaBelumBulat = (int) (hargaAwal  + (hargaAwal* 42.86 / 100));
+                       
+            hargaAkhir = (int) hargaBelumBulat - (hargaBelumBulat % 1000); 
+        } else {
+            System.out.println("Fungsi ini sudah dipanggil sebelumnya.");
+            //return hargaAkhir;
+        }
+        return hargaAkhir;
+    }
     
     private void tampil(){
-        con.tampil(jTable1, "SELECT * FROM lapangan");
+        con.tampil(jTable1, "SELECT `id_lapangan`, `nama_lapangan`, `deskripsi`, `harga_lapangan` FROM `lapangan`");
     }
     /**
      * Creates new form booking
@@ -23,6 +52,7 @@ public class booking extends javax.swing.JFrame {
     public booking() {
         initComponents();
         tampil();
+        
     }
 
     /**
@@ -67,14 +97,42 @@ public class booking extends javax.swing.JFrame {
         ));
         jTable1.setPreferredSize(new java.awt.Dimension(310, 69));
         jTable1.setRowHeight(20);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 165, 280, 240));
 
         jamSelesai.setModel(new javax.swing.SpinnerListModel(new String[] {"05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"}));
+        jamSelesai.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jamSelesaiStateChanged(evt);
+            }
+        });
+        jamSelesai.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jamSelesaiKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jamSelesaiKeyReleased(evt);
+            }
+        });
         getContentPane().add(jamSelesai, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 345, 150, -1));
 
         jamMulai.setModel(new javax.swing.SpinnerListModel(new String[] {"05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"}));
+        jamMulai.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jamMulaiStateChanged(evt);
+            }
+        });
+        jamMulai.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                jamMulaiComponentHidden(evt);
+            }
+        });
         getContentPane().add(jamMulai, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 150, -1));
 
         txt_jam_mulai.setBackground(new java.awt.Color(60, 128, 128));
@@ -99,7 +157,12 @@ public class booking extends javax.swing.JFrame {
         txt_dp.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txt_dp.setForeground(new java.awt.Color(255, 255, 255));
         txt_dp.setBorder(null);
-        getContentPane().add(txt_dp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 490, 150, 20));
+        txt_dp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_dpActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txt_dp, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 160, 20));
 
         txt_nama.setBackground(new java.awt.Color(60, 128, 128));
         txt_nama.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -121,12 +184,12 @@ public class booking extends javax.swing.JFrame {
 
         tgl_main.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tgl_main.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 tgl_mainAncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         getContentPane().add(tgl_main, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 210, 150, -1));
@@ -147,6 +210,11 @@ public class booking extends javax.swing.JFrame {
         getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 23, 50, 40));
 
         btn_proses.setText("proses");
+        btn_proses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_prosesActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_proses, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, 110, 40));
 
         pack();
@@ -162,6 +230,100 @@ public class booking extends javax.swing.JFrame {
     private void tgl_mainAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tgl_mainAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_tgl_mainAncestorAdded
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        x = jTable1.getSelectedRow();
+        
+        id_lapangan = jTable1.getValueAt(x, 0).toString();
+        txt_harga_lapangan.setText(jTable1.getValueAt(x, 3).toString());
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private String dateNow(){
+         LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+        String formattedDate = currentDate.format(formatter);
+        System.out.println("Current date in ddMMyyyy format: " + formattedDate);
+        return formattedDate;
+    }
+    
+    private void btn_prosesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prosesActionPerformed
+        idBooking = con.autoNumber(txt_dp, "SELECT `kode_booking` FROM transaksilapangan WHERE `kode_booking` LIKE '%"+ dateNow() +"%' ORDER BY `kode_booking` DESC", "kode_booking", "TSC");
+        String jamPertama = jamMulai.getValue().toString();
+        String jamKedua = jamSelesai.getValue().toString();
+        System.out.println(idBooking);
+        LocalTime time1 =   LocalTime.parse(jamPertama);
+        LocalTime time2 = LocalTime.parse(jamKedua);
+        String statusTransaksi;
+        String tanggalJDateCalender = con.formatTanggal(tgl_main);
+        
+        if (time1.isBefore(time2)) {
+            System.out.println("Nilai jam ke-1 tidak lebih dari jam ke-2");
+            if (txt_total_bayar.getText().equals("Lunas")) {
+                statusTransaksi = "Lunas";
+            }else{
+                statusTransaksi = "Booking";
+            }
+            String sql = "INSERT INTO `transaksilapangan` (`kode_booking`, `id_lapangan`, `nama`, `nomerTelpon`, `tanggalBooking`, `tanggalMain`, `jamMulai`, `jamSelesai`, `tarif`, `dp`, `status`)"
+                    + " VALUES ('"+ idBooking +"', '"+ id_lapangan +"', '"+ txt_nama.getText() +"', '"+ txt_telpon.getText() +"', current_timestamp(), '"+ tanggalJDateCalender +"', '"+ jamMulai.getValue().toString() +"', '"+ jamSelesai.getValue().toString() +"', '"+ txt_harga_lapangan.getText() +"', '"+ txt_dp.getText() +"', '"+ statusTransaksi +"')";
+            con.Eksekusi(sql,"Berhasil", 1);
+        }  else if (time1.equals(time2)) {
+            System.out.println("Nilai jam ke-1 sama jam ke-2");
+        } else{
+            System.out.println("Nilai jam ke-1 lebih besar dari jam ke-2");
+        }
+    }//GEN-LAST:event_btn_prosesActionPerformed
+
+    private void jamMulaiComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jamMulaiComponentHidden
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jamMulaiComponentHidden
+
+    private void jamSelesaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jamSelesaiKeyPressed
+        
+    }//GEN-LAST:event_jamSelesaiKeyPressed
+
+    private void jamSelesaiKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jamSelesaiKeyReleased
+      
+    }//GEN-LAST:event_jamSelesaiKeyReleased
+
+    private void jamSelesaiStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jamSelesaiStateChanged
+       
+    }//GEN-LAST:event_jamSelesaiStateChanged
+
+    private void jamMulaiStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jamMulaiStateChanged
+        String jamPertama = jamMulai.getValue().toString();
+          LocalTime time1 =   LocalTime.parse(jamPertama);
+        LocalTime waktuSekarang = time1;
+        LocalTime waktuBatas = LocalTime.of(17, 0); // Waktu batas 17.00
+        
+            
+
+        if (waktuSekarang.isAfter(waktuBatas)) {
+            System.out.println("Saat ini sudah lebih dari jam 17.00");
+            // Lakukan aksi yang diinginkan di sini
+           
+            
+            int hargaAkhir = panggilSekaliSaja();
+            txt_harga_lapangan.setText(String.valueOf(hargaAkhir));
+        } else {
+            System.out.println("Saat ini belum lebih dari jam 17.00");
+            txt_harga_lapangan.setText(jTable1.getValueAt(x, 3).toString());
+        }
+    }//GEN-LAST:event_jamMulaiStateChanged
+
+    private void txt_dpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dpActionPerformed
+        int hargaLapangan = Integer.valueOf(txt_harga_lapangan.getText());
+        int dp = Integer.valueOf(txt_dp.getText());
+        int total =  hargaLapangan - dp;
+        if (rootPaneCheckingEnabled) {
+            if (hargaLapangan == dp) {
+                txt_total_bayar.setText("Lunas");
+                status = "Lunas";
+            }else{
+                txt_total_bayar.setText(String.valueOf(total));
+                status = "Booking";
+            }
+        }
+    }//GEN-LAST:event_txt_dpActionPerformed
 
     /**
      * @param args the command line arguments

@@ -4,21 +4,71 @@
  * and open the template in the editor.
  */
 package gui_lapangan;
+import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TableColumnModelEvent;
+import javax.swing.event.TableColumnModelListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import koneksi.Connect;
 import koneksi.koneksiLury;
+//import koneksi.koneksiLury.resultSet;
 /**
  *
  * @author ASUS
  */
 public class transaksi_makanan extends javax.swing.JFrame {
     koneksiLury kon = new koneksiLury();
+    String namaMakanan, idMakanan;
+    
+    private void tampil(){
+        kon.combo("SELECT * FROM makanan", "id_fooddrink", "nama", jComboBox1);
+    }
     /**
      * Creates new form transaksi_makanan
      */
     public transaksi_makanan() {
         initComponents();
-        kon.autoNumber(txt_nota,"SELECT `nonota` FROM `transaksimakanan` WHERE nonota LIKE '%"+ dateNow() +"%' ORDER BY nonota DESC","nonota","TSC");
+        tampil();
+        kondisiAwal();
+        
+        
+        }
+    
+    private int totalHarga(){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+// Mendapatkan jumlah baris dari JTable
+int rowCount = model.getRowCount();
+
+// Menghitung seluruh subtotal dari setiap baris di JTable
+int totalSubtotal = 0;
+for (int i = 0; i < rowCount; i++) {
+    int subtotal = Integer.parseInt(model.getValueAt(i, 4).toString());
+    totalSubtotal += subtotal;
+}
+
+// Menampilkan hasil total subtotal
+return totalSubtotal;
+    }
+    
+    private void kondisiAwal(){
+        txt_nota.setText(kon.autoNumber(txt_nota,"SELECT `nonota` FROM `transaksimakanan` WHERE nonota LIKE '%"+ dateNow() +"%' ORDER BY nonota DESC","nonota","TSC"));
     }
     
     private String dateNow(){
@@ -43,28 +93,65 @@ public class transaksi_makanan extends javax.swing.JFrame {
         txt_subTotal = new javax.swing.JTextField();
         txt_total_harga = new javax.swing.JTextField();
         txt_nota = new javax.swing.JTextField();
+        jSpinner1 = new javax.swing.JSpinner();
         txtQty = new javax.swing.JTextField();
         txtHarga = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
+        btn_simpan = new javax.swing.JButton();
         btn_proses = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        btn_kurang = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "id_fooddrink", "Nama Makanan", "Harga", "Qty", "Sub Total"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setToolTipText("");
+        jTable1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jTable1PropertyChange(evt);
+            }
+        });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTable1KeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 128, 722, 167));
 
@@ -86,6 +173,14 @@ public class transaksi_makanan extends javax.swing.JFrame {
         txt_nota.setBorder(null);
         getContentPane().add(txt_nota, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 325, 190, 26));
 
+        jSpinner1.setRequestFocusEnabled(false);
+        jSpinner1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinner1StateChanged(evt);
+            }
+        });
+        getContentPane().add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 100, -1));
+
         txtQty.setBackground(new java.awt.Color(60, 128, 128));
         txtQty.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txtQty.setForeground(new java.awt.Color(255, 255, 255));
@@ -103,8 +198,15 @@ public class transaksi_makanan extends javax.swing.JFrame {
         txtHarga.setBorder(null);
         getContentPane().add(txtHarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 482, 190, 20));
 
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 190, 20));
+
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/transaksi_makanan.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/transaksi_makanan_right.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 540));
 
         btn_back.setText("jButton1");
@@ -115,11 +217,29 @@ public class transaksi_makanan extends javax.swing.JFrame {
         });
         getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 40, 30));
 
-        btn_proses.setText("proses");
-        getContentPane().add(btn_proses, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, 90, 50));
+        btn_simpan.setText("proses");
+        btn_simpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_simpanActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 490, 100, 40));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 415, 190, -1));
+        btn_proses.setText("proses");
+        btn_proses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_prosesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_proses, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 480, 120, 50));
+
+        btn_kurang.setText("proses");
+        btn_kurang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_kurangActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_kurang, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 300, 40, 40));
 
         pack();
         setLocationRelativeTo(null);
@@ -132,8 +252,158 @@ public class transaksi_makanan extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void txtQtyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQtyActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtQtyActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        String[] id_makanan_sebelum_displit = jComboBox1.getSelectedItem().toString().split("-");
+        idMakanan =  id_makanan_sebelum_displit[0];
+        namaMakanan = id_makanan_sebelum_displit[1];
+        System.out.println(idMakanan);
+        System.out.println(namaMakanan);
+        
+         try{
+            Connection con = Connect.koneksi();
+            String sql = "SELECT * FROM makanan WHERE id_fooddrink = " + idMakanan;
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+             while (rs.next()) {                 
+                 txtHarga.setText(rs.getString("harga"));
+             }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex);
+            
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void btn_prosesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prosesActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+// Mendapatkan nilai dari JTextField
+String id = idMakanan;
+String nama = namaMakanan;
+String harga = txtHarga.getText();
+int qty = (int) jSpinner1.getValue();
+int subTotal = Integer.valueOf(txt_subTotal.getText());
+//konversi String ke int
+
+// Menambahkan nilai JTextField ke JTable
+int rowCount = model.getRowCount();
+boolean dataSudahAda = false;
+for (int i = 0; i < rowCount; i++) {
+    String kodeTabel = model.getValueAt(i, 0).toString();
+    if (kodeTabel.equals(id)) {
+        int qtyTabel = Integer.parseInt(model.getValueAt(i, 3).toString());
+        int subTotalTabel = Integer.parseInt(model.getValueAt(i, 4).toString());
+        qty += qtyTabel;
+        subTotal += subTotalTabel;
+        model.setValueAt(qty, i, 3);
+        model.setValueAt(subTotal, i, 4);
+        dataSudahAda = true;
+        break;
+    }
+}
+
+        if (!dataSudahAda) {
+            
+model.addRow(new Object[]{id,nama, harga,qty,subTotal});
+        }
+
+        System.out.println(totalHarga());
+        
+        txt_total_harga.setText(String.valueOf(totalHarga()));
+
+    }//GEN-LAST:event_btn_prosesActionPerformed
+
+    private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
+       int qty =  (int) jSpinner1.getValue();
+        System.out.println(qty);
+        int subTotal = Integer.valueOf(txtHarga.getText()) * qty;
+        txt_subTotal.setText(String.valueOf(subTotal));
+    }//GEN-LAST:event_jSpinner1StateChanged
+
+    private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
+       if (evt.getKeyCode() == KeyEvent.VK_DELETE){
+           System.out.println("Anda Menekan Delete");
+           // Mendapatkan DefaultTableModel dari JTable
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            // Mendapatkan baris yang terpilih
+            int selectedRow = jTable1.getSelectedRow();
+            // Menghapus baris yang terpilih
+            model.removeRow(selectedRow);
+
+       }
+       
+       ListSelectionModel selectionModel = jTable1.getSelectionModel();
+        selectionModel.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                System.out.println("test");
+            }
+        });
+       
+    }//GEN-LAST:event_jTable1KeyReleased
+
+    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
+        System.out.println("Testing");
+    }//GEN-LAST:event_jTable1KeyPressed
+
+    private void jTable1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTable1PropertyChange
+  /*     if ("tableCellEditor".equals(evt.getPropertyName()) && jTable1.isEditing()) {
+        int row = jTable1.getEditingRow() + 1; 
+        int col = jTable1.getEditingColumn();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        int qty = Integer.parseInt(model.getValueAt(row, 3).toString());
+        int harga = Integer.parseInt(model.getValueAt(row, 2).toString());
+        int totalHarga = qty * harga;
+        model.setValueAt(totalHarga, row, 4);
+    }
+        */
+    
+        
+      
+        
+    }//GEN-LAST:event_jTable1PropertyChange
+
+    private void btn_kurangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kurangActionPerformed
+     int selectedRow = jTable1.getSelectedRow();
+
+// Mendapatkan nilai dari kolom qty pada baris terpilih
+int qty = Integer.parseInt(jTable1.getModel().getValueAt(selectedRow, 3).toString());
+
+// Mengurangi 1 dari qty
+qty--;
+
+// Menetapkan nilai yang sudah diurangi pada kolom qty
+jTable1.getModel().setValueAt(qty, selectedRow, 3);
+
+
+int price = (int) Double.parseDouble(jTable1.getModel().getValueAt(selectedRow, 2).toString());
+int subtotal = price * qty;
+jTable1.getModel().setValueAt(subtotal, selectedRow, 4);
+txt_total_harga.setText(String.valueOf(totalHarga()));
+// Menghapus baris dari JTable jika qty = 0
+if (qty == 0) {
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    model.removeRow(selectedRow);
+}
+    }//GEN-LAST:event_btn_kurangActionPerformed
+
+    private void btn_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_simpanActionPerformed
+
+        
+        
+        
+        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+       
+        for (int i = 0; i < model.getRowCount(); i++) {
+            
+        }
+    }//GEN-LAST:event_btn_simpanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,14 +438,20 @@ public class transaksi_makanan extends javax.swing.JFrame {
                 new transaksi_makanan().setVisible(true);
             }
         });
+        
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
+    private javax.swing.JButton btn_kurang;
     private javax.swing.JButton btn_proses;
+    private javax.swing.JButton btn_simpan;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtHarga;
     private javax.swing.JTextField txtQty;

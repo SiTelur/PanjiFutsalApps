@@ -5,17 +5,52 @@
  */
 package gui_lapangan;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalTime;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import koneksi.koneksiLury;
+
+
 /**
  *
  * @author ASUS
  */
 public class jadwal extends javax.swing.JFrame {
-
+        koneksiLury con = new koneksiLury();
+        private Statement stat;
+   private Connection connection;
+   private ResultSet rs;
+    
+    private void tampil(){
+        con.combo("SELECT * FROM lapangan","id_lapangan","nama_lapangan",item_tanggal1);
+    }
     /**
      * Creates new form jadwal
      */
     public jadwal() {
         initComponents();
+        tampil();
+    }
+    
+    public void getCon() {
+        
+        try {
+            String urlDatabase = "jdbc:mysql://localhost/database_lapangan"; //alamat database
+            String user = "root"; //user yang dipakai utk akses database
+            String password = ""; //password yang digunakan utk akses database
+            connection = DriverManager.getConnection(urlDatabase, user, password);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Koneksi Gagal! " + ex.getMessage());
+        }   
+       
     }
 
     /**
@@ -27,37 +62,53 @@ public class jadwal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         item_tanggal1 = new javax.swing.JComboBox<>();
-        item_tanggal = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         jadwal_booking = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
         btn_show = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 190, 30));
 
-        item_tanggal1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(item_tanggal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, 200, 30));
 
-        item_tanggal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(item_tanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 200, 30));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"", "00:00:00", "01:00:00", null},
+                {null, "01:00:00", "02:00:00", null},
+                {null, "02:00:00", "03:00:00", null},
+                {null, "03:00:00", "04:00:00", null},
+                {null, "05:00:00", "06:00:00", null},
+                {null, "06:00:00", "07:00:00", null},
+                {null, "07:00:00", "08:00:00", null},
+                {null, "08:00:00", "09:00:00", null},
+                {null, "09:00:00", "10:00:00", null},
+                {null, "10:00:00", "11.00:00", null},
+                {null, "11:00:00", "12:00:00", null},
+                {null, "12:00:00", "13:00:00", null},
+                {null, "13:00:00", "14:00:00", null},
+                {null, "14:00:00", "15:00:00", null},
+                {null, "15:00:00", "16:00:00", null},
+                {null, "16:00:00", "17:00:00", null},
+                {null, "17:00:00", "18:00:00", null},
+                {null, "18:00:00", "19:00:00", null},
+                {null, "19:00:00", "20:00:00", null},
+                {null, "20:00:00", "21:00:00", null},
+                {null, "21:00:00", "22:00:00", null},
+                {null, "22:00:00", "23:00:00", null},
+                {null, "23:00:00", "24:00:00", null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Tanggal", "Jam Mulai", "Jam Selesai", "Status"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jTable2);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 240, 740, 300));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 247, 730, 280));
 
         jadwal_booking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Jadwal_Booking.png"))); // NOI18N
         jadwal_booking.setPreferredSize(new java.awt.Dimension(846, 549));
@@ -72,6 +123,11 @@ public class jadwal extends javax.swing.JFrame {
         getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 23, 30, 40));
 
         btn_show.setText("jButton1");
+        btn_show.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_showActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_show, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 190, 110, 40));
 
         pack();
@@ -83,6 +139,68 @@ public class jadwal extends javax.swing.JFrame {
         this.setVisible(false);
         new admin().setVisible(true);
     }//GEN-LAST:event_btn_backActionPerformed
+
+    private void btn_showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_showActionPerformed
+       SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+String tanggal = sdf.format(new Date());
+        String id_lapangan = item_tanggal1.getSelectedItem().toString().substring(0, 3);
+     
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        int jumlahTabel = model.getRowCount();
+        
+        for (int i = 0; i < jumlahTabel; i++) {
+            model.setValueAt(tanggal.toString(),i,0);
+        }
+        
+        String query  = "SELECT * FROM transaksilapangan WHERE tanggalMain LIKE '"+ tanggal +"' AND id_lapangan LIKE '"+ id_lapangan +"'";
+       try {
+           getCon();
+            stat = connection.createStatement();
+            rs = stat.executeQuery(query);
+            
+           while (rs.next()) { 
+              String jamMain = rs.getString("jamMulai");
+              String jamSelesai = rs.getString("jamSelesai");
+              String kondisiLapangan = rs.getString("status");
+              
+               LocalTime jamAwal = LocalTime.parse(jamMain);
+               LocalTime jamAkhir = LocalTime.parse(jamSelesai);
+               long selisih = Duration.between(jamAwal, jamAkhir).toHours();
+               System.out.println(selisih);
+              int rowIndex = -1;
+              
+               for (int i = 0; i < model.getRowCount(); i++) {
+                   Object selectedValue = model.getValueAt(i, 3);
+
+// Memeriksa apakah nilai pada kolom tersebut kosong atau tidak
+
+                   if (model.getValueAt(i, 1).equals(jamMain)) {
+                       for (int j = i; j < i+selisih; j++) {
+                           model.setValueAt(kondisiLapangan, j, 3);
+                           
+                       }
+                   }else{
+                       if (selectedValue == null) {
+    // Mengisi nilai pada kolom tersebut
+                 model.setValueAt("Masih Kosong", i, 3);  
+                    }
+                      
+                   }
+               }
+               
+           }
+           
+           for (int i = 0; i < model.getRowCount(); i++) {
+               model.setValueAt("Masih Kosong", i, 3);
+           }
+                   
+                   
+           
+       } catch (SQLException ex) {
+           System.out.println(ex.toString());
+       }
+        
+    }//GEN-LAST:event_btn_showActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,10 +240,10 @@ public class jadwal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_show;
-    private javax.swing.JComboBox<String> item_tanggal;
     private javax.swing.JComboBox<String> item_tanggal1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable2;
     private javax.swing.JLabel jadwal_booking;
     // End of variables declaration//GEN-END:variables
 }

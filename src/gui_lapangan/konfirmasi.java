@@ -5,17 +5,35 @@
  */
 package gui_lapangan;
 
+import koneksi.koneksiLury;
+
 /**
  *
  * @author ASUS
  */
 public class konfirmasi extends javax.swing.JFrame {
-
+koneksiLury con = new koneksiLury();
+    
+    String id;
+    private void tampil(){
+        con.tampil(jTable1,"SELECT * FROM transaksilapangan");
+    }
+    
+    private void kondisiAwal(){
+        txtKodeBooking.setText("");
+        txtTanggalMain.setText("");
+        jamMulai.setText("");
+        jamSelesai.setText("");
+        tampil();
+    }
     /**
      * Creates new form konfirmasi
      */
     public konfirmasi() {
         initComponents();
+        
+        tampil();
+        
     }
 
     /**
@@ -29,7 +47,14 @@ public class konfirmasi extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        cmbStatus = new javax.swing.JComboBox<>();
+        txtKodeBooking = new javax.swing.JTextField();
+        txtTanggalMain = new javax.swing.JTextField();
+        jamMulai = new javax.swing.JTextField();
+        jamSelesai = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        btn_cancel = new javax.swing.JButton();
+        btn_confirm = new javax.swing.JButton();
         btn_back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,13 +71,67 @@ public class konfirmasi extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable1KeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 137, 740, 370));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 740, 150));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Konfirmasi.png"))); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(847, 548));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        cmbStatus.setBackground(new java.awt.Color(60, 128, 128));
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunas", "Booking", "Dibatalkan" }));
+        cmbStatus.setBorder(null);
+        getContentPane().add(cmbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(436, 370, 150, -1));
+
+        txtKodeBooking.setEditable(false);
+        txtKodeBooking.setBackground(new java.awt.Color(60, 128, 128));
+        txtKodeBooking.setForeground(new java.awt.Color(255, 255, 255));
+        txtKodeBooking.setBorder(null);
+        getContentPane().add(txtKodeBooking, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 160, 20));
+
+        txtTanggalMain.setEditable(false);
+        txtTanggalMain.setBackground(new java.awt.Color(60, 128, 128));
+        txtTanggalMain.setForeground(new java.awt.Color(255, 255, 255));
+        txtTanggalMain.setBorder(null);
+        getContentPane().add(txtTanggalMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 455, 150, 20));
+
+        jamMulai.setEditable(false);
+        jamMulai.setBackground(new java.awt.Color(60, 128, 128));
+        jamMulai.setForeground(new java.awt.Color(255, 255, 255));
+        jamMulai.setBorder(null);
+        getContentPane().add(jamMulai, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 150, 20));
+
+        jamSelesai.setEditable(false);
+        jamSelesai.setBackground(new java.awt.Color(60, 128, 128));
+        jamSelesai.setForeground(new java.awt.Color(255, 255, 255));
+        jamSelesai.setBorder(null);
+        getContentPane().add(jamSelesai, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 455, 150, 20));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Konfirmasi (7) (Custom).png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 550));
+
+        btn_cancel.setText("jButton1");
+        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 490, 110, 40));
+
+        btn_confirm.setText("jButton1");
+        btn_confirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_confirmActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, 100, 40));
 
         btn_back.setText("jButton1");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
@@ -60,7 +139,7 @@ public class konfirmasi extends javax.swing.JFrame {
                 btn_backActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 30, 30));
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 30, 30));
 
         pack();
         setLocationRelativeTo(null);
@@ -71,6 +150,43 @@ public class konfirmasi extends javax.swing.JFrame {
         this.setVisible(false);
         new admin().setVisible(true);
     }//GEN-LAST:event_btn_backActionPerformed
+
+    private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_cancelActionPerformed
+
+    private void btn_confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmActionPerformed
+        con.Eksekusi("UPDATE `transaksilapangan` SET `status`='"+ cmbStatus.getSelectedItem().toString() +"' WHERE kode_booking LIKE '"+ txtKodeBooking.getText()+"'", "Berhasil Menyimpan Data", 0);
+        kondisiAwal();
+    }//GEN-LAST:event_btn_confirmActionPerformed
+
+    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1KeyPressed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int x = jTable1.getSelectedRow();
+        
+        String id = jTable1.getValueAt(x, 0).toString();
+        txtKodeBooking.setText(id);
+        txtTanggalMain.setText(jTable1.getValueAt(x, 5).toString());
+        jamMulai.setText(jTable1.getValueAt(x, 6).toString());
+        jamSelesai.setText(jTable1.getValueAt(x, 7).toString());
+        
+        String status = jTable1.getValueAt(x, 10).toString();
+        
+        switch (status){
+            case "Lunas":
+                cmbStatus.setSelectedIndex(0);
+                break;
+            case "Booking":
+                cmbStatus.setSelectedIndex(1);
+                break;
+            case "Dibatalkan":
+                 cmbStatus.setSelectedIndex(2);
+                break;
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -109,8 +225,15 @@ public class konfirmasi extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btn_cancel;
+    private javax.swing.JButton btn_confirm;
+    private javax.swing.JComboBox<String> cmbStatus;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jamMulai;
+    private javax.swing.JTextField jamSelesai;
+    private javax.swing.JTextField txtKodeBooking;
+    private javax.swing.JTextField txtTanggalMain;
     // End of variables declaration//GEN-END:variables
 }
