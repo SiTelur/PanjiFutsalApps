@@ -3,31 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< Updated upstream
-            <file>file:/C:/Users/LURY/Documents/GitHub/PanjiFutsalApps/src/notadanlaporan/LaporanLapangan.jrxml</file>
-            <file>file:/C:/Users/LURY/Documents/GitHub/PanjiFutsalApps/src/gui_lapangan/jadwal.java</file>
-            <file>file:/C:/Users/LURY/Documents/GitHub/PanjiFutsalApps/src/gui_lapangan/laporan.java</file>
-            <file>file:/C:/Users/LURY/Documents/GitHub/PanjiFutsalApps/src/gui_lapangan/admin.java</file>
-            <file>file:/C:/Users/LURY/Documents/GitHub/PanjiFutsalApps/src/koneksi/koneksiLury.java</file>
-            <file>file:/C:/Users/LURY/Documents/GitHub/PanjiFutsalApps/src/gui_lapangan/kelola_admin.java</file>
-=======
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/login.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/kelola_admin.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/panji.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/koneksi/Connect.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/laporan.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/Transaksilapangan.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/kelola_lapangan.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/booking.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/konfirmasi.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/admin.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/jadwal.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/kelola_makanan.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/transaksi_makanan.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/owner.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/koneksi/koneksiLury.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/img/Konfirmasi%20right2.png</file>
->>>>>>> Stashed changes
+            <file>file:/C:/Users/Ninis/Documents/GitHub/PanjiFutsalApps/src/gui_lapangan/kelola_admin.java</file>
+            <file>file:/C:/Users/Ninis/Documents/GitHub/PanjiFutsalApps/nbproject/project.properties</file>
+            <file>file:/C:/Users/Ninis/Documents/GitHub/PanjiFutsalApps/src/gui_lapangan/panji.java</file>
+            <file>file:/C:/Users/Ninis/Documents/GitHub/PanjiFutsalApps/src/gui_lapangan/laporan.java</file>
+            <file>file:/C:/Users/Ninis/Documents/GitHub/PanjiFutsalApps/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/Ninis/Documents/GitHub/PanjiFutsalApps/src/gui_lapangan/booking.java</file>
+            <file>file:/C:/Users/Ninis/Documents/GitHub/PanjiFutsalApps/src/gui_lapangan/kelola_makanan.java</file>
+            <file>file:/C:/Users/Ninis/Documents/GitHub/PanjiFutsalApps/src/panjifutsalapps/koneksi.java</file>
+            <file>file:/C:/Users/Ninis/Documents/GitHub/PanjiFutsalApps/src/gui_lapangan/konfirmasi.java</file>
+            <file>file:/C:/Users/Ninis/Documents/GitHub/PanjiFutsalApps/src/gui_lapangan/transaksi_makanan.java</file>
+            <file>file:/C:/Users/Ninis/Documents/GitHub/PanjiFutsalApps/nbproject/genfiles.properties</file>
+            <file>file:/C:/Users/Ninis/Documents/GitHub/PanjiFutsalApps/src/koneksi/koneksiLury.java</file>
+            <file>file:/C:/Users/Ninis/Documents/GitHub/PanjiFutsalApps/src/gui_lapangan/owner.java</file>
+            <file>file:/C:/Users/Ninis/Documents/GitHub/PanjiFutsalApps/src/gui_lapangan/admin.java</file>
+            <file>file:/C:/Users/Ninis/Documents/GitHub/PanjiFutsalApps/src/koneksi/Connect.java</file>
+            <file>file:/C:/Users/Ninis/Documents/GitHub/PanjiFutsalApps/src/gui_lapangan/kelola_lapangan.java</file>
+            <file>file:/C:/Users/Ninis/Documents/GitHub/PanjiFutsalApps/src/gui_lapangan/login.java</file>
         </group>
     </open-files>
 </project-private>
