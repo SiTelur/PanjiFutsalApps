@@ -16,10 +16,18 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
+
 /**
  *
  * @author LURY
@@ -51,7 +59,7 @@ public class koneksiLury {
     public void getCon() {
         
         try {
-            String urlDatabase = "jdbc:mysql://localhost/database_lapangan"; //alamat database
+            String urlDatabase = "jdbc:mysql://localhost/database_lapangan1"; //alamat database
             String user = "root"; //user yang dipakai utk akses database
             String password = ""; //password yang digunakan utk akses database
             connection = DriverManager.getConnection(urlDatabase, user, password);
@@ -226,9 +234,40 @@ public class koneksiLury {
          return newPrimaryKey;
         
 }
-       public String formatTanggal(JDateChooser tanggal){
+    public void laporanLapangan(String tanggalPertama,String tanggalKedua,String tampilanTanggal1,String tampilanTanggal2) {
+        try {
+            // Persiapkan parameter untuk laporan
+            Map<String, Object> hash = new HashMap<>();
+
+        //                //Mengambil parameter dari ireport
+                      hash.put("tanggalAwal",tanggalPertama);
+                        hash.put("tanggalAkhir",tanggalKedua);
+//                        batas
+                        hash.put("tampilanTanggalAwal",tampilanTanggal1);
+                        hash.put("tampilanTanggalAkhir",tampilanTanggal2);
+
+            // Buat koneksi database
+            getCon();
+
+            // Compile file .jrxml menjadi file .jasper
+            JasperReport jasperReport = JasperCompileManager.compileReport("D:\\Panji\\PanjiFutsalApps\\src\\notadanlaporan\\LaporanLapangan.jrxml");
+
+            // Isi laporan dengan data dari database
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, hash, connection);
+
+            // Tampilkan laporan dalam format PDF
+            JasperViewer.viewReport(jasperPrint);
+            //JasperExportManager.exportReportToPdfFile(jasperPrint, "path/to/output.pdf");
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+    }
+    public void strukBooking(String kode_booking){
+        
+    }
+       public String formatTanggal(JDateChooser tanggal,String format){
         Date date = tanggal.getDate();
-           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+           SimpleDateFormat sdf = new SimpleDateFormat(format);
         String formattedDate = sdf.format(date);
         return formattedDate;
     }

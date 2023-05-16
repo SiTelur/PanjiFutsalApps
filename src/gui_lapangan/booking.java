@@ -254,7 +254,7 @@ public class booking extends javax.swing.JFrame {
         LocalTime time1 =   LocalTime.parse(jamPertama);
         LocalTime time2 = LocalTime.parse(jamKedua);
         String statusTransaksi;
-        String tanggalJDateCalender = con.formatTanggal(tgl_main);
+        String tanggalJDateCalender = con.formatTanggal(tgl_main,"yyyy-MM-dd");
         
         if (time1.isBefore(time2)) {
             System.out.println("Nilai jam ke-1 tidak lebih dari jam ke-2");
@@ -271,6 +271,11 @@ public class booking extends javax.swing.JFrame {
         } else{
             System.out.println("Nilai jam ke-1 lebih besar dari jam ke-2");
         }
+        
+//        batas ini
+        
+        
+        
     }//GEN-LAST:event_btn_prosesActionPerformed
 
     private void jamMulaiComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jamMulaiComponentHidden

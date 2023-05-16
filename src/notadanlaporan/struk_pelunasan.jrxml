@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f7929acb-fffb-4e80-b046-1fc8c327c398">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     transaksilapangan.`kode_booking` AS transaksilapangan_kode_booking,
+     transaksilapangan.`id_lapangan` AS transaksilapangan_id_lapangan,
+     transaksilapangan.`nama` AS transaksilapangan_nama,
+     transaksilapangan.`nomerTelpon` AS transaksilapangan_nomerTelpon,
+     transaksilapangan.`tanggalBooking` AS transaksilapangan_tanggalBooking,
+     transaksilapangan.`tanggalMain` AS transaksilapangan_tanggalMain,
+     transaksilapangan.`jamMulai` AS transaksilapangan_jamMulai,
+     transaksilapangan.`jamSelesai` AS transaksilapangan_jamSelesai,
+     transaksilapangan.`tarif` AS transaksilapangan_tarif,
+     transaksilapangan.`dp` AS transaksilapangan_dp,
+     transaksilapangan.`status` AS transaksilapangan_status
+FROM
+     `transaksilapangan` transaksilapangan]]>
+	</queryString>
+	<field name="transaksilapangan_kode_booking" class="java.lang.String"/>
+	<field name="transaksilapangan_id_lapangan" class="java.lang.String"/>
+	<field name="transaksilapangan_nama" class="java.lang.String"/>
+	<field name="transaksilapangan_nomerTelpon" class="java.lang.String"/>
+	<field name="transaksilapangan_tanggalBooking" class="java.sql.Timestamp"/>
+	<field name="transaksilapangan_tanggalMain" class="java.sql.Date"/>
+	<field name="transaksilapangan_jamMulai" class="java.sql.Time"/>
+	<field name="transaksilapangan_jamSelesai" class="java.sql.Time"/>
+	<field name="transaksilapangan_tarif" class="java.lang.Integer"/>
+	<field name="transaksilapangan_dp" class="java.lang.Integer"/>
+	<field name="transaksilapangan_status" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="-4" y="0" width="119" height="79" uuid="4835a9df-fd41-4b47-b4d6-bcbc8064dc11"/>
+				<imageExpression><![CDATA["D:\\Desain_Futsal\\download-removebg-preview 1.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="85" y="0" width="451" height="79" uuid="ef53840f-5248-428f-92da-d97d46c46840"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laporan Struk Pelunasan]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="101" splitType="Stretch">
+			<staticText>
+				<reportElement x="198" y="0" width="195" height="26" uuid="3c53f5d5-be50-4c62-b774-b97b185f5e7e"/>
+				<textElement verticalAlignment="Top">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Struk Laporan Pelunasan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="196" y="24" width="198" height="56" uuid="67f05637-860f-4869-abc3-94d581046dd4"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[ Jl. Siwalanpanji, Buduran - Sidoarjo
+Telepon : (031) 99715748 
+Email   : info@futsalpanji.com]]></text>
+			</staticText>
+			<line>
+				<reportElement x="4" y="0" width="546" height="1" uuid="fce76af9-45ca-4956-a839-60e789bfacdd"/>
+				<graphicElement>
+					<pen lineStyle="Double"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<rectangle>
+				<reportElement x="4" y="0" width="80" height="20" backcolor="#99FF66" uuid="5b32853a-daa6-40f1-8937-975f3ae7676e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="84" y="0" width="68" height="20" backcolor="#99FF66" uuid="c2fe6686-9e38-478c-be86-f7a772eda239"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="151" y="0" width="68" height="20" backcolor="#99FF66" uuid="18c04ec2-f99c-4f18-b502-348f5e90b5dc"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="219" y="0" width="75" height="20" backcolor="#99FF66" uuid="73dbc18a-02a3-4585-8077-d2f6c60678d9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="293" y="0" width="80" height="20" backcolor="#99FF66" uuid="241ad9ad-32ab-4dbd-ba95-40ae67319bab"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="373" y="0" width="80" height="20" backcolor="#99FF66" uuid="e6db811a-3fb5-4823-b55b-4c2940fc7a5e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="451" y="0" width="100" height="20" backcolor="#99FF66" uuid="3bc9bc5c-4ab5-484c-b4bc-477d5f65024d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="5" y="0" width="80" height="20" backcolor="#99FF66" uuid="dec99a42-3e14-4b97-9b65-b15784cc2ebf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kode Booking]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="85" y="0" width="68" height="20" backcolor="#99FF66" uuid="f2f01a27-b6e3-4309-8ff9-00bef0fe1f19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="0" width="69" height="20" backcolor="#99FF66" uuid="9e5a17b3-e842-4227-bb4b-a4359bf7a63b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jam Mulai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="0" width="73" height="20" backcolor="#99FF66" uuid="d21b2bb8-f074-43b3-b05b-134ee4eb6f9b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jam Selesai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="294" y="0" width="80" height="20" backcolor="#99FF66" uuid="707e4874-1cc1-4809-8545-844c12b07fe4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tarif]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="374" y="0" width="77" height="20" backcolor="#99FF66" uuid="478ace20-9df8-44de-9ea7-6a2c13bd52e2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="452" y="0" width="100" height="20" backcolor="#99FF66" uuid="4343809a-1d28-4388-bbe6-4692b67164f5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<rectangle>
+				<reportElement x="84" y="0" width="68" height="20" backcolor="#CCFFCC" uuid="2028de4d-cdb7-4efe-be92-c717f7873098"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="4" y="0" width="80" height="20" backcolor="#CCFFCC" uuid="072de650-5365-4d4b-9d9f-dcc9a19d153e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="219" y="0" width="75" height="20" backcolor="#CCFFCC" uuid="fb57c4af-c38a-45d8-9507-873812207770"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="371" y="0" width="80" height="20" backcolor="#CCFFCC" uuid="21c0779a-44d2-40a9-8f00-9aeefd92cf71"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="151" y="0" width="68" height="20" backcolor="#CCFFCC" uuid="19dcbcff-acde-4142-a350-3451ef5b4c65"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="451" y="0" width="100" height="20" backcolor="#CCFFCC" uuid="333f322d-4e91-4f6d-b965-79436b6fd00f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="293" y="0" width="80" height="20" backcolor="#CCFFCC" uuid="a511b9a9-6470-4398-a74f-acf350a2d3af"/>
+			</rectangle>
+			<textField>
+				<reportElement x="4" y="0" width="80" height="20" backcolor="#CCFFCC" uuid="44ee65a2-54fd-471b-9949-61fcc4c90eac"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{transaksilapangan_kode_booking}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="84" y="0" width="68" height="20" backcolor="#CCFFCC" uuid="d2467c9d-5814-435e-8ad3-ce56919ab38f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{transaksilapangan_nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="152" y="0" width="69" height="20" backcolor="#CCFFCC" uuid="f05b6318-26fd-45a0-af92-a04bea731efd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{transaksilapangan_jamMulai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="221" y="0" width="73" height="20" backcolor="#CCFFCC" uuid="3bdc4457-6620-4803-b362-437b80dcff9b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{transaksilapangan_jamSelesai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="293" y="0" width="80" height="20" backcolor="#CCFFCC" uuid="1c3b1b66-dcd0-4759-b921-6c53ee678f18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{transaksilapangan_tarif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="373" y="0" width="78" height="20" backcolor="#CCFFCC" uuid="0ea12465-90eb-4f5a-94d3-aa77860c8ed5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{transaksilapangan_dp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="0" width="100" height="20" backcolor="#CCFFCC" uuid="2d98b451-e3f6-4a3f-8e36-cb531e727b36"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{transaksilapangan_status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="10" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="9" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="13" splitType="Stretch"/>
+	</summary>
+</jasperReport>
