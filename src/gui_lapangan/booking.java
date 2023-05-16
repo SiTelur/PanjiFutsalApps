@@ -184,12 +184,12 @@ public class booking extends javax.swing.JFrame {
 
         tgl_main.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tgl_main.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 tgl_mainAncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         getContentPane().add(tgl_main, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 210, 150, -1));

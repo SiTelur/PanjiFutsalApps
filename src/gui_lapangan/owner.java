@@ -79,13 +79,13 @@ public class owner extends javax.swing.JFrame {
     private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new login().setVisible(true);
+        new loginUsername().setVisible(true);
     }//GEN-LAST:event_btn_logoutActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new login().setVisible(true);
+        new loginUsername().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btn_kelola_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kelola_adminActionPerformed

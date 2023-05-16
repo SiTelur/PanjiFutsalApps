@@ -273,7 +273,7 @@ return totalSubtotal;
              }
 
         } catch (SQLException ex) {
-            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(loginUsername.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex);
             
         }

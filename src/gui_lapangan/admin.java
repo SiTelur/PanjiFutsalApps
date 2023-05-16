@@ -148,14 +148,14 @@ public class admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         this.setVisible(false);
-        new login().setVisible(true);
+        new loginUsername().setVisible(true);
     }//GEN-LAST:event_btn_logoutActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
         // TODO add your handling code here:
          
         this.setVisible(false);
-        new login().setVisible(true);
+        new loginUsername().setVisible(true);
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

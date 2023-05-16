@@ -18,12 +18,12 @@ import koneksi.Connect;
  *
  * @author ASUS
  */
-public class login extends javax.swing.JFrame {
+public class loginUsername extends javax.swing.JFrame {
 
     /**
      * Creates new form login
      */
-    public login() {
+    public loginUsername() {
         initComponents();
         System.out.println("Hello");
     }
@@ -107,7 +107,7 @@ public class login extends javax.swing.JFrame {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(loginUsername.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex);
             
         }
@@ -130,20 +130,21 @@ public class login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(loginUsername.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(loginUsername.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(loginUsername.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(loginUsername.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new login().setVisible(true);
+                new loginUsername().setVisible(true);
             }
         });
     }
