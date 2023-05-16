@@ -16,6 +16,7 @@ public class loginRFID extends javax.swing.JFrame {
      */
     public loginRFID() {
         initComponents();
+        txtRFIDCard.requestFocus();
     }
 
     /**
@@ -27,21 +28,29 @@ public class loginRFID extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        txtRFIDCard = new javax.swing.JTextField();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/loginRFID.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        txtRFIDCard.setText("jTextField1");
+        txtRFIDCard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRFIDCardActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtRFIDCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 350, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtRFIDCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRFIDCardActionPerformed
+        System.out.println("enter");
+    }//GEN-LAST:event_txtRFIDCardActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +88,7 @@ public class loginRFID extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField txtRFIDCard;
     // End of variables declaration//GEN-END:variables
 }
