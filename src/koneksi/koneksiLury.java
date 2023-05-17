@@ -263,7 +263,27 @@ public class koneksiLury {
         }
     }
     public void strukBooking(String kode_booking){
-        
+          try {
+            getCon();
+            try {
+                String report = ("D:\\Panji\\PanjiFutsalAppsClone\\src\\notadanlaporan\\cetakStrukBooking.jrxml");
+                 HashMap hash = new HashMap();
+                //Mengambil parameter dari ireport
+                
+                hash.put("kodeBooking", kode_booking);  
+                
+//                hash.put("kode_boking", idBooking);                
+//                hash.put("tanggalKedua", textField.getText());
+     
+                JasperReport JRpt = JasperCompileManager.compileReport(report);
+                JasperPrint JPrint = JasperFillManager.fillReport(JRpt, hash, connection);
+                JasperViewer.viewReport(JPrint, false);
+            } catch (JRException rptexcpt) {
+                System.out.println("Program tidak bisa karena : " + rptexcpt);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
        public String formatTanggal(JDateChooser tanggal,String format){
         Date date = tanggal.getDate();

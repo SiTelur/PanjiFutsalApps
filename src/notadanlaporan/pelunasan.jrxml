@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="220" pageHeight="365" columnWidth="220" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="00139d20-9026-461d-b567-94f0db3d4fbb">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="220" pageHeight="360" columnWidth="220" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="00139d20-9026-461d-b567-94f0db3d4fbb">
 	<property name="ireport.zoom" value="1.771561000000001"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="77"/>
+	<property name="ireport.y" value="40"/>
 	<parameter name="kodeBooking" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -18,7 +18,9 @@
      transaksilapangan.`tarif` AS transaksilapangan_tarif,
      transaksilapangan.`dp` AS transaksilapangan_dp,
      transaksilapangan.`status` AS transaksilapangan_status,
-     lapangan.`nama_lapangan` AS lapangan_nama_lapangan
+     lapangan.`nama_lapangan` AS lapangan_nama_lapangan,
+	tarif - dp AS sisa_bayar
+
 FROM
      `lapangan` lapangan INNER JOIN `transaksilapangan` transaksilapangan ON lapangan.`id_lapangan` = transaksilapangan.`id_lapangan`
 WHERE
@@ -35,6 +37,7 @@ WHERE
 	<field name="transaksilapangan_dp" class="java.lang.Integer"/>
 	<field name="transaksilapangan_status" class="java.lang.String"/>
 	<field name="lapangan_nama_lapangan" class="java.lang.String"/>
+	<field name="sisa_bayar" class="java.lang.Long"/>
 	<variable name="jamMulai" class="java.lang.String"/>
 	<variable name="jamSelesai" class="java.lang.String"/>
 	<group name="lapangan_nama_lapangan">
@@ -45,68 +48,41 @@ WHERE
 	</background>
 	<title>
 		<band height="358" splitType="Stretch">
+			<image>
+				<reportElement x="20" y="112" width="179" height="143" uuid="04cb12e5-1868-4944-a184-63186b358b18"/>
+				<imageExpression><![CDATA["D:\\Desain_Futsal\\bg-struk.jpg"]]></imageExpression>
+			</image>
 			<staticText>
-				<reportElement x="11" y="-3" width="221" height="56" uuid="558566f7-6a05-46f8-bb2b-a427522c033d"/>
+				<reportElement x="18" y="1" width="220" height="56" uuid="558566f7-6a05-46f8-bb2b-a427522c033d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="18" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Struk Booking]]></text>
+				<text><![CDATA[Struk Pelunasan]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="157" y="191" width="30" height="20" uuid="a84ca943-59ce-4d8f-b040-9a54651e30f7"/>
+				<reportElement x="154" y="191" width="30" height="20" uuid="a84ca943-59ce-4d8f-b040-9a54651e30f7"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("HH:mm").format($F{transaksilapangan_jamSelesai})]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="0" y="252" width="220" height="82" uuid="0c3a59a0-e1a5-4268-a38a-9b28447e7700"/>
-				<textElement verticalAlignment="Top">
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Catatan:
-- Pembayaran sudah termasuk biaya penyewaan lapangan, bola,
-  dan penerangan
-- Pembatalan sewa minimal 1 hari sebelum jadwal main untuk 
-  pengembalian uang muka
-]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="211" width="100" height="20" uuid="e8f58153-5637-44d2-b5af-43e72fdfdf98"/>
-				<textElement textAlignment="Justified" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Tarif : ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="191" width="100" height="20" uuid="09863253-ca2f-4d05-bf0b-3e6d81d42195"/>
-				<textElement textAlignment="Justified" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Jam Main]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="100" y="171" width="120" height="20" uuid="93f1b082-744e-4351-ab1b-390ec627f4f8"/>
+				<reportElement x="97" y="171" width="120" height="20" uuid="93f1b082-744e-4351-ab1b-390ec627f4f8"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMMM yyyy").format($F{transaksilapangan_tanggalMain})]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="13" y="336" width="189" height="20" uuid="c38c4def-eaa5-474e-bf35-2a9103594645"/>
+				<reportElement x="12" y="334" width="194" height="20" uuid="c38c4def-eaa5-474e-bf35-2a9103594645"/>
 				<textElement textAlignment="Center">
-					<font size="10" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[ Terima kasih atas kepercayaan Anda kepada Lapangan Futsal panji]]></text>
+				<text><![CDATA[ Terima kasih atas kepercayaan Anda kepada Lapangan Futsal panji.]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="100" y="231" width="120" height="20" uuid="92737d4a-1186-4f2d-8c59-cf9405651407"/>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{transaksilapangan_dp}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="100" y="111" width="120" height="20" uuid="d3594fc4-f706-47cb-aea8-b9702d1075e7"/>
+				<reportElement x="97" y="111" width="120" height="20" uuid="d3594fc4-f706-47cb-aea8-b9702d1075e7"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{transaksilapangan_kode_booking}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="151" width="120" height="20" uuid="35742323-2105-4585-9562-3ab5b96261ce"/>
+				<reportElement x="97" y="151" width="120" height="20" uuid="35742323-2105-4585-9562-3ab5b96261ce"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{lapangan_nama_lapangan}]]></textFieldExpression>
 			</textField>
@@ -117,7 +93,7 @@ WHERE
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="2" y="56" width="218" height="55" uuid="c27cb31a-e0f9-4e7e-a829-1ad8efe25d94"/>
+				<reportElement x="0" y="56" width="216" height="55" uuid="c27cb31a-e0f9-4e7e-a829-1ad8efe25d94"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[ LAPANGAN FUTSAL PANJI
 Jl. Siwalanpanji, Buduran - Sidoarjo
@@ -125,21 +101,21 @@ Telepon : (031) 99715748
 Email   : info@futsalpanji.com]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="171" width="100" height="20" uuid="222435a1-6c14-443e-bdff-79ee44d90d5c"/>
+				<reportElement x="5" y="171" width="90" height="20" uuid="222435a1-6c14-443e-bdff-79ee44d90d5c"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tanggal Main :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="151" width="100" height="20" uuid="7f53a2bf-e2e0-44f6-9079-98d97fb2fcc0"/>
+				<reportElement x="6" y="151" width="89" height="20" uuid="7f53a2bf-e2e0-44f6-9079-98d97fb2fcc0"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nama Lapangan :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="111" width="100" height="20" uuid="98c63efc-473f-4477-b83e-208643eb9fbc"/>
+				<reportElement x="5" y="111" width="90" height="20" uuid="98c63efc-473f-4477-b83e-208643eb9fbc"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
@@ -152,26 +128,26 @@ Email   : info@futsalpanji.com]]></text>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="0" y="231" width="100" height="20" uuid="487bcf84-4ec0-4424-9eaf-603903549dc4"/>
+				<reportElement x="5" y="231" width="90" height="20" uuid="487bcf84-4ec0-4424-9eaf-603903549dc4"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[DP]]></text>
+				<text><![CDATA[Sisa Bayar :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="100" y="191" width="30" height="20" uuid="9dbb9008-2de4-4331-b482-1ac197152670"/>
+				<reportElement x="97" y="191" width="30" height="20" uuid="9dbb9008-2de4-4331-b482-1ac197152670"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("HH:mm").format($F{transaksilapangan_jamMulai})]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="131" width="100" height="20" uuid="8ca9c5c1-9d3b-4bfb-9b50-381af7be5bcd"/>
+				<reportElement x="5" y="131" width="90" height="20" uuid="8ca9c5c1-9d3b-4bfb-9b50-381af7be5bcd"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nama :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="137" y="191" width="12" height="20" uuid="a4bf7aa9-a434-4245-beb6-1638f10255d3"/>
+				<reportElement x="134" y="191" width="12" height="20" uuid="a4bf7aa9-a434-4245-beb6-1638f10255d3"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[-]]></text>
 			</staticText>
@@ -182,19 +158,65 @@ Email   : info@futsalpanji.com]]></text>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="100" y="131" width="120" height="20" uuid="56c567ae-14a0-4118-b1d5-b6c18b3f9b4b"/>
+				<reportElement x="97" y="131" width="120" height="20" uuid="56c567ae-14a0-4118-b1d5-b6c18b3f9b4b"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{transaksilapangan_nama}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="211" width="118" height="20" uuid="ee0b7dfd-7ed6-4677-af58-329ef0addea8"/>
+				<reportElement x="97" y="211" width="120" height="20" uuid="ee0b7dfd-7ed6-4677-af58-329ef0addea8"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{transaksilapangan_tarif}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="0" y="1" width="58" height="45" uuid="8197d210-97d1-4051-9a0b-c22218551360"/>
+				<reportElement x="0" y="4" width="58" height="45" uuid="8197d210-97d1-4051-9a0b-c22218551360"/>
 				<imageExpression><![CDATA["D:\\Desain_Futsal\\download-removebg-preview 1.jpg"]]></imageExpression>
 			</image>
+			<staticText>
+				<reportElement x="2" y="255" width="215" height="79" uuid="0c3a59a0-e1a5-4268-a38a-9b28447e7700"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Catatan:
+- Pembayaran sudah termasuk biaya penyewaan lapangan, bola,
+  dan penerangan
+- Pembatalan sewa minimal 1 hari sebelum jadwal main untuk 
+  pengembalian uang muka
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="211" width="90" height="20" uuid="e8f58153-5637-44d2-b5af-43e72fdfdf98"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tarif : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="191" width="90" height="20" uuid="09863253-ca2f-4d05-bf0b-3e6d81d42195"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jam Main]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-160" y="37" width="45" height="20" uuid="4345ee15-ec5c-4ebd-9dc6-9817c334d67c"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-160" y="37" width="100" height="20" uuid="3d792404-9765-4145-8162-d9004b57cc1d"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="286" y="235" width="100" height="20" uuid="c09b6ada-5a00-4941-9f53-a1f8601b7847"/>
+				<textFieldExpression><![CDATA[]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="262" y="191" width="100" height="20" uuid="fe8e9d7f-5313-44e0-8ea7-4b11187a2c12"/>
+				<textFieldExpression><![CDATA[]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="99" y="235" width="100" height="20" uuid="a55be382-6f12-4b8b-a3dc-98c3047ae9a4"/>
+				<textFieldExpression><![CDATA[$F{sisa_bayar}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 </jasperReport>

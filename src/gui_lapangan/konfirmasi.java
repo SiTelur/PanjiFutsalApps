@@ -5,7 +5,15 @@
  */
 package gui_lapangan;
 
+import java.util.HashMap;
+import javax.swing.JOptionPane;
 import koneksi.koneksiLury;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -115,6 +123,15 @@ koneksiLury con = new koneksiLury();
         getContentPane().add(jamSelesai, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 455, 150, 20));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Konfirmasi (7) (Custom).png"))); // NOI18N
+        jLabel2.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jLabel2AncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 550));
 
         btn_cancel.setText("jButton1");
@@ -125,7 +142,7 @@ koneksiLury con = new koneksiLury();
         });
         getContentPane().add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 490, 110, 40));
 
-        btn_confirm.setText("jButton1");
+        btn_confirm.setText("cancel");
         btn_confirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_confirmActionPerformed(evt);
@@ -156,7 +173,30 @@ koneksiLury con = new koneksiLury();
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void btn_confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmActionPerformed
-        con.Eksekusi("UPDATE `transaksilapangan` SET `status`='"+ cmbStatus.getSelectedItem().toString() +"' WHERE kode_booking LIKE '"+ txtKodeBooking.getText()+"'", "Berhasil Menyimpan Data", 0);
+        try {
+            con.Eksekusi("UPDATE `transaksilapangan` SET `status`='"+ cmbStatus.getSelectedItem().toString() +"' WHERE kode_booking LIKE '"+ txtKodeBooking.getText()+"'", "Berhasil Menyimpan Data", 0);
+            
+        
+   
+        
+        //batas
+        try {
+                String report = ("D:\\Panji\\PanjiFutsalApps\\src\\notadanlaporan\\pelunasan.jrxml");
+                 HashMap hash = new HashMap();
+                //Mengambil parameter dari ireport
+                hash.put("kodeBooking", txtKodeBooking.getText());
+//                hash.put("kode_boking", idBooking);                
+//                hash.put("tanggalKedua", textField.getText());
+     
+                JasperReport JRpt = JasperCompileManager.compileReport(report);
+                JasperPrint JPrint = JasperFillManager.fillReport(JRpt, hash, con.getConnection());
+                JasperViewer.viewReport(JPrint, false);
+            } catch (JRException rptexcpt) {
+                System.out.println("Program tidak bisa karena : " + rptexcpt);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
         kondisiAwal();
     }//GEN-LAST:event_btn_confirmActionPerformed
 
@@ -186,7 +226,15 @@ koneksiLury con = new koneksiLury();
                  cmbStatus.setSelectedIndex(2);
                 break;
         }
+        
+           
+        
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jLabel2AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel2AncestorAdded
+        // TODO add your handling code here:
+         
+    }//GEN-LAST:event_jLabel2AncestorAdded
 
     /**
      * @param args the command line arguments
@@ -213,6 +261,9 @@ koneksiLury con = new koneksiLury();
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(konfirmasi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

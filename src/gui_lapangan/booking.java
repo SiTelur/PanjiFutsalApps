@@ -11,7 +11,14 @@ import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import koneksi.koneksiLury;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -247,7 +254,9 @@ public class booking extends javax.swing.JFrame {
     }
     
     private void btn_prosesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prosesActionPerformed
-        idBooking = con.autoNumber(txt_dp, "SELECT `kode_booking` FROM transaksilapangan WHERE `kode_booking` LIKE '%"+ dateNow() +"%' ORDER BY `kode_booking` DESC", "kode_booking", "TSC");
+        
+        try {
+            idBooking = con.autoNumber(txt_dp, "SELECT `kode_booking` FROM transaksilapangan WHERE `kode_booking` LIKE '%"+ dateNow() +"%' ORDER BY `kode_booking` DESC", "kode_booking", "TSC");
         String jamPertama = jamMulai.getValue().toString();
         String jamKedua = jamSelesai.getValue().toString();
         System.out.println(idBooking);
@@ -271,10 +280,26 @@ public class booking extends javax.swing.JFrame {
         } else{
             System.out.println("Nilai jam ke-1 lebih besar dari jam ke-2");
         }
-        
+        //batasss
+        try {
+                String report = ("D:\\Panji\\PanjiFutsalApps\\src\\notadanlaporan\\cetakStrukBooking.jrxml");
+                 HashMap hash = new HashMap();
+                //Mengambil parameter dari ireport
+                hash.put("kodeBooking", idBooking);
+//                hash.put("kode_boking", idBooking);                
+//                hash.put("tanggalKedua", textField.getText());
+     
+                JasperReport JRpt = JasperCompileManager.compileReport(report);
+                JasperPrint JPrint = JasperFillManager.fillReport(JRpt, hash, con.getConnection());
+                JasperViewer.viewReport(JPrint, false);
+            } catch (JRException rptexcpt) {
+                System.out.println("Program tidak bisa karena : " + rptexcpt);
+            }
+        } catch (Exception e) {
+        }
 //        batas ini
-        
-        
+       
+//       con.strukBooking(idBooking);
         
     }//GEN-LAST:event_btn_prosesActionPerformed
 
@@ -355,6 +380,9 @@ public class booking extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(booking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
