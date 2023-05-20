@@ -38,6 +38,7 @@ public class owner extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         owner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dashboard_owner.jpg"))); // NOI18N
+        owner.setToolTipText("");
         getContentPane().add(owner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jButton1.setText("jButton1");

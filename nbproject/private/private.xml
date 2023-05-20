@@ -1,54 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-<<<<<<< Updated upstream
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
-        <file>
-            <url>src/gui_lapangan/booking.java</url>
-            <bookmark id="1">
-                <name/>
-                <line>228</line>
-                <key/>
-            </bookmark>
-        </file>
-    </editor-bookmarks>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/Panji/PanjiFutsalApps/src/gui_lapangan/booking.java</file>
-            <file>file:/D:/Panji/PanjiFutsalApps/src/notadanlaporan/cetakStrukPelunasan.jrxml</file>
-            <file>file:/D:/Panji/PanjiFutsalApps/src/notadanlaporan/cetakStrukBooking.jrxml</file>
-            <file>file:/D:/Panji/PanjiFutsalApps/src/notadanlaporan/LaporanLapangan.jrxml</file>
-            <file>file:/D:/Panji/PanjiFutsalApps/src/gui_lapangan/laporan.java</file>
-            <file>file:/D:/Panji/PanjiFutsalApps/src/koneksi/koneksiLury.java</file>
-            <file>file:/D:/Panji/PanjiFutsalApps/src/gui_lapangan/kelola_makanan.java</file>
-            <file>file:/D:/Panji/PanjiFutsalApps/src/notadanlaporan/struk_pelunasan.jrxml</file>
-            <file>file:/D:/Panji/PanjiFutsalApps/src/gui_lapangan/konfirmasi.java</file>
-=======
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/kelola_admin.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/panji.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/koneksi/Connect.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/notadanlaporan/struk_pelunasan.jrxml</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/laporan.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/kelola_lapangan.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/booking.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/konfirmasi.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/admin.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/notadanlaporan/LaporanLapangan.jrxml</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/jadwal.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/kelola_makanan.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/transaksi_makanan.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/chooseLogin.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/owner.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/splashScreen.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/koneksi/koneksiLury.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/loginRFID.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/notadanlaporan/cetakStrukBooking.jrxml</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/notadanlaporan/cetakStrukPelunasan.jrxml</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/gui_lapangan/loginUsername.java</file>
-            <file>file:/D:/Development/PanjiFutsalApps/src/img/Konfirmasi%20right2.png</file>
->>>>>>> Stashed changes
-        </group>
+        <group/>
     </open-files>
 </project-private>
