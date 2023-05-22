@@ -136,7 +136,7 @@ public class kelola_admin extends javax.swing.JFrame {
         getContentPane().add(txtRFID, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 478, 260, 30));
 
         jComboBox1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Pegawai" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Owner" }));
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 280, 30));
 
         kelola_admin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ADMIN_RFID.png"))); // NOI18N
@@ -238,7 +238,7 @@ public class kelola_admin extends javax.swing.JFrame {
           case "Admin":
               jComboBox1.setSelectedIndex(0);
               break;
-          case "Pegawai":
+          case "Owner":
               jComboBox1.setSelectedIndex(1);
       }
         kondisiTextBox(true);
