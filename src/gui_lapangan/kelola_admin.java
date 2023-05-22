@@ -233,6 +233,7 @@ public class kelola_admin extends javax.swing.JFrame {
       txt_nama_admin.setText(jTable1.getValueAt(id, 2).toString());
       txt_password.setText(jTable1.getValueAt(id,3).toString());
       String jenisPekerjaan = jTable1.getValueAt(id, 4).toString();
+      txtRFID.setText(jTable1.getValueAt(id,5).toString());
       switch (jenisPekerjaan){
           case "Admin":
               jComboBox1.setSelectedIndex(0);
@@ -257,7 +258,7 @@ public class kelola_admin extends javax.swing.JFrame {
                  id_admin = con.primaryKey2("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%P%'", "P", "P01");
             }
             System.out.println(id_admin);
-            con.Eksekusi("INSERT INTO `admin`( `id_admin`,`nama_admin`, `username`, `password`, `jenis_pekerjaan`) VALUES ('"+ id_admin +"','"+ txt_username.getText() +"','"+ txt_nama_admin.getText() +"','"+ txt_password.getText() +"','"+ jComboBox1.getSelectedItem() +"')", "Berhasil Menyimpan",0);
+            con.Eksekusi("INSERT INTO `admin`(`id_admin`, `nama_admin`, `username`, `password`, `jenis_pekerjaan`, `RFID`) VALUES ('"+ id_admin +"','"+ txt_username.getText() +"','"+ txt_nama_admin.getText() +"','"+ txt_password.getText() +"','"+ jComboBox1.getSelectedItem() +"','"+ txtRFID.getText() +"')", "Berhasil Menyimpan",0);
             kondisiAwal();
         }
     }//GEN-LAST:event_btn_saveActionPerformed
@@ -296,9 +297,9 @@ public class kelola_admin extends javax.swing.JFrame {
                     id_admin_baru = con.primaryKey2("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%P%'", "P", "P01"); 
             }
             con.Eksekusi("DELETE FROM admin WHERE id_admin LIKE '"+ id_admin +"'", "", 1);
-            con.Eksekusi("INSERT INTO `admin`(`id_admin`, `nama_admin`, `username`, `password`, `jenis_pekerjaan`) VALUES ('"+ id_admin_baru +"','"+ txt_nama_admin.getText() +"','"+ txt_username.getText() +"','"+ txt_password.getText() +"','"+ jComboBox1.getSelectedItem() +"')", "Berhasil Mengubah Data", 1);
+            con.Eksekusi("INSERT INTO `admin`(`id_admin`, `nama_admin`, `username`, `password`, `jenis_pekerjaan`, `RFID`) VALUES ('"+ id_admin_baru +"','"+ txt_nama_admin.getText() +"','"+ txt_username.getText() +"','"+ txt_password.getText() +"','"+ jComboBox1.getSelectedItem() +"','"+ txtRFID.getText() +"')", "Berhasil Mengubah Data", 1);
         }else{
-            con.Eksekusi("UPDATE `admin` SET `nama_admin`='"+ txt_nama_admin.getText() +"',`username`='"+ txt_username.getText() +"',`password`='"+ txt_password.getText() +"' WHERE `id_admin` LIKE '"+ id_admin +"'", "Berhasil Mengubah Data", 1);
+            con.Eksekusi("UPDATE `admin` SET `nama_admin`='"+ txt_nama_admin.getText() +"',`username`='"+ txt_username.getText() +"',`password`='"+ txt_password.getText() +"', `RFID` = '"+ txtRFID.getText() +"' WHERE `id_admin` LIKE '"+ id_admin +"'", "Berhasil Mengubah Data", 1);
         }
     }//GEN-LAST:event_btn_updateActionPerformed
 
