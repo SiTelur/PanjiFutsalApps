@@ -142,14 +142,14 @@ public class jadwal extends javax.swing.JFrame {
 
     private void btn_showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_showActionPerformed
        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-String tanggal = sdf.format(new Date());
+String tanggal = sdf.format(jDateChooser1.getDate());
         String id_lapangan = item_tanggal1.getSelectedItem().toString().substring(0, 3);
      
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         int jumlahTabel = model.getRowCount();
         
         for (int i = 0; i < jumlahTabel; i++) {
-            model.setValueAt(tanggal.toString(),i,0);
+            model.setValueAt(tanggal,i,0);
         }
         
         String query  = "SELECT * FROM transaksilapangan WHERE tanggalMain LIKE '"+ tanggal +"' AND id_lapangan LIKE '"+ id_lapangan +"'";

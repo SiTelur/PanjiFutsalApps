@@ -5,6 +5,7 @@
  */
 package koneksi;
 import com.toedter.calendar.JDateChooser;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -41,6 +42,8 @@ public class koneksiLury {
     public boolean cekFormAdmin = false;
     public String idKodeBooking;
     public String idCombo;
+     File file = new File("");
+     String currentDirectory = file.getAbsolutePath();
 
     public Integer getIdAdmin() {
         return id;
@@ -234,7 +237,7 @@ public class koneksiLury {
          return newPrimaryKey;
         
 }
-    public void laporanLapangan(String tanggalPertama,String tanggalKedua,String tampilanTanggal1,String tampilanTanggal2) {
+    public void laporanLapangan(String tanggalPertama,String tanggalKedua,String tampilanTanggal1,String tampilanTanggal2) { 
         try {
             // Persiapkan parameter untuk laporan
             Map<String, Object> hash = new HashMap<>();
@@ -250,7 +253,7 @@ public class koneksiLury {
             getCon();
 
             // Compile file .jrxml menjadi file .jasper
-            JasperReport jasperReport = JasperCompileManager.compileReport("D:\\Panji\\PanjiFutsalApps\\src\\notadanlaporan\\LaporanLapangan.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport(currentDirectory+"\\src\\notadanlaporan\\LaporanLapangan.jrxml");
 
             // Isi laporan dengan data dari database
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, hash, connection);
@@ -266,7 +269,7 @@ public class koneksiLury {
           try {
             getCon();
             try {
-                String report = ("D:\\Panji\\PanjiFutsalAppsClone\\src\\notadanlaporan\\cetakStrukBooking.jrxml");
+                String report = (currentDirectory + "\\src\\notadanlaporan\\cetakStrukBooking.jrxml");
                  HashMap hash = new HashMap();
                 //Mengambil parameter dari ireport
                 

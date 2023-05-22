@@ -68,6 +68,7 @@ public class kelola_admin extends javax.swing.JFrame {
         txt_username = new javax.swing.JTextField();
         txt_nama_admin = new javax.swing.JTextField();
         txt_password = new javax.swing.JTextField();
+        txtRFID = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         kelola_admin = new javax.swing.JLabel();
         btn_create = new javax.swing.JButton();
@@ -76,7 +77,6 @@ public class kelola_admin extends javax.swing.JFrame {
         btn_back = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
         btn_update = new javax.swing.JButton();
-        txtRFID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -128,6 +128,12 @@ public class kelola_admin extends javax.swing.JFrame {
         txt_password.setForeground(new java.awt.Color(255, 255, 255));
         txt_password.setBorder(null);
         getContentPane().add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 318, 260, 30));
+
+        txtRFID.setBackground(new java.awt.Color(60, 128, 128));
+        txtRFID.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtRFID.setForeground(new java.awt.Color(255, 255, 255));
+        txtRFID.setBorder(null);
+        getContentPane().add(txtRFID, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 478, 260, 30));
 
         jComboBox1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Pegawai" }));
@@ -186,12 +192,6 @@ public class kelola_admin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 320, 90, 30));
-
-        txtRFID.setBackground(new java.awt.Color(60, 128, 128));
-        txtRFID.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        txtRFID.setForeground(new java.awt.Color(255, 255, 255));
-        txtRFID.setBorder(null);
-        getContentPane().add(txtRFID, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 478, 260, 30));
 
         pack();
         setLocationRelativeTo(null);

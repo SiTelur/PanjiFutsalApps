@@ -98,7 +98,7 @@ public class owner extends javax.swing.JFrame {
     private void btn_laporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_laporanActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new laporan().setVisible(true);
+        new laporan_lapangan().setVisible(true);
     }//GEN-LAST:event_btn_laporanActionPerformed
 
     /**
