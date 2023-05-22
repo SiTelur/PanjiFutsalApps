@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import koneksi.koneksiLury;
 import net.sf.jasperreports.engine.JRException;
@@ -52,6 +53,25 @@ public class booking extends javax.swing.JFrame {
     
     private void tampil(){
         con.tampil(jTable1, "SELECT `id_lapangan`, `nama_lapangan`, `deskripsi`, `harga_lapangan` FROM `lapangan`");
+    }
+    
+    
+    private int hitungJam(){
+        String jamAwalText = jamMulai.getValue().toString();
+        String jamPenguranganText = jamSelesai.getValue().toString();
+
+        // Parsing teks ke objek LocalTime
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("H:mm");
+        LocalTime jamAwal = LocalTime.parse(jamAwalText, formatter);
+        LocalTime jamPengurangan = LocalTime.parse(jamPenguranganText, formatter);
+
+        // Pengurangan waktu
+        long hasilJam = ChronoUnit.HOURS.between(jamAwal, jamPengurangan);
+        //long hasilMenit = ChronoUnit.MINUTES.between(jamPengurangan, jamAwal) % 60;
+        int hasil = (int) (hasilJam);
+
+        System.out.println("Hasil pengurangan jam (dalam menit): " + hasil);
+        return hasil;
     }
     /**
      * Creates new form booking
@@ -152,6 +172,11 @@ public class booking extends javax.swing.JFrame {
         txt_harga_lapangan.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txt_harga_lapangan.setForeground(new java.awt.Color(255, 255, 255));
         txt_harga_lapangan.setBorder(null);
+        txt_harga_lapangan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_harga_lapanganActionPerformed(evt);
+            }
+        });
         getContentPane().add(txt_harga_lapangan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 150, 20));
 
         txt_jam_selesai.setBackground(new java.awt.Color(60, 128, 128));
@@ -316,7 +341,25 @@ public class booking extends javax.swing.JFrame {
     }//GEN-LAST:event_jamSelesaiKeyReleased
 
     private void jamSelesaiStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jamSelesaiStateChanged
-       
+       System.out.println(String.valueOf(hitungJam()));
+       int hargaLapanganLama = Integer.parseInt(txt_harga_lapangan.getText());
+       //int hargaLapanganBaru = hargaLapanganLama * hitungJam();
+        //System.out.println(hargaLapanganBaru);
+      //  i long selisih = ChronoUnit.MINUTES.between(jamPengurangan, jamAwal);
+
+        // Menentukan tindakan berdasarkan tanda selisih waktu
+        if (hitungJam() > 0) {
+            System.out.println("Selisih waktu adalah positif.");
+            int hargaLapanganBaru = hargaLapanganLama * hitungJam();
+            System.out.println(hargaLapanganBaru);
+            txt_harga_lapangan.setText(String.valueOf(hargaLapanganBaru));
+        } else if (hitungJam() < 0) {
+            System.out.println("Selisih waktu adalah negatif.");
+            // Tidak melakukan apa-apa untuk selisih waktu negatif
+        } else {
+            System.out.println("Selisih waktu adalah nol.");
+            // Tidak melakukan apa-apa untuk selisih waktu nol
+        }
     }//GEN-LAST:event_jamSelesaiStateChanged
 
     private void jamMulaiStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jamMulaiStateChanged
@@ -354,6 +397,10 @@ public class booking extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_txt_dpActionPerformed
+
+    private void txt_harga_lapanganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_harga_lapanganActionPerformed
+        
+    }//GEN-LAST:event_txt_harga_lapanganActionPerformed
 
     /**
      * @param args the command line arguments

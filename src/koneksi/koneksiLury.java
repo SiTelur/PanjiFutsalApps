@@ -59,7 +59,7 @@ public class koneksiLury {
     public void getCon() {
         
         try {
-            String urlDatabase = "jdbc:mysql://localhost/database_lapangan1"; //alamat database
+            String urlDatabase = "jdbc:mysql://localhost/database_lapangan"; //alamat database
             String user = "root"; //user yang dipakai utk akses database
             String password = ""; //password yang digunakan utk akses database
             connection = DriverManager.getConnection(urlDatabase, user, password);
