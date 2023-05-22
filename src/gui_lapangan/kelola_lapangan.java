@@ -87,7 +87,7 @@ public class kelola_lapangan extends javax.swing.JFrame {
                 txt_harga_lapanganActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_harga_lapangan, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 260, 30));
+        getContentPane().add(txt_harga_lapangan, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 260, 30));
 
         txt_nama_lapangan2.setBackground(new java.awt.Color(60, 128, 128));
         txt_nama_lapangan2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -98,7 +98,7 @@ public class kelola_lapangan extends javax.swing.JFrame {
                 txt_nama_lapangan2ActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_nama_lapangan2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 260, 30));
+        getContentPane().add(txt_nama_lapangan2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 260, 30));
 
         txt_deskripsi.setBackground(new java.awt.Color(60, 128, 128));
         txt_deskripsi.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -109,7 +109,7 @@ public class kelola_lapangan extends javax.swing.JFrame {
                 txt_deskripsiActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_deskripsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 260, 30));
+        getContentPane().add(txt_deskripsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, 260, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -129,10 +129,10 @@ public class kelola_lapangan extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 310, 410));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 300, 370));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\LAPTOP\\Documents\\APK SI PENYEWAAN LAPANGAN FUTSAL\\Kelola_lapangan.jpg")); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 850, 610));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Kelola_lapangan.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, -1));
 
         btn_back.setText("jButton1");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +148,7 @@ public class kelola_lapangan extends javax.swing.JFrame {
                 btn_deleteActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 260, 110, 40));
+        getContentPane().add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 240, 100, 30));
 
         btn_save.setText("save");
         btn_save.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +156,7 @@ public class kelola_lapangan extends javax.swing.JFrame {
                 btn_saveActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 370, 100, 40));
+        getContentPane().add(btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 340, 100, 30));
 
         btn_update.setText("update");
         btn_update.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +164,7 @@ public class kelola_lapangan extends javax.swing.JFrame {
                 btn_updateActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 310, 100, 40));
+        getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, 100, 30));
 
         btn_camcel.setText("cancel");
         btn_camcel.addActionListener(new java.awt.event.ActionListener() {
@@ -172,7 +172,7 @@ public class kelola_lapangan extends javax.swing.JFrame {
                 btn_camcelActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_camcel, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 420, 110, 40));
+        getContentPane().add(btn_camcel, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 390, 110, 30));
 
         btn_create.setText("create");
         btn_create.addActionListener(new java.awt.event.ActionListener() {
@@ -180,7 +180,7 @@ public class kelola_lapangan extends javax.swing.JFrame {
                 btn_createActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_create, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 200, 100, 40));
+        getContentPane().add(btn_create, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 180, 100, 40));
 
         pack();
         setLocationRelativeTo(null);

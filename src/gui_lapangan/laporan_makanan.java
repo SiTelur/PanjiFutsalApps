@@ -17,12 +17,12 @@ import java.util.Date;
  *
  * @author ASUS
  */
-public class laporan_lapangan extends javax.swing.JFrame {
+public class laporan_makanan extends javax.swing.JFrame {
     koneksiLury con = new koneksiLury();
     /**
      * Creates new form laporan
      */
-    public laporan_lapangan() {
+    public laporan_makanan() {
         initComponents();
     }
 
@@ -46,7 +46,7 @@ public class laporan_lapangan extends javax.swing.JFrame {
         getContentPane().add(tanggalKedua, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 230, 190, 30));
         getContentPane().add(tanggalPertama, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 190, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/laporan_lapangan.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/laporan_makanan.png"))); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(847, 549));
         jLabel1.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
@@ -116,14 +116,22 @@ public class laporan_lapangan extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(laporan_lapangan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(laporan_makanan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(laporan_lapangan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(laporan_makanan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(laporan_lapangan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(laporan_makanan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(laporan_lapangan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(laporan_makanan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -136,7 +144,7 @@ public class laporan_lapangan extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new laporan_lapangan().setVisible(true);
+                new laporan_makanan().setVisible(true);
             }
         });
     }
