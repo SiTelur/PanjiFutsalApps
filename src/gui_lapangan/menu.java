@@ -35,13 +35,13 @@ public class menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        menu.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ninis\\Downloads\\Mennu.png")); // NOI18N
+        menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/menuSelection.jpg"))); // NOI18N
         menu.setText("jLabel2");
         menu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menu.setMaximumSize(new java.awt.Dimension(1582, 982));
         menu.setMinimumSize(new java.awt.Dimension(1582, 982));
         menu.setPreferredSize(new java.awt.Dimension(840, 549));
-        getContentPane().add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, -1));
+        getContentPane().add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 540));
 
         btn_kelola_makanan.setText("jButton1");
         btn_kelola_makanan.addActionListener(new java.awt.event.ActionListener() {
