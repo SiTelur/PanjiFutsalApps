@@ -37,7 +37,7 @@ public class owner extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        owner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dashboard_owner.jpg"))); // NOI18N
+        owner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dashboard_owner.png"))); // NOI18N
         owner.setToolTipText("");
         getContentPane().add(owner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -98,7 +98,7 @@ public class owner extends javax.swing.JFrame {
     private void btn_laporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_laporanActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new laporan_lapangan().setVisible(true);
+        new chooseLaporan().setVisible(true);
     }//GEN-LAST:event_btn_laporanActionPerformed
 
     /**

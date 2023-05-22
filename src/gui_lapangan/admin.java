@@ -146,7 +146,7 @@ public class admin extends javax.swing.JFrame {
     private void btn_menu_kelolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menu_kelolaActionPerformed
         // TODO add your handling code here:
          this.setVisible(false);
-        new menu().setVisible(true);
+        new chooseMenu().setVisible(true);
     }//GEN-LAST:event_btn_menu_kelolaActionPerformed
 
     /**

@@ -16,6 +16,8 @@ public class chooseLogin extends javax.swing.JFrame {
      */
     public chooseLogin() {
         initComponents();
+        setLocationRelativeTo(this);
+ 
     }
 
     /**
@@ -32,19 +34,42 @@ public class chooseLogin extends javax.swing.JFrame {
         btnUsername = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/chooseLogin.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         btnRF.setText("jButton1");
+        btnRF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRFActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnRF, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 450, 110, 40));
 
         btnUsername.setText("jButton1");
+        btnUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsernameActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, 110, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRFActionPerformed
+                                     
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new loginRFID().setVisible(true);
+    }//GEN-LAST:event_btnRFActionPerformed
+
+    private void btnUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsernameActionPerformed
+        this.setVisible(false);
+        new loginUsername().setVisible(true);
+    }//GEN-LAST:event_btnUsernameActionPerformed
 
     /**
      * @param args the command line arguments
