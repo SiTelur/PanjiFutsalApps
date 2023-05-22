@@ -76,6 +76,7 @@ public class kelola_admin extends javax.swing.JFrame {
         btn_back = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
         btn_update = new javax.swing.JButton();
+        txtRFID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -126,13 +127,13 @@ public class kelola_admin extends javax.swing.JFrame {
         txt_password.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txt_password.setForeground(new java.awt.Color(255, 255, 255));
         txt_password.setBorder(null);
-        getContentPane().add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 260, 30));
+        getContentPane().add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 318, 260, 30));
 
         jComboBox1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Pegawai" }));
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 280, 30));
 
-        kelola_admin.setIcon(new javax.swing.ImageIcon("C:\\Users\\LAPTOP\\Documents\\APK SI PENYEWAAN LAPANGAN FUTSAL\\ADMIN_RFID.png")); // NOI18N
+        kelola_admin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ADMIN_RFID.png"))); // NOI18N
         kelola_admin.setMaximumSize(new java.awt.Dimension(850, 552));
         kelola_admin.setMinimumSize(new java.awt.Dimension(850, 552));
         kelola_admin.setPreferredSize(new java.awt.Dimension(850, 552));
@@ -144,7 +145,7 @@ public class kelola_admin extends javax.swing.JFrame {
                 btn_createActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_create, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 220, 90, 30));
+        getContentPane().add(btn_create, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 220, 100, 30));
 
         btn_save.setText("save");
         btn_save.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +161,7 @@ public class kelola_admin extends javax.swing.JFrame {
                 btn_cancelActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 420, 90, 30));
+        getContentPane().add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 420, 100, 30));
 
         btn_back.setText("jButton1");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
@@ -185,6 +186,12 @@ public class kelola_admin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 320, 90, 30));
+
+        txtRFID.setBackground(new java.awt.Color(60, 128, 128));
+        txtRFID.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtRFID.setForeground(new java.awt.Color(255, 255, 255));
+        txtRFID.setBorder(null);
+        getContentPane().add(txtRFID, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 478, 260, 30));
 
         pack();
         setLocationRelativeTo(null);
@@ -341,6 +348,7 @@ public class kelola_admin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel kelola_admin;
+    private javax.swing.JTextField txtRFID;
     private javax.swing.JTextField txt_nama_admin;
     private javax.swing.JTextField txt_password;
     private javax.swing.JTextField txt_username;

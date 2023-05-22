@@ -31,13 +31,16 @@ public class booking extends javax.swing.JFrame {
     private String idBooking;
     int x;
     private String status;
+    private int hargaLapangan;
+    
+    
     
     private static boolean sudahDipanggil = false;
-    
+    int hargaSetelahJam5;
     int hargaAwal, hargaAkhir;
     public int  panggilSekaliSaja() {
         
-            hargaAwal = Integer.valueOf(txt_harga_lapangan.getText());
+            hargaAwal = Integer.valueOf(hargaLapangan);
         if (!sudahDipanggil) {
             System.out.println("Fungsi ini hanya dapat dipanggil sekali.");
             sudahDipanggil = true;
@@ -268,6 +271,7 @@ public class booking extends javax.swing.JFrame {
         
         id_lapangan = jTable1.getValueAt(x, 0).toString();
         txt_harga_lapangan.setText(jTable1.getValueAt(x, 3).toString());
+        hargaLapangan = Integer.parseInt(jTable1.getValueAt(x, 3).toString());
     }//GEN-LAST:event_jTable1MouseClicked
 
     private String dateNow(){
@@ -342,17 +346,35 @@ public class booking extends javax.swing.JFrame {
 
     private void jamSelesaiStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jamSelesaiStateChanged
        System.out.println(String.valueOf(hitungJam()));
-       int hargaLapanganLama = Integer.parseInt(txt_harga_lapangan.getText());
+       String jamPertama = jamMulai.getValue().toString();
+          LocalTime time1 =   LocalTime.parse(jamPertama);
+        LocalTime waktuSekarang = time1;
+        LocalTime waktuBatas = LocalTime.of(17, 0); // Waktu batas 17.00
+      
        //int hargaLapanganBaru = hargaLapanganLama * hitungJam();
         //System.out.println(hargaLapanganBaru);
       //  i long selisih = ChronoUnit.MINUTES.between(jamPengurangan, jamAwal);
 
         // Menentukan tindakan berdasarkan tanda selisih waktu
         if (hitungJam() > 0) {
-            System.out.println("Selisih waktu adalah positif.");
-            int hargaLapanganBaru = hargaLapanganLama * hitungJam();
+            
+            if (waktuSekarang.isAfter(waktuBatas)) {
+            System.out.println("Saat ini sudah lebih dari jam 17.00");
+            // Lakukan aksi yang diinginkan di sini
+           
+            
+            hargaSetelahJam5 = panggilSekaliSaja();
+            int hargaLapanganBaru = hargaSetelahJam5 * hitungJam();
             System.out.println(hargaLapanganBaru);
             txt_harga_lapangan.setText(String.valueOf(hargaLapanganBaru));
+        } else {
+            System.out.println("Saat ini belum lebih dari jam 17.00");
+            System.out.println("Selisih waktu adalah positif.");
+            int hargaLapanganBaru = hargaLapangan * hitungJam();
+            System.out.println(hargaLapanganBaru);
+            txt_harga_lapangan.setText(String.valueOf(hargaLapanganBaru));
+        }
+            
         } else if (hitungJam() < 0) {
             System.out.println("Selisih waktu adalah negatif.");
             // Tidak melakukan apa-apa untuk selisih waktu negatif
@@ -375,8 +397,8 @@ public class booking extends javax.swing.JFrame {
             // Lakukan aksi yang diinginkan di sini
            
             
-            int hargaAkhir = panggilSekaliSaja();
-            txt_harga_lapangan.setText(String.valueOf(hargaAkhir));
+            hargaSetelahJam5 = panggilSekaliSaja();
+            txt_harga_lapangan.setText(String.valueOf(hargaSetelahJam5));
         } else {
             System.out.println("Saat ini belum lebih dari jam 17.00");
             txt_harga_lapangan.setText(jTable1.getValueAt(x, 3).toString());

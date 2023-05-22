@@ -11,7 +11,7 @@ package gui_lapangan;
  */
 public class panji {
     public static void main(String[] args) {
-        loginUsername loginin = new loginUsername();
-        loginin.setVisible(true);
+        splashScreen splashScrenn = new splashScreen();
+        splashScrenn.setVisible(true);
     }
 }
