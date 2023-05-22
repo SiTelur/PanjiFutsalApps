@@ -189,7 +189,7 @@ public class kelola_lapangan extends javax.swing.JFrame {
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
         // TODO add your handling code here:
         this.setVisible(false); 
-        new admin().setVisible(true);
+        new menu().setVisible(true);
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void txt_deskripsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_deskripsiActionPerformed

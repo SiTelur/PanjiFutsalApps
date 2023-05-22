@@ -27,34 +27,67 @@ public class menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        menu = new javax.swing.JLabel();
+        btn_kelola_makanan = new javax.swing.JButton();
+        btn_kelola_lapangan = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\LAPTOP\\Documents\\APK SI PENYEWAAN LAPANGAN FUTSAL\\Menu.png")); // NOI18N
-        jLabel2.setText("jLabel2");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel2.setMaximumSize(new java.awt.Dimension(1582, 982));
-        jLabel2.setMinimumSize(new java.awt.Dimension(1582, 982));
-        jLabel2.setPreferredSize(new java.awt.Dimension(840, 549));
+        menu.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ninis\\Downloads\\Mennu.png")); // NOI18N
+        menu.setText("jLabel2");
+        menu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menu.setMaximumSize(new java.awt.Dimension(1582, 982));
+        menu.setMinimumSize(new java.awt.Dimension(1582, 982));
+        menu.setPreferredSize(new java.awt.Dimension(840, 549));
+        getContentPane().add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1582, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 570, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 196, Short.MAX_VALUE))
-        );
+        btn_kelola_makanan.setText("jButton1");
+        btn_kelola_makanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_kelola_makananActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_kelola_makanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 290, 310));
+
+        btn_kelola_lapangan.setText("jButton1");
+        btn_kelola_lapangan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_kelola_lapanganActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_kelola_lapangan, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 280, 300));
+
+        jButton3.setText("jButton3");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_kelola_makananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kelola_makananActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new kelola_makanan().setVisible(true);
+        
+    }//GEN-LAST:event_btn_kelola_makananActionPerformed
+
+    private void btn_kelola_lapanganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kelola_lapanganActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new kelola_lapangan().setVisible(true);
+    }//GEN-LAST:event_btn_kelola_lapanganActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new admin().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -92,6 +125,9 @@ public class menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btn_kelola_lapangan;
+    private javax.swing.JButton btn_kelola_makanan;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel menu;
     // End of variables declaration//GEN-END:variables
 }
