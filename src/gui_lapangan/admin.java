@@ -30,61 +30,20 @@ public class admin extends javax.swing.JFrame {
     private void initComponents() {
 
         admin = new javax.swing.JLabel();
-        btn_konfirmasi = new javax.swing.JButton();
-        btn_trans = new javax.swing.JButton();
-        btn_kelola_makanan = new javax.swing.JButton();
-        btn_jadwal = new javax.swing.JButton();
-        btn_kelola_lapangan = new javax.swing.JButton();
         btn_logout = new javax.swing.JButton();
         btn_back = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btn_booking = new javax.swing.JButton();
+        btn_konfirmasi = new javax.swing.JButton();
+        btn_jadwal = new javax.swing.JButton();
+        btn_trans = new javax.swing.JButton();
+        btn_menu_kelola = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        admin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dashboard_admin.jpg"))); // NOI18N
+        admin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui_lapangan/dashboard_adminn.png"))); // NOI18N
         admin.setPreferredSize(new java.awt.Dimension(846, 549));
         getContentPane().add(admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        btn_konfirmasi.setText("konfirmasi");
-        btn_konfirmasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_konfirmasiActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_konfirmasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 70, 110, -1));
-
-        btn_trans.setText("transaksi_makanan");
-        btn_trans.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_transActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_trans, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 63, 180, 30));
-
-        btn_kelola_makanan.setText("kelola_makanan");
-        btn_kelola_makanan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_kelola_makananActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_kelola_makanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 140, -1));
-
-        btn_jadwal.setText("jadwal");
-        btn_jadwal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_jadwalActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_jadwal, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, -1, -1));
-
-        btn_kelola_lapangan.setText("kelola_lapangan");
-        btn_kelola_lapangan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_kelola_lapanganActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_kelola_lapangan, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 150, -1));
 
         btn_logout.setText("log out");
         btn_logout.addActionListener(new java.awt.event.ActionListener() {
@@ -102,13 +61,45 @@ public class admin extends javax.swing.JFrame {
         });
         getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 13, 40, 30));
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_booking.setText("jButton1");
+        btn_booking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_bookingActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 63, 80, 30));
+        getContentPane().add(btn_booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 80, 30));
+
+        btn_konfirmasi.setText("konfirmasi");
+        btn_konfirmasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_konfirmasiActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_konfirmasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 63, 120, 30));
+
+        btn_jadwal.setText("jadwal");
+        btn_jadwal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_jadwalActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_jadwal, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 63, 70, 30));
+
+        btn_trans.setText("transaksi_makanan");
+        btn_trans.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_transActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_trans, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 190, 30));
+
+        btn_menu_kelola.setText("jButton1");
+        btn_menu_kelola.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_menu_kelolaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_menu_kelola, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 140, 30));
 
         pack();
         setLocationRelativeTo(null);
@@ -126,23 +117,11 @@ public class admin extends javax.swing.JFrame {
         new transaksi_makanan().setVisible(true);
     }//GEN-LAST:event_btn_transActionPerformed
 
-    private void btn_kelola_makananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kelola_makananActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        new kelola_makanan().setVisible(true);
-    }//GEN-LAST:event_btn_kelola_makananActionPerformed
-
     private void btn_jadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_jadwalActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         new jadwal().setVisible(true);
     }//GEN-LAST:event_btn_jadwalActionPerformed
-
-    private void btn_kelola_lapanganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kelola_lapanganActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        new kelola_lapangan().setVisible(true);
-    }//GEN-LAST:event_btn_kelola_lapanganActionPerformed
 
     private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
         // TODO add your handling code here:
@@ -158,10 +137,17 @@ public class admin extends javax.swing.JFrame {
         new loginUsername().setVisible(true);
     }//GEN-LAST:event_btn_backActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.setVisible(false);
+    private void btn_bookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bookingActionPerformed
+        // TODO add your handling code here:
+         this.setVisible(false);
         new booking().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_bookingActionPerformed
+
+    private void btn_menu_kelolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menu_kelolaActionPerformed
+        // TODO add your handling code here:
+         this.setVisible(false);
+        new menu().setVisible(true);
+    }//GEN-LAST:event_btn_menu_kelolaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,12 +188,11 @@ public class admin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel admin;
     private javax.swing.JButton btn_back;
+    private javax.swing.JButton btn_booking;
     private javax.swing.JButton btn_jadwal;
-    private javax.swing.JButton btn_kelola_lapangan;
-    private javax.swing.JButton btn_kelola_makanan;
     private javax.swing.JButton btn_konfirmasi;
     private javax.swing.JButton btn_logout;
+    private javax.swing.JButton btn_menu_kelola;
     private javax.swing.JButton btn_trans;
-    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
