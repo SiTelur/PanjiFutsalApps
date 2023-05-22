@@ -399,9 +399,9 @@ if (qty == 0) {
         
         
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-       
+            kon.Eksekusi("INSERT INTO `transaksimakanan` (`nonota`, `totalHarga`) VALUES ('"+ txt_nota.getText() +"', '"+ txt_total_harga.getText() +"')", "Berhasil Menyimpan", 1);
         for (int i = 0; i < model.getRowCount(); i++) {
-            
+            kon.eksekusiFor("INSERT INTO `detailtransaksimakanan` (`iddetail`, `nonota`, `id_fd`, `qty`, `subtotal`) VALUES (NULL, '"+txt_nota.getText()+"', '"+  model.getValueAt(i, 0)+"', '"+ model.getValueAt(i, 3) +"', '"+ model.getValueAt(i, 4) +"')");
         }
     }//GEN-LAST:event_btn_simpanActionPerformed
 

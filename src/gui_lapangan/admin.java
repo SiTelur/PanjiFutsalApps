@@ -41,7 +41,7 @@ public class admin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        admin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui_lapangan/dashboard_adminn.png"))); // NOI18N
+        admin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dashboard_admin (1).png"))); // NOI18N
         admin.setPreferredSize(new java.awt.Dimension(846, 549));
         getContentPane().add(admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
