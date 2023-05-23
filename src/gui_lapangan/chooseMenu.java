@@ -33,6 +33,7 @@ public class chooseMenu extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/menuSelection.jpg"))); // NOI18N

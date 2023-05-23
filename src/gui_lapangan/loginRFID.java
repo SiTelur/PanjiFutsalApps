@@ -40,6 +40,7 @@ public class loginRFID extends javax.swing.JFrame {
         txtRFIDCard = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/loginRFID.png"))); // NOI18N
@@ -53,6 +54,7 @@ public class loginRFID extends javax.swing.JFrame {
         getContentPane().add(txtRFIDCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 350, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtRFIDCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRFIDCardActionPerformed
@@ -71,7 +73,7 @@ public class loginRFID extends javax.swing.JFrame {
                     new admin().setVisible(true);
                     this.dispose();
                     JOptionPane.showMessageDialog(null, "Selamat datang Admin");
-                }else if(username.equals("Pegawai")){
+                }else if(username.equals("Owner")){
                     new owner().setVisible(true);
                     this.dispose();
                     JOptionPane.showMessageDialog(null, "Selamat datang Owner!");  

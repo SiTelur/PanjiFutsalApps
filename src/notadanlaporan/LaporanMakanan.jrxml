@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e04c6f5e-5679-4e74-9139-c8fe1d2d65cf">
+	<property name="ireport.zoom" value="1.6105100000000014"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="162"/>
+	<parameter name="tanggalAkhir" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tanggalAwal" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     detailtransaksimakanan.`nonota` AS detailtransaksimakanan_nonota,
+     detailtransaksimakanan.`qty` AS detailtransaksimakanan_qty,
+     detailtransaksimakanan.`subtotal` AS detailtransaksimakanan_subtotal,
+     makanan.`nama` AS makanan_nama,
+     makanan.`harga` AS makanan_harga,
+     transaksimakanan.`nonota` AS transaksimakanan_nonota,
+     transaksimakanan.`totalHarga` AS transaksimakanan_totalHarga,
+     transaksimakanan.`tanggalTransaksiMakanan` AS transaksimakanan_tanggalTransaksiMakanan
+FROM
+     `makanan` makanan INNER JOIN `detailtransaksimakanan` detailtransaksimakanan ON makanan.`id_fooddrink` = detailtransaksimakanan.`id_fd`
+     INNER JOIN `transaksimakanan` transaksimakanan ON detailtransaksimakanan.`nonota` = transaksimakanan.`nonota`
+WHERE transaksimakanan.`tanggalTransaksiMakanan` BETWEEN $P{tanggalAwal} AND $P{tanggalAkhir}]]>
+	</queryString>
+	<field name="detailtransaksimakanan_nonota" class="java.lang.String"/>
+	<field name="detailtransaksimakanan_qty" class="java.lang.Integer"/>
+	<field name="detailtransaksimakanan_subtotal" class="java.lang.Integer"/>
+	<field name="makanan_nama" class="java.lang.String"/>
+	<field name="makanan_harga" class="java.lang.Integer"/>
+	<field name="transaksimakanan_nonota" class="java.lang.String"/>
+	<field name="transaksimakanan_totalHarga" class="java.lang.Integer"/>
+	<field name="transaksimakanan_tanggalTransaksiMakanan" class="java.sql.Timestamp"/>
+	<variable name="makanan_harga_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{makanan_harga}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="27" y="0" width="528" height="79" uuid="f9a1be17-ec25-4b08-877f-8921baf0b96b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laporan Transaksi Makanan]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="89" height="79" uuid="dc73b8d4-12e9-4ae2-b1cb-853d3780ffb5"/>
+				<imageExpression><![CDATA["D:\\Development\\PanjiFutsalApps\\src\\img\\Logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="177" splitType="Stretch">
+			<staticText>
+				<reportElement x="158" y="22" width="237" height="77" uuid="4a1543f6-4856-49b4-ab60-dd1dddfd140a"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ Jl. Siwalanpanji, Buduran - Sidoarjo
+Telepon : (031) 99715748 
+Email   : info@futsalpanji.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="0" width="237" height="22" uuid="afbb88ef-f4bb-4e8c-93e7-80415ffcee99"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ LAPANGAN FUTSAL PANJI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="117" width="72" height="20" uuid="bd051bed-22d7-47c3-b336-6320c40372b5"/>
+				<text><![CDATA[Tanggal Awal :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="406" y="117" width="73" height="20" uuid="9f5a10ed-b46a-4fa5-855e-df657161822b"/>
+				<text><![CDATA[Tanggal Akhir :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="479" y="117" width="100" height="20" uuid="a2cab2d8-fb71-4139-8a80-6b796f973348"/>
+				<textFieldExpression><![CDATA[$P{tanggalAkhir}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="71" y="117" width="100" height="20" uuid="caadc24d-b354-431b-9e12-fc5efa0e7dfb"/>
+				<textFieldExpression><![CDATA[$P{tanggalAwal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="79" y="0" width="100" height="20" backcolor="#99FF99" uuid="deae24fd-628a-4a19-9dc9-bf54e8809f52"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="179" y="0" width="100" height="20" backcolor="#99FF99" uuid="1f0f0b04-b6ed-4e62-b439-0637d6099610"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="279" y="0" width="100" height="20" backcolor="#99FF99" uuid="dcaa335f-73df-4d56-9f2b-d0e336da0890"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="379" y="0" width="100" height="20" backcolor="#99FF99" uuid="60a84017-5559-4826-ad5d-8036505e7b32"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="79" y="0" width="100" height="20" uuid="110e93f5-b643-42cb-ae64-5614205f5454"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[No Nota]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="179" y="0" width="100" height="20" uuid="819055a6-d0eb-4674-abd9-3bcd16f9d238"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nama Makanan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="0" width="100" height="20" uuid="8e4365c4-898a-4904-ba5d-69047a23a8dc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Harga Makanan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="379" y="0" width="100" height="20" uuid="09a265d2-53fe-42b4-b2a0-033696c65254"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<elementGroup>
+				<rectangle>
+					<reportElement x="79" y="0" width="100" height="20" backcolor="#CCFFCC" uuid="192672d5-c85e-4ed0-b675-82c69b223c70"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="179" y="0" width="100" height="20" backcolor="#CCFFCC" uuid="388f5986-86a1-4c5e-b12f-837de09f1d55"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="376" y="0" width="103" height="20" backcolor="#CCFFCC" uuid="90676cc1-57c8-4ba6-91de-8fae441f1772"/>
+				</rectangle>
+				<textField>
+					<reportElement x="179" y="0" width="100" height="20" uuid="a9dd2446-c748-47d3-a7ca-2b31c39630d2"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{makanan_nama}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="379" y="0" width="95" height="20" uuid="540a7c5b-2b9a-431d-b80a-7560feaaa30e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{transaksimakanan_tanggalTransaksiMakanan}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="279" y="0" width="100" height="20" backcolor="#CCFFCC" uuid="b025d5be-3f3e-4c4e-b5fe-965158b8e639"/>
+				</rectangle>
+				<textField>
+					<reportElement x="79" y="0" width="100" height="20" uuid="cfa203bc-fe9d-4793-8d39-98357b2937d7"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{detailtransaksimakanan_nonota}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="279" y="0" width="100" height="20" uuid="ba428196-ce9a-4763-b894-4f8242a82bbd"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{makanan_harga}]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<textField>
+				<reportElement x="466" y="25" width="100" height="20" uuid="f0a02863-26b5-49af-8091-3bcab5240eae"/>
+				<textFieldExpression><![CDATA[$V{makanan_harga_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="366" y="25" width="100" height="20" uuid="f60482c2-75ae-4678-87e6-088aad9a0b3c"/>
+				<text><![CDATA[Total Transaksi:]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

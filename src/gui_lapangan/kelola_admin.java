@@ -28,12 +28,14 @@ public class kelola_admin extends javax.swing.JFrame {
         txt_username.setEditable(kondisi);
         txt_password.setEditable(kondisi);
         jComboBox1.setEnabled(kondisi);
+        txtRFID.setEditable(kondisi);
     }
     
     private void clear(){
         txt_nama_admin.setText("");
         txt_username.setText("");
         txt_password.setText("");
+        txtRFID.setText("");
     }
     
     private void kondisiAwal(){
@@ -42,6 +44,7 @@ public class kelola_admin extends javax.swing.JFrame {
         txt_nama_admin.setText("");
         txt_username.setText("");
         txt_password.setText("");
+        txtRFID.setText("");
         tampil();
         clear();
     }
@@ -79,6 +82,7 @@ public class kelola_admin extends javax.swing.JFrame {
         btn_update = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -215,8 +219,8 @@ public class kelola_admin extends javax.swing.JFrame {
                isCreate +=1;
                JOptionPane.showMessageDialog(null, "Anda Memilih Create");
                kondisiTextBox(true);
-               btn_update.setEnabled(false);
-               btn_delete.setEnabled(false);
+               btn_update.setEnabled(true);
+               btn_delete.setEnabled(true);
                break;
            case 1:
                JOptionPane.showMessageDialog(null, "Anda Telah Menekan Tombol Create");
@@ -274,10 +278,13 @@ public class kelola_admin extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_nama_adminActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
-     int result = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin ingin melanjutkan?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+     
+        
+        int result = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin ingin melanjutkan?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
         if (result == JOptionPane.YES_OPTION) {
             con.Eksekusi("DELETE FROM `admin` WHERE `id_admin` LIKE '"+ id_admin +"'", "Anda berhasil menghapus data",0);
     System.out.println("Anda memilih Yes");
+        kondisiAwal();
         } else {
     // jika user memilih No atau menutup dialog box
     System.out.println("Anda memilih No");
@@ -285,7 +292,10 @@ public class kelola_admin extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
-       String id_admin_baru = null;
+       int input = JOptionPane.showConfirmDialog(null,"yakin mau edit", "Warning", JOptionPane.OK_CANCEL_OPTION);
+           if (input==0) {
+               try {
+                   String id_admin_baru = null;
         String jenisPekerjaanLama = jTable1.getValueAt(idInTable,4).toString();
        String jenisPekerjaanBaru = jComboBox1.getSelectedItem().toString();
         if (!jenisPekerjaanLama.equals(jenisPekerjaanBaru)){
@@ -293,7 +303,7 @@ public class kelola_admin extends javax.swing.JFrame {
                 case "Admin":
                     id_admin_baru = con.primaryKey2("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%A%'", "A", "A01");
                     break;
-                case "Pegawai":
+                case "Owner":
                     id_admin_baru = con.primaryKey2("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%P%'", "P", "P01"); 
             }
             con.Eksekusi("DELETE FROM admin WHERE id_admin LIKE '"+ id_admin +"'", "", 1);
@@ -301,6 +311,30 @@ public class kelola_admin extends javax.swing.JFrame {
         }else{
             con.Eksekusi("UPDATE `admin` SET `nama_admin`='"+ txt_nama_admin.getText() +"',`username`='"+ txt_username.getText() +"',`password`='"+ txt_password.getText() +"', `RFID` = '"+ txtRFID.getText() +"' WHERE `id_admin` LIKE '"+ id_admin +"'", "Berhasil Mengubah Data", 1);
         }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, e.getMessage());
+    }
+     kondisiAwal();
+} else {
+    JOptionPane.showMessageDialog(this,"Data Tidak di Edit");
+           }
+        
+//        String id_admin_baru = null;
+//        String jenisPekerjaanLama = jTable1.getValueAt(idInTable,4).toString();
+//       String jenisPekerjaanBaru = jComboBox1.getSelectedItem().toString();
+//        if (!jenisPekerjaanLama.equals(jenisPekerjaanBaru)){
+//            switch (jenisPekerjaanBaru){
+//                case "Admin":
+//                    id_admin_baru = con.primaryKey2("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%A%'", "A", "A01");
+//                    break;
+//                case "Pegawai":
+//                    id_admin_baru = con.primaryKey2("SELECT MAX(`id_admin`) AS max_id FROM admin WHERE id_admin LIKE '%P%'", "P", "P01"); 
+//            }
+//            con.Eksekusi("DELETE FROM admin WHERE id_admin LIKE '"+ id_admin +"'", "", 1);
+//            con.Eksekusi("INSERT INTO `admin`(`id_admin`, `nama_admin`, `username`, `password`, `jenis_pekerjaan`, `RFID`) VALUES ('"+ id_admin_baru +"','"+ txt_nama_admin.getText() +"','"+ txt_username.getText() +"','"+ txt_password.getText() +"','"+ jComboBox1.getSelectedItem() +"','"+ txtRFID.getText() +"')", "Berhasil Mengubah Data", 1);
+//        }else{
+//            con.Eksekusi("UPDATE `admin` SET `nama_admin`='"+ txt_nama_admin.getText() +"',`username`='"+ txt_username.getText() +"',`password`='"+ txt_password.getText() +"', `RFID` = '"+ txtRFID.getText() +"' WHERE `id_admin` LIKE '"+ id_admin +"'", "Berhasil Mengubah Data", 1);
+//        }
     }//GEN-LAST:event_btn_updateActionPerformed
 
     /**

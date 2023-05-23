@@ -6,6 +6,7 @@
 package gui_lapangan;
 
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import static java.util.Objects.hash;
 import javax.swing.JOptionPane;
@@ -42,6 +43,7 @@ public class laporan_makanan extends javax.swing.JFrame {
         btn_proses = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(tanggalKedua, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 230, 190, 30));
         getContentPane().add(tanggalPertama, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 190, 30));
@@ -92,7 +94,17 @@ public class laporan_makanan extends javax.swing.JFrame {
         String tanggaltampil1 = con.formatTanggal(tanggalPertama,"dd MMMM yyyy");
         String tanggaltampil2 = con.formatTanggal(tanggalKedua,"dd MMMM yyyy");
 //        ini buat ngambil variable tanggal dan tanggal_tampil
-        con.laporanLapangan(tanggal1, tanggal2, tanggaltampil1, tanggaltampil2);
+    //    con.laporanLapangan(tanggal1, tanggal2, tanggaltampil1, tanggaltampil2);
+        
+        
+          LocalDate tanggalPertamaString = LocalDate.parse( tanggal1);
+        LocalDate tanggalKeduaString = LocalDate.parse( tanggal2);
+        
+        if (tanggalPertamaString.isAfter(tanggalKeduaString)) {
+            System.out.println("Tanggal pertama melebihi tanggal kedua.");
+        } else {
+           con.laporanMakanan(tanggal1, tanggal2);
+        }
     }//GEN-LAST:event_btn_prosesActionPerformed
 
     private void jLabel1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel1AncestorAdded

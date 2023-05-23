@@ -66,6 +66,7 @@ koneksiLury con = new koneksiLury();
         btn_back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -169,7 +170,7 @@ koneksiLury con = new koneksiLury();
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
-        // TODO add your handling code here:
+       kondisiAwal();
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void btn_confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmActionPerformed
@@ -181,7 +182,7 @@ koneksiLury con = new koneksiLury();
         
         //batas
         try {
-                String report = ("D:\\Panji\\PanjiFutsalApps\\src\\notadanlaporan\\pelunasan.jrxml");
+                String report = (con.currentDirectory+"\\src\\notadanlaporan\\pelunasan.jrxml");
                  HashMap hash = new HashMap();
                 //Mengambil parameter dari ireport
                 hash.put("kodeBooking", txtKodeBooking.getText());

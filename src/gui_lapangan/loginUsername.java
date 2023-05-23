@@ -43,6 +43,7 @@ public class loginUsername extends javax.swing.JFrame {
         btn_login = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_username.setBackground(new java.awt.Color(60, 128, 128));
@@ -97,7 +98,7 @@ public class loginUsername extends javax.swing.JFrame {
                     new admin().setVisible(true);
                     this.dispose();
                     JOptionPane.showMessageDialog(null, "Selamat datang Admin");
-                }else if(username.equals("Petugas")){
+                }else if(username.equals("Owner")){
                     new owner().setVisible(true);
                     this.dispose();
                     JOptionPane.showMessageDialog(null, "Selamat datang Owner!");  

@@ -43,7 +43,7 @@ public class koneksiLury {
     public String idKodeBooking;
     public String idCombo;
      File file = new File("");
-     String currentDirectory = file.getAbsolutePath();
+    public String currentDirectory = file.getAbsolutePath();
 
     public Integer getIdAdmin() {
         return id;
@@ -265,6 +265,36 @@ public class koneksiLury {
             e.printStackTrace();
         }
     }
+    
+    public void laporanMakanan(String tanggalPertama,String tanggalKedua) { 
+        try {
+            // Persiapkan parameter untuk laporan
+            Map<String, Object> hash = new HashMap<>();
+
+        //                //Mengambil parameter dari ireport
+                      hash.put("tanggalAwal",tanggalPertama);
+                        hash.put("tanggalAkhir",tanggalKedua);
+//                        batas
+//                        hash.put("tampilanTanggalAwal",tampilanTanggal1);
+//                        hash.put("tampilanTanggalAkhir",tampilanTanggal2);
+
+            // Buat koneksi database
+            getCon();
+
+            // Compile file .jrxml menjadi file .jasper
+            JasperReport jasperReport = JasperCompileManager.compileReport(currentDirectory+"\\src\\notadanlaporan\\LaporanMakanan.jrxml");
+
+            // Isi laporan dengan data dari database
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, hash, connection);
+
+            // Tampilkan laporan dalam format PDF
+            JasperViewer.viewReport(jasperPrint);
+            //JasperExportManager.exportReportToPdfFile(jasperPrint, "path/to/output.pdf");
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void strukBooking(String kode_booking){
           try {
             getCon();

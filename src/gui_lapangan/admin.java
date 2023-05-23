@@ -39,6 +39,7 @@ public class admin extends javax.swing.JFrame {
         btn_menu_kelola = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         admin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dashboard_admin (1).png"))); // NOI18N
@@ -127,7 +128,7 @@ public class admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         this.setVisible(false);
-        new loginUsername().setVisible(true);
+        new chooseLogin().setVisible(true);
     }//GEN-LAST:event_btn_logoutActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed

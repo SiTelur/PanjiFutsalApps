@@ -30,7 +30,7 @@ public class jadwal extends javax.swing.JFrame {
    private ResultSet rs;
     
     private void tampil(){
-        con.combo("SELECT * FROM lapangan","id_lapangan","nama_lapangan",item_tanggal1);
+        con.combo("SELECT * FROM lapangan","id_lapangan","nama_lapangan",cmbLapangan);
     }
     /**
      * Creates new form jadwal
@@ -63,7 +63,7 @@ public class jadwal extends javax.swing.JFrame {
     private void initComponents() {
 
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        item_tanggal1 = new javax.swing.JComboBox<>();
+        cmbLapangan = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jadwal_booking = new javax.swing.JLabel();
@@ -71,10 +71,11 @@ public class jadwal extends javax.swing.JFrame {
         btn_show = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 190, 30));
 
-        getContentPane().add(item_tanggal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, 200, 30));
+        getContentPane().add(cmbLapangan, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, 200, 30));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -143,7 +144,7 @@ public class jadwal extends javax.swing.JFrame {
     private void btn_showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_showActionPerformed
        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 String tanggal = sdf.format(jDateChooser1.getDate());
-        String id_lapangan = item_tanggal1.getSelectedItem().toString().substring(0, 3);
+        String id_lapangan = cmbLapangan.getSelectedItem().toString().substring(0, 3);
      
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         int jumlahTabel = model.getRowCount();
@@ -177,7 +178,6 @@ String tanggal = sdf.format(jDateChooser1.getDate());
                    if (model.getValueAt(i, 1).equals(jamMain)) {
                        for (int j = i; j < i+selisih; j++) {
                            model.setValueAt(kondisiLapangan, j, 3);
-                           
                        }
                    }else{
                        if (selectedValue == null) {
@@ -190,9 +190,9 @@ String tanggal = sdf.format(jDateChooser1.getDate());
                
            }
            
-           for (int i = 0; i < model.getRowCount(); i++) {
-               model.setValueAt("Masih Kosong", i, 3);
-           }
+//           for (int i = 0; i < model.getRowCount(); i++) {
+//               model.setValueAt("Masih Kosong", i, 3);
+//           }
                    
                    
            
@@ -240,7 +240,7 @@ String tanggal = sdf.format(jDateChooser1.getDate());
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_show;
-    private javax.swing.JComboBox<String> item_tanggal1;
+    private javax.swing.JComboBox<String> cmbLapangan;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;

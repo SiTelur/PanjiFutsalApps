@@ -76,6 +76,7 @@ public class kelola_lapangan extends javax.swing.JFrame {
         btn_create = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_harga_lapangan.setBackground(new java.awt.Color(60, 128, 128));
@@ -237,7 +238,7 @@ public class kelola_lapangan extends javax.swing.JFrame {
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
         // TODO add your handling code here:
-          int input = JOptionPane.showConfirmDialog(null,"yakin mau edit", "Warning", JOptionPane.OK_CANCEL_OPTION);
+          int input = JOptionPane.showConfirmDialog(null,"Apakah anda yakin mau edit?", "Warning", JOptionPane.OK_CANCEL_OPTION);
            if (input==0) {
                try {
                    String sql = "UPDATE `lapangan` SET `nama_lapangan`='"+ txt_nama_lapangan2.getText() +"',`deskripsi`='"+ txt_deskripsi.getText() +"',`harga_lapangan`='"+ txt_harga_lapangan.getText() +"' WHERE `id_lapangan` LIKE '"+ idInTable +"'";

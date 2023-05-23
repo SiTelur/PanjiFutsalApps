@@ -28,26 +28,18 @@ public class owner extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        owner = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         btn_kelola_admin = new javax.swing.JButton();
         btn_laporan = new javax.swing.JButton();
         btn_logout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        owner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dashboard_owner.png"))); // NOI18N
-        owner.setToolTipText("");
-        getContentPane().add(owner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 40));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dashboard_owner.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, -1));
 
         btn_kelola_admin.setText("kelola_admin");
         btn_kelola_admin.addActionListener(new java.awt.event.ActionListener() {
@@ -83,14 +75,10 @@ public class owner extends javax.swing.JFrame {
         new loginUsername().setVisible(true);
     }//GEN-LAST:event_btn_logoutActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        new loginUsername().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void btn_kelola_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kelola_adminActionPerformed
-        // TODO add your handling code here:
+        System.out.println("test");
+        
+        
         this.setVisible(false);
         new kelola_admin().setVisible(true);
     }//GEN-LAST:event_btn_kelola_adminActionPerformed
@@ -140,8 +128,7 @@ public class owner extends javax.swing.JFrame {
     private javax.swing.JButton btn_kelola_admin;
     private javax.swing.JButton btn_laporan;
     private javax.swing.JButton btn_logout;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel owner;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
 }

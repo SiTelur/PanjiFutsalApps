@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="220" pageHeight="365" columnWidth="220" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="00139d20-9026-461d-b567-94f0db3d4fbb">
 	<property name="ireport.zoom" value="1.771561000000001"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="77"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="kodeBooking" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -192,8 +192,8 @@ Email   : info@futsalpanji.com]]></text>
 				<textFieldExpression><![CDATA[$F{transaksilapangan_tarif}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="0" y="1" width="58" height="45" uuid="8197d210-97d1-4051-9a0b-c22218551360"/>
-				<imageExpression><![CDATA["D:\\Desain_Futsal\\download-removebg-preview 1.jpg"]]></imageExpression>
+				<reportElement x="0" y="-3" width="68" height="69" uuid="03d5dee2-ca90-4790-aaf9-2dfd9ad4f881"/>
+				<imageExpression><![CDATA["D:\\Development\\PanjiFutsalApps\\src\\img\\Logo.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>

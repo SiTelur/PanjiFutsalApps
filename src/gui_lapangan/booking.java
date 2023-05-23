@@ -55,7 +55,7 @@ public class booking extends javax.swing.JFrame {
     }
     
     private void tampil(){
-        con.tampil(jTable1, "SELECT `id_lapangan`, `nama_lapangan`, `deskripsi`, `harga_lapangan` FROM `lapangan`");
+        con.tampil(jTable2, "SELECT `id_lapangan`, `nama_lapangan`, `deskripsi`, `harga_lapangan` FROM `lapangan`");
     }
     
     
@@ -94,8 +94,6 @@ public class booking extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jamSelesai = new javax.swing.JSpinner();
         jamMulai = new javax.swing.JSpinner();
         txt_jam_mulai = new javax.swing.JTextField();
@@ -106,35 +104,16 @@ public class booking extends javax.swing.JFrame {
         txt_telpon = new javax.swing.JTextField();
         txt_total_bayar = new javax.swing.JTextField();
         tgl_main = new com.toedter.calendar.JDateChooser();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         booking = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
         btn_proses = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTable1.setPreferredSize(new java.awt.Dimension(310, 69));
-        jTable1.setRowHeight(20);
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 165, 280, 240));
 
         jamSelesai.setModel(new javax.swing.SpinnerListModel(new String[] {"05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"}));
         jamSelesai.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -229,6 +208,26 @@ public class booking extends javax.swing.JFrame {
         });
         getContentPane().add(tgl_main, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 210, 150, -1));
 
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTable2);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 270, 230));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Vector.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
@@ -265,14 +264,6 @@ public class booking extends javax.swing.JFrame {
     private void tgl_mainAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tgl_mainAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_tgl_mainAncestorAdded
-
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        x = jTable1.getSelectedRow();
-        
-        id_lapangan = jTable1.getValueAt(x, 0).toString();
-        txt_harga_lapangan.setText(jTable1.getValueAt(x, 3).toString());
-        hargaLapangan = Integer.parseInt(jTable1.getValueAt(x, 3).toString());
-    }//GEN-LAST:event_jTable1MouseClicked
 
     private String dateNow(){
          LocalDate currentDate = LocalDate.now();
@@ -311,7 +302,7 @@ public class booking extends javax.swing.JFrame {
         }
         //batasss
         try {
-                String report = ("D:\\Panji\\PanjiFutsalApps\\src\\notadanlaporan\\cetakStrukBooking.jrxml");
+                String report = con.currentDirectory + "\\src\\notadanlaporan\\cetakStrukBooking.jrxml";
                  HashMap hash = new HashMap();
                 //Mengambil parameter dari ireport
                 hash.put("kodeBooking", idBooking);
@@ -401,7 +392,7 @@ public class booking extends javax.swing.JFrame {
             txt_harga_lapangan.setText(String.valueOf(hargaSetelahJam5));
         } else {
             System.out.println("Saat ini belum lebih dari jam 17.00");
-            txt_harga_lapangan.setText(jTable1.getValueAt(x, 3).toString());
+            txt_harga_lapangan.setText(jTable2.getValueAt(x, 3).toString());
         }
     }//GEN-LAST:event_jamMulaiStateChanged
 
@@ -423,6 +414,14 @@ public class booking extends javax.swing.JFrame {
     private void txt_harga_lapanganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_harga_lapanganActionPerformed
         
     }//GEN-LAST:event_txt_harga_lapanganActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        x = jTable2.getSelectedRow();
+        
+        id_lapangan = jTable2.getValueAt(x, 0).toString();
+        txt_harga_lapangan.setText(jTable2.getValueAt(x, 3).toString());
+        hargaLapangan = Integer.parseInt(jTable2.getValueAt(x, 3).toString());
+    }//GEN-LAST:event_jTable2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -467,8 +466,8 @@ public class booking extends javax.swing.JFrame {
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_proses;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable2;
     private javax.swing.JSpinner jamMulai;
     private javax.swing.JSpinner jamSelesai;
     private com.toedter.calendar.JDateChooser tgl_main;
