@@ -88,11 +88,11 @@ FROM
 				<text><![CDATA[Kurun Waktu :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="419" y="125" width="54" height="35" uuid="4085dc76-7ada-4c51-a6ac-95d5fc60ea63"/>
+				<reportElement x="161" y="126" width="9" height="35" uuid="4085dc76-7ada-4c51-a6ac-95d5fc60ea63"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="false" isItalic="false"/>
 				</textElement>
-				<text><![CDATA[Sampai :]]></text>
+				<text><![CDATA[-]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="86" y="126" width="75" height="35" uuid="0f4a160a-70cd-4d5d-a305-81281d19c3a8"/>
@@ -102,7 +102,7 @@ FROM
 				<textFieldExpression><![CDATA[$P{tampilanTanggalAwal}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="476" y="125" width="73" height="35" uuid="02a353b1-f2dc-4dcf-a39e-913ff57673e2"/>
+				<reportElement x="168" y="126" width="73" height="35" uuid="02a353b1-f2dc-4dcf-a39e-913ff57673e2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>

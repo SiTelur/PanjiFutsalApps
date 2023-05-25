@@ -70,19 +70,20 @@ Email   : info@futsalpanji.com]]></text>
 				<text><![CDATA[ LAPANGAN FUTSAL PANJI]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="-1" y="117" width="72" height="20" uuid="bd051bed-22d7-47c3-b336-6320c40372b5"/>
-				<text><![CDATA[Tanggal Awal :]]></text>
+				<reportElement x="-1" y="117" width="39" height="20" uuid="bd051bed-22d7-47c3-b336-6320c40372b5"/>
+				<text><![CDATA[Tanggal:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="406" y="117" width="73" height="20" uuid="9f5a10ed-b46a-4fa5-855e-df657161822b"/>
-				<text><![CDATA[Tanggal Akhir :]]></text>
+				<reportElement x="113" y="117" width="8" height="20" uuid="9f5a10ed-b46a-4fa5-855e-df657161822b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[-]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="479" y="117" width="100" height="20" uuid="a2cab2d8-fb71-4139-8a80-6b796f973348"/>
+				<reportElement x="121" y="117" width="75" height="20" uuid="a2cab2d8-fb71-4139-8a80-6b796f973348"/>
 				<textFieldExpression><![CDATA[$P{tanggalAkhir}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="71" y="117" width="100" height="20" uuid="caadc24d-b354-431b-9e12-fc5efa0e7dfb"/>
+				<reportElement x="39" y="117" width="74" height="20" uuid="caadc24d-b354-431b-9e12-fc5efa0e7dfb"/>
 				<textFieldExpression><![CDATA[$P{tanggalAwal}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -164,11 +165,11 @@ Email   : info@futsalpanji.com]]></text>
 	<columnFooter>
 		<band height="45" splitType="Stretch">
 			<textField>
-				<reportElement x="466" y="25" width="100" height="20" uuid="f0a02863-26b5-49af-8091-3bcab5240eae"/>
+				<reportElement x="77" y="25" width="73" height="20" uuid="f0a02863-26b5-49af-8091-3bcab5240eae"/>
 				<textFieldExpression><![CDATA[$V{makanan_harga_1}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="366" y="25" width="100" height="20" uuid="f60482c2-75ae-4678-87e6-088aad9a0b3c"/>
+				<reportElement x="0" y="25" width="79" height="20" uuid="f60482c2-75ae-4678-87e6-088aad9a0b3c"/>
 				<text><![CDATA[Total Transaksi:]]></text>
 			</staticText>
 		</band>
