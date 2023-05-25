@@ -21,6 +21,7 @@ public class kelola_admin extends javax.swing.JFrame {
     
     private void tampil(){
         con.tampil(jTable1, "SELECT * FROM admin");
+        
     }
     
     private void kondisiTextBox(boolean kondisi){
@@ -85,17 +86,18 @@ public class kelola_admin extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+
+        jTable1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
+        jTable1.setAutoResizeMode(0);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -228,31 +230,6 @@ public class kelola_admin extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_btn_createActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-      int id = jTable1.getSelectedRow();
-      idInTable = id;
-      
-      id_admin = jTable1.getValueAt(id,0).toString();
-      txt_username.setText(jTable1.getValueAt(id, 1).toString());
-      txt_nama_admin.setText(jTable1.getValueAt(id, 2).toString());
-      txt_password.setText(jTable1.getValueAt(id,3).toString());
-      String jenisPekerjaan = jTable1.getValueAt(id, 4).toString();
-      txtRFID.setText(jTable1.getValueAt(id,5).toString());
-      switch (jenisPekerjaan){
-          case "Admin":
-              jComboBox1.setSelectedIndex(0);
-              break;
-          case "Owner":
-              jComboBox1.setSelectedIndex(1);
-      }
-        kondisiTextBox(true);
-        switch (isUpdateAndisDelete){
-            case 0:
-                isUpdateAndisDelete += 1;
-                
-        }
-    }//GEN-LAST:event_jTable1MouseClicked
-
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
        
         if (isCreate != 0) {
@@ -336,6 +313,31 @@ public class kelola_admin extends javax.swing.JFrame {
 //            con.Eksekusi("UPDATE `admin` SET `nama_admin`='"+ txt_nama_admin.getText() +"',`username`='"+ txt_username.getText() +"',`password`='"+ txt_password.getText() +"', `RFID` = '"+ txtRFID.getText() +"' WHERE `id_admin` LIKE '"+ id_admin +"'", "Berhasil Mengubah Data", 1);
 //        }
     }//GEN-LAST:event_btn_updateActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int id = jTable1.getSelectedRow();
+        idInTable = id;
+
+        id_admin = jTable1.getValueAt(id,0).toString();
+        txt_username.setText(jTable1.getValueAt(id, 1).toString());
+        txt_nama_admin.setText(jTable1.getValueAt(id, 2).toString());
+        txt_password.setText(jTable1.getValueAt(id,3).toString());
+        String jenisPekerjaan = jTable1.getValueAt(id, 4).toString();
+        txtRFID.setText(jTable1.getValueAt(id,5).toString());
+        switch (jenisPekerjaan){
+            case "Admin":
+            jComboBox1.setSelectedIndex(0);
+            break;
+            case "Owner":
+            jComboBox1.setSelectedIndex(1);
+        }
+        kondisiTextBox(true);
+        switch (isUpdateAndisDelete){
+            case 0:
+            isUpdateAndisDelete += 1;
+
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

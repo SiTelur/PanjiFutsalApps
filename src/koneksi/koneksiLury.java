@@ -5,6 +5,7 @@
  */
 package koneksi;
 import com.toedter.calendar.JDateChooser;
+import java.awt.Component;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,6 +22,9 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 import net.proteanit.sql.DbUtils;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -114,6 +118,7 @@ public class koneksiLury {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
+        resizeColumnWidth(table);
     }
     
 
@@ -324,4 +329,19 @@ public class koneksiLury {
         String formattedDate = sdf.format(date);
         return formattedDate;
     }
+       
+       public void resizeColumnWidth(JTable table) {
+    final TableColumnModel columnModel = table.getColumnModel();
+    for (int column = 0; column < table.getColumnCount(); column++) {
+        int width = 15; // Min width
+        for (int row = 0; row < table.getRowCount(); row++) {
+            TableCellRenderer renderer = table.getCellRenderer(row, column);
+            Component comp = table.prepareRenderer(renderer, row, column);
+            width = Math.max(comp.getPreferredSize().width +1 , width);
+        }
+        if(width > 300)
+            width=300;
+        columnModel.getColumn(column).setPreferredWidth(width);
+    }
+}
 }

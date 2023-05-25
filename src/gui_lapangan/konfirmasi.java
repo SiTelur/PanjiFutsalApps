@@ -5,8 +5,12 @@
  */
 package gui_lapangan;
 
+import java.awt.Component;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 import koneksi.koneksiLury;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -24,8 +28,11 @@ koneksiLury con = new koneksiLury();
     
     String id;
     private void tampil(){
-        con.tampil(jTable1,"SELECT * FROM transaksilapangan");
+        con.tampil(jTable1,"SELECT * FROM transaksilapangan WHERE status = 'Booking' OR status = 'Lunas'");
+        
     }
+    
+    
     
     private void kondisiAwal(){
         txtKodeBooking.setText("");
@@ -80,6 +87,7 @@ koneksiLury con = new koneksiLury();
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setAutoResizeMode(0);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -95,8 +103,13 @@ koneksiLury con = new koneksiLury();
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 740, 150));
 
         cmbStatus.setBackground(new java.awt.Color(60, 128, 128));
-        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunas", "Booking", "Dibatalkan" }));
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih", " " }));
         cmbStatus.setBorder(null);
+        cmbStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbStatusActionPerformed(evt);
+            }
+        });
         getContentPane().add(cmbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(436, 370, 150, -1));
 
         txtKodeBooking.setEditable(false);
@@ -218,13 +231,15 @@ koneksiLury con = new koneksiLury();
         
         switch (status){
             case "Lunas":
-                cmbStatus.setSelectedIndex(0);
+                cmbStatus.removeAllItems();
+                cmbStatus.addItem("Pilih");
+                cmbStatus.addItem("Dibatalkan");
                 break;
             case "Booking":
-                cmbStatus.setSelectedIndex(1);
-                break;
-            case "Dibatalkan":
-                 cmbStatus.setSelectedIndex(2);
+                cmbStatus.removeAllItems();
+                cmbStatus.addItem("Pilih");
+                cmbStatus.addItem("Dibatalkan");
+                cmbStatus.addItem("Lunas");
                 break;
         }
         
@@ -236,6 +251,10 @@ koneksiLury con = new koneksiLury();
         // TODO add your handling code here:
          
     }//GEN-LAST:event_jLabel2AncestorAdded
+
+    private void cmbStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbStatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbStatusActionPerformed
 
     /**
      * @param args the command line arguments

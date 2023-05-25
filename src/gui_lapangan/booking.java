@@ -5,14 +5,23 @@
  */
 package gui_lapangan;
 
+import java.awt.HeadlessException;
 import static java.awt.SystemColor.text;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import koneksi.Connect;
 import koneksi.koneksiLury;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -52,6 +61,24 @@ public class booking extends javax.swing.JFrame {
             //return hargaAkhir;
         }
         return hargaAkhir;
+    }
+    
+    private static boolean checkLapangan(String tanggal, String jamAwal,String jamSelesai){
+        boolean checkLapangan = false;
+        try{
+            Connection con = Connect.koneksi();
+            String sql = "SELECT * FROM transaksilapangan WHERE tanggalMain = '"+ tanggal +"' AND jamMulai >= '"+ jamAwal +"' AND jamSelesai <= '"+ jamSelesai +"' AND id_lapangan = '"+ id_lapangan+"'";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            checkLapangan = rs.next();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(loginUsername.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex);
+            
+        }
+        return checkLapangan;
     }
     
     private void tampil(){
@@ -294,33 +321,37 @@ public class booking extends javax.swing.JFrame {
             }
             String sql = "INSERT INTO `transaksilapangan` (`kode_booking`, `id_lapangan`, `nama`, `nomerTelpon`, `tanggalBooking`, `tanggalMain`, `jamMulai`, `jamSelesai`, `tarif`, `dp`, `status`)"
                     + " VALUES ('"+ idBooking +"', '"+ id_lapangan +"', '"+ txt_nama.getText() +"', '"+ txt_telpon.getText() +"', current_timestamp(), '"+ tanggalJDateCalender +"', '"+ jamMulai.getValue().toString() +"', '"+ jamSelesai.getValue().toString() +"', '"+ txt_harga_lapangan.getText() +"', '"+ txt_dp.getText() +"', '"+ statusTransaksi +"')";
-            con.Eksekusi(sql,"Berhasil", 1);
+            if (checkLapangan(tanggalJDateCalender, jamPertama, jamKedua)){
+                
+                JOptionPane.showMessageDialog(rootPane, "Lapangan Telah dibooking");
+            }else{
+                System.out.println("Ada");
+            }
+            
+            //con.Eksekusi(sql,"Berhasil", 1);
         }  else if (time1.equals(time2)) {
             System.out.println("Nilai jam ke-1 sama jam ke-2");
         } else{
             System.out.println("Nilai jam ke-1 lebih besar dari jam ke-2");
         }
         //batasss
-        try {
-                String report = con.currentDirectory + "\\src\\notadanlaporan\\cetakStrukBooking.jrxml";
-                 HashMap hash = new HashMap();
-                //Mengambil parameter dari ireport
-                hash.put("kodeBooking", idBooking);
-//                hash.put("kode_boking", idBooking);                
-//                hash.put("tanggalKedua", textField.getText());
-     
-                JasperReport JRpt = JasperCompileManager.compileReport(report);
-                JasperPrint JPrint = JasperFillManager.fillReport(JRpt, hash, con.getConnection());
-                JasperViewer.viewReport(JPrint, false);
-            } catch (JRException rptexcpt) {
-                System.out.println("Program tidak bisa karena : " + rptexcpt);
-            }
-        } catch (Exception e) {
+//        try {
+//                String report = con.currentDirectory + "\\src\\notadanlaporan\\cetakStrukBooking.jrxml";
+//                 HashMap hash = new HashMap();
+//                //Mengambil parameter dari ireport
+//                hash.put("kodeBooking", idBooking);
+//
+//     
+//                JasperReport JRpt = JasperCompileManager.compileReport(report);
+//                JasperPrint JPrint = JasperFillManager.fillReport(JRpt, hash, con.getConnection());
+//                JasperViewer.viewReport(JPrint, false);
+//            } catch (JRException rptexcpt) {
+//                System.out.println("Program tidak bisa karena : " + rptexcpt);
+//            }
+        } catch (HeadlessException e) {
+            JOptionPane.showConfirmDialog(rootPane, "Gagal Menampilkan Report " + e.getMessage());
         }
-//        batas ini
-       
-//       con.strukBooking(idBooking);
-        
+           
     }//GEN-LAST:event_btn_prosesActionPerformed
 
     private void jamMulaiComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jamMulaiComponentHidden

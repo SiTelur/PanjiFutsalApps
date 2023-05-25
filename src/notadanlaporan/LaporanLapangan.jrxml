@@ -34,8 +34,8 @@
      transaksilapangan.`kode_booking` AS transaksilapangan_kode_booking,
      transaksilapangan.`nama` AS transaksilapangan_nama,
      transaksilapangan.`nomerTelpon` AS transaksilapangan_nomerTelpon,
-     transaksilapangan.`tanggalBooking` AS transaksilapangan_tanggalBooking,
-     transaksilapangan.`tanggalMain` AS transaksilapangan_tanggalMain,
+      DATE_FORMAT(transaksilapangan.`tanggalBooking`, '%d %M %Y %H:%i') AS transaksilapangan_tanggalBooking,
+transaksilapangan.`tanggalMain` AS transaksilapangan_tanggalMain,
      transaksilapangan.`jamMulai` AS transaksilapangan_jamMulai,
      transaksilapangan.`jamSelesai` AS transaksilapangan_jamSelesai,
      transaksilapangan.`tarif` AS transaksilapangan_tarif,
@@ -48,7 +48,7 @@ FROM
 	<field name="transaksilapangan_kode_booking" class="java.lang.String"/>
 	<field name="transaksilapangan_nama" class="java.lang.String"/>
 	<field name="transaksilapangan_nomerTelpon" class="java.lang.String"/>
-	<field name="transaksilapangan_tanggalBooking" class="java.sql.Timestamp"/>
+	<field name="transaksilapangan_tanggalBooking" class="java.lang.String"/>
 	<field name="transaksilapangan_tanggalMain" class="java.sql.Date"/>
 	<field name="transaksilapangan_jamMulai" class="java.sql.Time"/>
 	<field name="transaksilapangan_jamSelesai" class="java.sql.Time"/>

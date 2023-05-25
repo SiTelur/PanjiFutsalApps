@@ -45,10 +45,10 @@ public class laporan_makanan extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(tanggalKedua, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 230, 190, 30));
-        getContentPane().add(tanggalPertama, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 190, 30));
+        getContentPane().add(tanggalKedua, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 270, 30));
+        getContentPane().add(tanggalPertama, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 270, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/laporan_makanan.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/finalLaporanMakanan.png"))); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(847, 549));
         jLabel1.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
