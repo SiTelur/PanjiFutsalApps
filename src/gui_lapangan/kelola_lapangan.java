@@ -112,6 +112,7 @@ public class kelola_lapangan extends javax.swing.JFrame {
         });
         getContentPane().add(txt_deskripsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, 260, 30));
 
+        jTable1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -123,6 +124,7 @@ public class kelola_lapangan extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setAutoResizeMode(0);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);

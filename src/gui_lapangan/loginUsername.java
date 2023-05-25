@@ -105,11 +105,13 @@ public class loginUsername extends javax.swing.JFrame {
                 }
             }else{
                 JOptionPane.showMessageDialog(this, "Masukkan data dengan benar!");
+                throw new Error("Data Tidak Ada atau Salah");
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(loginUsername.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex);
+           
             
         }
     }//GEN-LAST:event_btn_loginActionPerformed

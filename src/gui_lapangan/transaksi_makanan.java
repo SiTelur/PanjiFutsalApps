@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -262,6 +263,7 @@ return totalSubtotal;
         namaMakanan = id_makanan_sebelum_displit[1];
         System.out.println(idMakanan);
         System.out.println(namaMakanan);
+        int maxStok = 0;
         
          try{
             Connection con = Connect.koneksi();
@@ -271,6 +273,7 @@ return totalSubtotal;
             
              while (rs.next()) {                 
                  txtHarga.setText(rs.getString("harga"));
+                 maxStok = rs.getInt("stok");
              }
 
         } catch (SQLException ex) {
@@ -278,6 +281,11 @@ return totalSubtotal;
             JOptionPane.showMessageDialog(null, ex);
             
         }
+         
+         SpinnerNumberModel spinnerModel = (SpinnerNumberModel) jSpinner1.getModel();
+         spinnerModel.setValue(0);
+spinnerModel.setMaximum(maxStok);
+         
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void btn_prosesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prosesActionPerformed
