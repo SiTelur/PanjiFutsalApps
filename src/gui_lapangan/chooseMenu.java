@@ -69,6 +69,7 @@ public class chooseMenu extends javax.swing.JFrame {
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 50));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_kelola_makananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kelola_makananActionPerformed

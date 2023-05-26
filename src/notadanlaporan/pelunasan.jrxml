@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="220" pageHeight="360" columnWidth="220" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="00139d20-9026-461d-b567-94f0db3d4fbb">
 	<property name="ireport.zoom" value="1.9487171000000019"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="139"/>
+	<property name="ireport.y" value="118"/>
 	<parameter name="kodeBooking" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -172,12 +172,11 @@ Email   : info@futsalpanji.com]]></text>
 				<textFieldExpression><![CDATA[$F{transaksilapangan_tarif}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="3" y="255" width="215" height="32" uuid="0c3a59a0-e1a5-4268-a38a-9b28447e7700"/>
+				<reportElement x="5" y="267" width="215" height="32" uuid="0c3a59a0-e1a5-4268-a38a-9b28447e7700"/>
 				<textElement textAlignment="Justified" verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>
-				<text><![CDATA[Catatan:
-- Pembayaran sudah termasuk biaya penyewaan lapangan, bola,dan penerangan]]></text>
+				<text><![CDATA[Pembayaran sudah termasuk biaya penyewaan lapangan,bola,dan penerangan]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="5" y="211" width="90" height="20" uuid="e8f58153-5637-44d2-b5af-43e72fdfdf98"/>
@@ -214,12 +213,32 @@ Email   : info@futsalpanji.com]]></text>
 				<textFieldExpression><![CDATA[$F{sisa_bayar}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="2" y="287" width="220" height="22" uuid="862135dc-7e75-487c-a381-ad5018ebe009"/>
+				<reportElement x="5" y="289" width="220" height="22" uuid="862135dc-7e75-487c-a381-ad5018ebe009"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<text><![CDATA[- Pembatalan sewa minimal 1 hari sebelum jadwal main untuk 
-  pengembalian uang muka]]></text>
+				<text><![CDATA[Pembatalan sewa minimal 1 hari sebelum jadwal main untuk pengembalian uang muka]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="255" width="38" height="20" uuid="2835db46-5821-4546-a3eb-9a869b21f736"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Catatan:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="267" width="8" height="20" uuid="799e8f09-fad8-4920-958a-3e4a8d73b201"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="287" width="6" height="13" uuid="2bdfd63b-3453-4660-b11b-43587f83b194"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
 			</staticText>
 		</band>
 	</title>

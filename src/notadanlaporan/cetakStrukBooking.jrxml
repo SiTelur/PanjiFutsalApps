@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="220" pageHeight="365" columnWidth="220" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="00139d20-9026-461d-b567-94f0db3d4fbb">
 	<property name="ireport.zoom" value="1.771561000000001"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="78"/>
+	<property name="ireport.y" value="56"/>
 	<parameter name="kodeBooking" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -58,13 +58,11 @@ WHERE
 				<textFieldExpression><![CDATA[new SimpleDateFormat("HH:mm").format($F{transaksilapangan_jamSelesai})]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="252" width="218" height="32" uuid="0c3a59a0-e1a5-4268-a38a-9b28447e7700"/>
+				<reportElement x="8" y="271" width="218" height="32" uuid="0c3a59a0-e1a5-4268-a38a-9b28447e7700"/>
 				<textElement verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>
-				<text><![CDATA[Catatan:
-- Pembayaran sudah termasuk biaya penyewaan lapangan, bola,dan penerangan
-
+				<text><![CDATA[Pembayaran sudah termasuk biaya penyewaan lapangan, bola,dan penerangan
 ]]></text>
 			</staticText>
 			<staticText>
@@ -194,11 +192,32 @@ Email   : info@futsalpanji.com]]></text>
 				<imageExpression><![CDATA["D:\\Development\\PanjiFutsalApps\\src\\img\\Logo.png"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="0" y="284" width="216" height="43" uuid="d2b0fdba-1df6-40ce-834f-9f3bb91b96c4"/>
+				<reportElement x="7" y="292" width="216" height="25" uuid="d2b0fdba-1df6-40ce-834f-9f3bb91b96c4"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<text><![CDATA[- Pembatalan sewa minimal 1 hari sebelum jadwal main untuk pengembalian uang muka]]></text>
+				<text><![CDATA[Pembatalan sewa minimal 1 hari sebelum jadwal main untuk pengembalian uang muka]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="252" width="100" height="20" uuid="4872b5cd-d9a1-427a-9098-f8b7860e78c1"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Catatan:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="271" width="9" height="20" uuid="498fad2d-c34b-43bc-a6f9-9eef48cd6ed5"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-2" y="291" width="11" height="20" uuid="7bd297db-9c91-4a6b-bbc6-4a64bf7cc590"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
 			</staticText>
 		</band>
 	</title>

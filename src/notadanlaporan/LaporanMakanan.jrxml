@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e04c6f5e-5679-4e74-9139-c8fe1d2d65cf">
 	<property name="ireport.zoom" value="1.6105100000000014"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="162"/>
+	<property name="ireport.x" value="68"/>
+	<property name="ireport.y" value="260"/>
 	<parameter name="tanggalAkhir" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -16,7 +16,7 @@
      makanan.`harga` AS makanan_harga,
      transaksimakanan.`nonota` AS transaksimakanan_nonota,
      transaksimakanan.`totalHarga` AS transaksimakanan_totalHarga,
-     transaksimakanan.`tanggalTransaksiMakanan` AS transaksimakanan_tanggalTransaksiMakanan
+     DATE_FORMAT(transaksimakanan.`tanggalTransaksiMakanan`, '%d %M %Y %H:%i')  AS transaksimakanan_tanggalTransaksiMakanan
 FROM
      `makanan` makanan INNER JOIN `detailtransaksimakanan` detailtransaksimakanan ON makanan.`id_fooddrink` = detailtransaksimakanan.`id_fd`
      INNER JOIN `transaksimakanan` transaksimakanan ON detailtransaksimakanan.`nonota` = transaksimakanan.`nonota`
@@ -29,7 +29,7 @@ WHERE transaksimakanan.`tanggalTransaksiMakanan` BETWEEN $P{tanggalAwal} AND $P{
 	<field name="makanan_harga" class="java.lang.Integer"/>
 	<field name="transaksimakanan_nonota" class="java.lang.String"/>
 	<field name="transaksimakanan_totalHarga" class="java.lang.Integer"/>
-	<field name="transaksimakanan_tanggalTransaksiMakanan" class="java.sql.Timestamp"/>
+	<field name="transaksimakanan_tanggalTransaksiMakanan" class="java.lang.String"/>
 	<variable name="makanan_harga_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
 		<variableExpression><![CDATA[$F{makanan_harga}]]></variableExpression>
 	</variable>
@@ -74,16 +74,16 @@ Email   : info@futsalpanji.com]]></text>
 				<text><![CDATA[Tanggal:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="113" y="117" width="8" height="20" uuid="9f5a10ed-b46a-4fa5-855e-df657161822b"/>
+				<reportElement x="95" y="117" width="8" height="20" uuid="9f5a10ed-b46a-4fa5-855e-df657161822b"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="121" y="117" width="75" height="20" uuid="a2cab2d8-fb71-4139-8a80-6b796f973348"/>
+				<reportElement x="106" y="117" width="75" height="20" uuid="a2cab2d8-fb71-4139-8a80-6b796f973348"/>
 				<textFieldExpression><![CDATA[$P{tanggalAkhir}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="39" y="117" width="74" height="20" uuid="caadc24d-b354-431b-9e12-fc5efa0e7dfb"/>
+				<reportElement x="39" y="117" width="57" height="20" uuid="caadc24d-b354-431b-9e12-fc5efa0e7dfb"/>
 				<textFieldExpression><![CDATA[$P{tanggalAwal}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -165,11 +165,11 @@ Email   : info@futsalpanji.com]]></text>
 	<columnFooter>
 		<band height="45" splitType="Stretch">
 			<textField>
-				<reportElement x="77" y="25" width="73" height="20" uuid="f0a02863-26b5-49af-8091-3bcab5240eae"/>
+				<reportElement x="479" y="25" width="73" height="20" uuid="f0a02863-26b5-49af-8091-3bcab5240eae"/>
 				<textFieldExpression><![CDATA[$V{makanan_harga_1}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="25" width="79" height="20" uuid="f60482c2-75ae-4678-87e6-088aad9a0b3c"/>
+				<reportElement x="402" y="25" width="79" height="20" uuid="f60482c2-75ae-4678-87e6-088aad9a0b3c"/>
 				<text><![CDATA[Total Transaksi:]]></text>
 			</staticText>
 		</band>
