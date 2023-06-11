@@ -2,10 +2,11 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="220" pageHeight="365" columnWidth="220" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="00139d20-9026-461d-b567-94f0db3d4fbb">
 	<property name="ireport.zoom" value="1.771561000000001"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="56"/>
+	<property name="ireport.y" value="170"/>
 	<parameter name="kodeBooking" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="localPath" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      transaksilapangan.`kode_booking` AS transaksilapangan_kode_booking,
@@ -45,6 +46,10 @@ WHERE
 	</background>
 	<title>
 		<band height="358" splitType="Stretch">
+			<image>
+				<reportElement x="28" y="124" width="188" height="141" uuid="5d30df8f-f2ac-4225-b9db-63dbf2804297"/>
+				<imageExpression><![CDATA[$P{localPath} + "\\src\\img\\logoBurem.jpg"]]></imageExpression>
+			</image>
 			<staticText>
 				<reportElement x="23" y="-3" width="209" height="56" uuid="558566f7-6a05-46f8-bb2b-a427522c033d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -189,7 +194,7 @@ Email   : info@futsalpanji.com]]></text>
 			</textField>
 			<image>
 				<reportElement x="0" y="-3" width="62" height="69" uuid="03d5dee2-ca90-4790-aaf9-2dfd9ad4f881"/>
-				<imageExpression><![CDATA["D:\\Development\\PanjiFutsalApps\\src\\img\\Logo.png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{localPath} + "\\src\\img\\Logo.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="7" y="292" width="216" height="25" uuid="d2b0fdba-1df6-40ce-834f-9f3bb91b96c4"/>

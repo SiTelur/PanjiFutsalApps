@@ -72,7 +72,7 @@ public class owner extends javax.swing.JFrame {
     private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new loginUsername().setVisible(true);
+        new chooseLogin().setVisible(true);
     }//GEN-LAST:event_btn_logoutActionPerformed
 
     private void btn_kelola_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kelola_adminActionPerformed

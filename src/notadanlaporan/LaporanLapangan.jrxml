@@ -29,6 +29,7 @@
 	</parameter>
 	<parameter name="tampilanTanggalAwal" class="java.lang.String"/>
 	<parameter name="tampilanTanggalAkhir" class="java.lang.String"/>
+	<parameter name="localPath" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      transaksilapangan.`kode_booking` AS transaksilapangan_kode_booking,
@@ -74,7 +75,7 @@ FROM
 			</staticText>
 			<image>
 				<reportElement x="0" y="0" width="89" height="79" uuid="47f5b8af-e101-4c86-8a4d-9bdd6299b5b6"/>
-				<imageExpression><![CDATA["D:\\Development\\PanjiFutsalApps\\src\\img\\Logo.png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{localPath} + "\\src\\img\\Logo.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>

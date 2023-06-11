@@ -37,8 +37,8 @@ public class laporan_lapangan extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tanggalKedua = new com.toedter.calendar.JDateChooser();
-        tanggalPertama = new com.toedter.calendar.JDateChooser();
+        tanggalAwal = new com.toedter.calendar.JDateChooser();
+        tanggalAkhir = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
         btn_proses = new javax.swing.JButton();
@@ -46,8 +46,8 @@ public class laporan_lapangan extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(tanggalKedua, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 280, 30));
-        getContentPane().add(tanggalPertama, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 280, 30));
+        getContentPane().add(tanggalAwal, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 280, 30));
+        getContentPane().add(tanggalAkhir, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 280, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/finalLaporanLapangan.png"))); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(847, 549));
@@ -89,11 +89,11 @@ public class laporan_lapangan extends javax.swing.JFrame {
 
     private void btn_prosesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prosesActionPerformed
         // TODO add your handling code here:  
-        String tanggal1 = con.formatTanggal(tanggalPertama,"yyyy-MM-dd");
-        String tanggal2 = con.formatTanggal(tanggalKedua,"yyyy-MM-dd");
+        String tanggal1 = con.formatTanggal(tanggalAwal,"yyyy-MM-dd");
+        String tanggal2 = con.formatTanggal(tanggalAkhir,"yyyy-MM-dd");
 //        buat ganti format tanggal berikutnya 
-        String tanggaltampil1 = con.formatTanggal(tanggalPertama,"dd MMMM yyyy");
-        String tanggaltampil2 = con.formatTanggal(tanggalKedua,"dd MMMM yyyy");
+        String tanggaltampil1 = con.formatTanggal(tanggalAwal,"dd MMMM yyyy");
+        String tanggaltampil2 = con.formatTanggal(tanggalAkhir,"dd MMMM yyyy");
 //        ini buat ngambil variable tanggal dan tanggal_tampil
 
 
@@ -102,14 +102,16 @@ public class laporan_lapangan extends javax.swing.JFrame {
         // Misalkan tanggal pertama dan tanggal kedua dalam string
 
 
-        LocalDate tanggalPertama = LocalDate.parse( tanggal1);
-        LocalDate tanggalKedua = LocalDate.parse( tanggal2);
+        LocalDate tanggalPertama1 = LocalDate.parse( tanggal1);
+        LocalDate tanggalKedua1 = LocalDate.parse( tanggal2);
         
         // Memeriksa apakah tanggal pertama melebihi tanggal kedua
-        if (tanggalPertama.isAfter(tanggalKedua)) {
-            System.out.println("Tanggal pertama melebihi tanggal kedua.");
+        if (tanggalPertama1.isAfter(tanggalKedua1)) {
+          System.out.println("Tanggal pertama melebihi tanggal kedua.");
+          
         } else {
-           con.laporanLapangan(tanggal1, tanggal2, tanggaltampil1, tanggaltampil2);
+             
+               con.laporanLapangan(tanggal1, tanggal2, tanggaltampil1, tanggaltampil2);
         }
 
         
@@ -168,7 +170,7 @@ public class laporan_lapangan extends javax.swing.JFrame {
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_proses;
     private javax.swing.JLabel jLabel1;
-    private com.toedter.calendar.JDateChooser tanggalKedua;
-    private com.toedter.calendar.JDateChooser tanggalPertama;
+    private com.toedter.calendar.JDateChooser tanggalAkhir;
+    private com.toedter.calendar.JDateChooser tanggalAwal;
     // End of variables declaration//GEN-END:variables
 }

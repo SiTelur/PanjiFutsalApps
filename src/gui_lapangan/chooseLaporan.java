@@ -15,6 +15,7 @@ public class chooseLaporan extends javax.swing.JFrame {
     /** Creates new form chooseLaporan */
     public chooseLaporan() {
         initComponents();
+                setLocationRelativeTo(this);
     }
 
     /** This method is called from within the constructor to

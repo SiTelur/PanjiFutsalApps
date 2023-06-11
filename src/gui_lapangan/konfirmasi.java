@@ -199,6 +199,7 @@ koneksiLury con = new koneksiLury();
                  HashMap hash = new HashMap();
                 //Mengambil parameter dari ireport
                 hash.put("kodeBooking", txtKodeBooking.getText());
+                hash.put("localPath", con.currentDirectory);
 //                hash.put("kode_boking", idBooking);                
 //                hash.put("tanggalKedua", textField.getText());
      

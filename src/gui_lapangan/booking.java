@@ -328,30 +328,31 @@ public class booking extends javax.swing.JFrame {
                 System.out.println("Ada");
             }
             
-            //con.Eksekusi(sql,"Berhasil", 1);
+            con.Eksekusi(sql,"Berhasil", 1);
         }  else if (time1.equals(time2)) {
             System.out.println("Nilai jam ke-1 sama jam ke-2");
         } else{
             System.out.println("Nilai jam ke-1 lebih besar dari jam ke-2");
         }
-        //batasss
-//        try {
-//                String report = con.currentDirectory + "\\src\\notadanlaporan\\cetakStrukBooking.jrxml";
-//                 HashMap hash = new HashMap();
-//                //Mengambil parameter dari ireport
-//                hash.put("kodeBooking", idBooking);
-//
-//     
-//                JasperReport JRpt = JasperCompileManager.compileReport(report);
-//                JasperPrint JPrint = JasperFillManager.fillReport(JRpt, hash, con.getConnection());
-//                JasperViewer.viewReport(JPrint, false);
-//            } catch (JRException rptexcpt) {
-//                System.out.println("Program tidak bisa karena : " + rptexcpt);
-//            }
+//        batasss
+        try {
+                String report = con.currentDirectory + "\\src\\notadanlaporan\\cetakStrukBooking.jrxml";
+                 HashMap hash = new HashMap();
+                //Mengambil parameter dari ireport
+                hash.put("kodeBooking", idBooking);
+                hash.put("localPath", con.currentDirectory);
+
+     
+                JasperReport JRpt = JasperCompileManager.compileReport(report);
+                JasperPrint JPrint = JasperFillManager.fillReport(JRpt, hash, con.getConnection());
+                JasperViewer.viewReport(JPrint, false);
+            } catch (JRException rptexcpt) {
+                System.out.println("Program tidak bisa karena : " + rptexcpt);
+            }
         } catch (HeadlessException e) {
             JOptionPane.showConfirmDialog(rootPane, "Gagal Menampilkan Report " + e.getMessage());
         }
-           
+            
     }//GEN-LAST:event_btn_prosesActionPerformed
 
     private void jamMulaiComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jamMulaiComponentHidden

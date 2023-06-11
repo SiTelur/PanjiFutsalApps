@@ -253,6 +253,7 @@ public class koneksiLury {
 //                        batas
                         hash.put("tampilanTanggalAwal",tampilanTanggal1);
                         hash.put("tampilanTanggalAkhir",tampilanTanggal2);
+                        hash.put("localPath",currentDirectory);
 
             // Buat koneksi database
             getCon();
@@ -264,7 +265,7 @@ public class koneksiLury {
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, hash, connection);
 
             // Tampilkan laporan dalam format PDF
-            JasperViewer.viewReport(jasperPrint);
+            JasperViewer.viewReport(jasperPrint,false);
             //JasperExportManager.exportReportToPdfFile(jasperPrint, "path/to/output.pdf");
         } catch (JRException e) {
             e.printStackTrace();
@@ -279,6 +280,7 @@ public class koneksiLury {
         //                //Mengambil parameter dari ireport
                       hash.put("tanggalAwal",tanggalPertama);
                         hash.put("tanggalAkhir",tanggalKedua);
+                        hash.put("localPath",currentDirectory);
 //                        batas
 //                        hash.put("tampilanTanggalAwal",tampilanTanggal1);
 //                        hash.put("tampilanTanggalAkhir",tampilanTanggal2);
@@ -293,7 +295,7 @@ public class koneksiLury {
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, hash, connection);
 
             // Tampilkan laporan dalam format PDF
-            JasperViewer.viewReport(jasperPrint);
+            JasperViewer.viewReport(jasperPrint,false);
             //JasperExportManager.exportReportToPdfFile(jasperPrint, "path/to/output.pdf");
         } catch (JRException e) {
             e.printStackTrace();

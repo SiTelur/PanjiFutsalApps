@@ -25,6 +25,7 @@ public class laporan_makanan extends javax.swing.JFrame {
      */
     public laporan_makanan() {
         initComponents();
+        setLocationRelativeTo(this);
     }
 
     /**

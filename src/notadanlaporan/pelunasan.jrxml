@@ -2,10 +2,11 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="220" pageHeight="360" columnWidth="220" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="00139d20-9026-461d-b567-94f0db3d4fbb">
 	<property name="ireport.zoom" value="1.9487171000000019"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="118"/>
+	<property name="ireport.y" value="45"/>
 	<parameter name="kodeBooking" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="localPath" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      transaksilapangan.`kode_booking` AS transaksilapangan_kode_booking,
@@ -50,11 +51,11 @@ WHERE
 		<band height="358" splitType="Stretch">
 			<image>
 				<reportElement x="18" y="114" width="188" height="141" uuid="f0ca92ab-1a9f-4f81-8e7e-f1dfae8ebb8d"/>
-				<imageExpression><![CDATA["D:\\Development\\PanjiFutsalApps\\src\\img\\logoBurem.jpg"]]></imageExpression>
+				<imageExpression><![CDATA[$P{localPath} + "\\src\\img\\logoBurem.jpg"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="0" y="4" width="84" height="53" uuid="f35c00df-56fb-44d7-8a98-1f15d68f0aaf"/>
-				<imageExpression><![CDATA["D:\\Development\\PanjiFutsalApps\\src\\img\\Logo.png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{localPath} + "\\src\\img\\Logo.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="18" y="1" width="220" height="56" uuid="558566f7-6a05-46f8-bb2b-a427522c033d"/>
@@ -200,14 +201,6 @@ Email   : info@futsalpanji.com]]></text>
 				<reportElement x="-160" y="37" width="100" height="20" uuid="3d792404-9765-4145-8162-d9004b57cc1d"/>
 				<text><![CDATA[]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="286" y="235" width="100" height="20" uuid="c09b6ada-5a00-4941-9f53-a1f8601b7847"/>
-				<textFieldExpression><![CDATA[]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="262" y="191" width="100" height="20" uuid="fe8e9d7f-5313-44e0-8ea7-4b11187a2c12"/>
-				<textFieldExpression><![CDATA[]]></textFieldExpression>
-			</textField>
 			<textField>
 				<reportElement x="99" y="235" width="100" height="20" uuid="a55be382-6f12-4b8b-a3dc-98c3047ae9a4"/>
 				<textFieldExpression><![CDATA[$F{sisa_bayar}]]></textFieldExpression>

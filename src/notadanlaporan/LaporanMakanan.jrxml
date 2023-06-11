@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e04c6f5e-5679-4e74-9139-c8fe1d2d65cf">
-	<property name="ireport.zoom" value="1.6105100000000014"/>
-	<property name="ireport.x" value="68"/>
-	<property name="ireport.y" value="260"/>
+	<property name="ireport.zoom" value="0.826446280991736"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="tanggalAkhir" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="tanggalAwal" class="java.lang.String"/>
+	<parameter name="localPath" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      detailtransaksimakanan.`nonota` AS detailtransaksimakanan_nonota,
@@ -47,7 +48,7 @@ WHERE transaksimakanan.`tanggalTransaksiMakanan` BETWEEN $P{tanggalAwal} AND $P{
 			</staticText>
 			<image>
 				<reportElement x="0" y="0" width="89" height="79" uuid="dc73b8d4-12e9-4ae2-b1cb-853d3780ffb5"/>
-				<imageExpression><![CDATA["D:\\Development\\PanjiFutsalApps\\src\\img\\Logo.png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{localPath} + "\\src\\img\\Logo.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
